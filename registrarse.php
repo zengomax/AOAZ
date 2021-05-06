@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Registro</title>
+	<title>Register</title>
  <link rel="stylesheet" href="lib/css/bootstrap.min.css">
 
 </head>
@@ -27,7 +27,7 @@
    Profile photo: &nbsp;&nbsp; <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br> <br>
   <center><img id="argazki" name="imagen"width="150"></center> <br><br><br>
    </div>
-  <button type="submit" class="btn btn-primary" id="enviar" onsubmit="ComprobarDatos()">Register</button>
+  <button type="submit" class="btn btn-primary" id="enviar">Register</button>
   <button type="clear" class="btn btn-danger">Delete</button>
   </form>
   </div>
@@ -68,16 +68,26 @@ include ("conexion.php");
 
          } 
        else{
-             $sql="INSERT INTO usuario VALUES ('$dni','$nombre','$apellido','$fecha','$email','$passwordEncriptada','usuario','img/fotoperfil.png','ACTIVO')";
+             $sql="INSERT INTO usuario VALUES ('$dni','$nombre','$apellido','$fecha','$email','$passwordEncriptada','usuario','$dir','ACTIVO')";
 
           }
+
+          $motivo="REGISTRO: ".$dni."";
+
+          
+          $eurodeuda= 30;
+          $sql2="INSERT INTO deudas VALUES ('','$motivo','$eurodeuda','$dni')";
+
+
       
      $ejecutar=mysqli_query($conexion, $sql);
+
+     $ejecutar2=mysqli_query($conexion, $sql2);
     
-    if(!$ejecutar){
+    if(!$ejecutar || !$ejecutar2){
         echo '<script type="text/javascript">alert("Something was wrong");</script>';      
     }else{ 
-        echo"Registro realizado con exito";
+        echo"The Register was complete succesfully";
 
     }
 
