@@ -10,28 +10,135 @@
 
 <div class="container">
   <h1 class="display-4">Registro</h1>
+ 
 
+  <form id="registro" name="registro" method="POST" enctype="multipart/form-data" action="registrarse.php">
 
 <form>
   <div class="form-group">
-    <label >Email address
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></label>
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+   Nombre: <input class="form-control" type="text" id="nombre" name="nombre" required="">
+   Apellido: <input class="form-control" type="text" id="apellido" name="apellido" required="">
+   Dni: <input class="form-control" type="text" id="dni" name="dni" required pattern="^[0-9]{8,8}[A-Za-z]$">
+   Email: <input class="form-control" type="email" name="email" required>
+   Password: <input class="form-control" type="password" id="password" name="password" minlength="6" required>
+   Repeat Password: <input class="form-control" type="password" id="passwordrep" name="password" minlength="6" required>
+   Register code: <input class="form-control" type="password" id="code" name="code" placeholder="Enter register code" required>
+   Birth date: <input class="form-control" type="Date" name="fecha" value required >
+   Profile photo: &nbsp;&nbsp; <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br> <br>
+  <center><img id="argazki" name="imagen"width="150"></center> <br><br><br>
+   </div>
+  <button type="submit" class="btn btn-primary" id="enviar" onsubmit="ComprobarDatos()">Register</button>
+  <button type="clear" class="btn btn-danger">Delete</button>
+  </form>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<?php 
+include ("conexion.php");
+    $conexion=connectDataBase();
 
-</div>
 
+  if (isset($_POST['email'])){
+        $nombre = $_POST["nombre"];
+        $apellido= $_POST["password"];                
+        $dni= $_POST["dni"];                
+        $email= $_POST["email"];                
+        $password= $_POST["password"];  
+        $fecha=$_POST["fecha"];              
+        $dir="img";
+        $imagen=$_FILES['imagen']['name'];
+        $archivo= $_FILES['imagen']['tmp_name'];
+        $dir=$dir."/".$imagen;
+        move_uploaded_file($archivo, $dir);
+        $email=$_POST['email'];
+        $code=$_POST['code'];
+        $passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
+
+
+
+  if($code!="erlete"){
+
+    echo '<script type="text/javascript">alert("The register code is not valid");</script>';      
+
+
+
+   }else{
+
+        if($dir=="img/"){  // Si no hay foto añade una foto por defecto
+
+            $sql="INSERT INTO usuario VALUES ('$dni','$nombre','$apellido','$fecha','$email','$passwordEncriptada','usuario','img/fotoperfil.png','ACTIVO')";
+
+         } 
+       else{
+             $sql="INSERT INTO usuario VALUES ('$dni','$nombre','$apellido','$fecha','$email','$passwordEncriptada','usuario','img/fotoperfil.png','ACTIVO')";
+
+          }
+      
+     $ejecutar=mysqli_query($conexion, $sql);
+    
+    if(!$ejecutar){
+        echo '<script type="text/javascript">alert("Something was wrong");</script>';      
+    }else{ 
+        echo"Registro realizado con exito";
+
+    }
+
+  }
+}
+  ?>
 
 </div>
 </body>
 </html>
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+ <script>
+    
+function mostrarImagen(){   //Script para mostrar la previsualización de la imagen
+
+
+        
+   var preview=$("#argazki")[0];
+   var archivo = $("#imagen")[0].files[0];
+
+   var leer = new FileReader();
+
+   if(archivo){
+    leer.readAsDataURL(archivo);
+    leer.onloadend=function(){
+      preview.src=leer.result;
+
+    };   }
+} 
+
+
+
+$("#registro").submit(function(){
+
+
+
+  if($("#password").val()!=$("#passwordrep").val()){
+        
+        alert("The passwords must match");
+        return false;
+      }
+
+
+})
+
+
+$("#passwordrep").blur(function(){ 
+    if($("#password").val()!=$("#passwordrep").val()){
+
+        alert("The passwords must match");
+      }
+
+});
+
+
+
+
+
+
+
+  </script>
+
