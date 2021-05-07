@@ -16,13 +16,15 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 <html>
 <head>
 	<title>INDEX</title>
+	 <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+
 </head>
 <body>
 <div id="logUser">
     		<?php
     			echo "Nombre: ".$_SESSION['nombre'];
     			echo "<br>".$_SESSION['rol']."";
-    			echo "&nbsp;&nbsp;<img  width=100px src=".$_SESSION['imagen'].">"
+    			echo "&nbsp;&nbsp;<img class='rounded-circle' width=50px height=50px; src=".$_SESSION['imagen'].">"
 				
 
     		  ?>

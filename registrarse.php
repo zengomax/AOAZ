@@ -16,8 +16,8 @@
 
 <form>
   <div class="form-group">
-   Nombre: <input class="form-control" type="text" id="nombre" name="nombre" required="">
-   Apellido: <input class="form-control" type="text" id="apellido" name="apellido" required="">
+   Name: <input class="form-control" type="text" id="nombre" name="nombre" required="">
+   Surname: <input class="form-control" type="text" id="apellido" name="apellido" required="">
    Dni: <input class="form-control" type="text" id="dni" name="dni" required pattern="^[0-9]{8,8}[A-Za-z]$">
    Email: <input class="form-control" type="email" name="email" required>
    Password: <input class="form-control" type="password" id="password" name="password" minlength="6" required>
@@ -135,14 +135,6 @@ $("#registro").submit(function(){
 
 })
 
-
-$("#passwordrep").blur(function(){ 
-    if($("#password").val()!=$("#passwordrep").val()){
-
-        alert("The passwords must match");
-      }
-
-});
 
 
 
