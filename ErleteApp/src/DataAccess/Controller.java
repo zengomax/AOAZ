@@ -72,8 +72,7 @@ public class Controller implements ActionListener {
 
             case "ALDATU":
                 System.out.println("hola");
-                //   aldatu();
-                //   datuakKargatu();
+                view.jDialog1.setVisible(true);
               
 
                 break;
@@ -96,6 +95,8 @@ public class Controller implements ActionListener {
         System.out.println(model.imprimirInventario());
         System.out.println(model.printToArray());
     }
+    
+
 
     public void datuakKargatu() {
         view.modelo = new TaulaModeloa();
@@ -107,6 +108,7 @@ public class Controller implements ActionListener {
 
         view.saldoLabel.setText(model.mostrarSaldo() + " €");
     }
+
 
     public void anadirProducto() {
 
@@ -167,7 +169,10 @@ public class Controller implements ActionListener {
         }
 
     }
-
+    public void cambiarCantidadProducto(){
+   // model.cambiarCantidadProducto(id, );
+    
+    }
     /*
 
     public void datuakKargatu() {

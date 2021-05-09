@@ -15,14 +15,14 @@ import javax.swing.table.DefaultTableModel;
  */
 import javax.swing.table.TableModel;
 
-public class View extends javax.swing.JFrame {
+public class View1 extends javax.swing.JFrame {
 
     /**
      * Creates new form View
      */
     public TaulaModeloa modelo;
 
-    public View() {
+    public View1() {
         initComponents();
         /* tabla.setVisible(false);
         modelo = new DefaultTableModel();
@@ -44,8 +44,6 @@ public class View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
-        jLabel9 = new javax.swing.JLabel();
         AldatuButton = new javax.swing.JButton();
         GehituButton = new javax.swing.JButton();
         EzabatuButton = new javax.swing.JButton();
@@ -68,29 +66,8 @@ public class View extends javax.swing.JFrame {
         MenuBar = new javax.swing.JMenuBar();
         menuProduct = new javax.swing.JMenu();
         AddProduct = new javax.swing.JMenuItem();
-        cambiarCantidadButton = new javax.swing.JMenuItem();
         menuMovement = new javax.swing.JMenu();
         viewMovements = new javax.swing.JMenuItem();
-
-        jDialog1.setTitle("Add Amount");
-        jDialog1.setMinimumSize(new java.awt.Dimension(300, 300));
-
-        jLabel9.setText("jLabel9");
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(580, 580, 580)
-                .addComponent(jLabel9))
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(392, 392, 392)
-                .addComponent(jLabel9))
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -150,9 +127,6 @@ public class View extends javax.swing.JFrame {
             }
         });
         menuProduct.add(AddProduct);
-
-        cambiarCantidadButton.setText("Add Amount");
-        menuProduct.add(cambiarCantidadButton);
 
         MenuBar.add(menuProduct);
 
@@ -296,14 +270,18 @@ public class View extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -312,13 +290,13 @@ public class View extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new View().setVisible(true);
+                new View1().setVisible(true);
             }
         });
     }
 
-    public static View viewaSortuBistaratu() {
-        View v = new View();
+    public static View1 viewaSortuBistaratu() {
+        View1 v = new View1();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 v.setVisible(true);
@@ -333,9 +311,7 @@ public class View extends javax.swing.JFrame {
     public javax.swing.JButton EzabatuButton;
     public javax.swing.JButton GehituButton;
     public javax.swing.JMenuBar MenuBar;
-    private javax.swing.JMenuItem cambiarCantidadButton;
     public javax.swing.JTextField cantidadField;
-    public javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -344,7 +320,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
