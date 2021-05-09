@@ -55,7 +55,7 @@ public class TaulaModeloa extends AbstractTableModel {
 
     }
     
-    
+    /*
       public boolean isCellEditable(int row, int column) {
         return true;
     }
@@ -81,6 +81,6 @@ public class TaulaModeloa extends AbstractTableModel {
         fireTableCellUpdated(row, col);
     }
 
-
+*/
 
 }

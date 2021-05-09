@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -115,7 +115,6 @@ public class Model {
     
     
     public void anadirProducto(Producto p) {
-        int idproducto = p.getIdProducto();
         String nombre = p.getNombre();
         int cantidad = p.getCantidad();
         
@@ -135,21 +134,18 @@ public class Model {
 
     
     public void anadirMovimiento(Movimiento m){
-    
-        int id= m.getIdmovimiento();
         String descripcion = m.getDescripcion();
-        Date data = m.getDate();
-        double euro = m.getEuro();
+        String data = m.getDate();
+        double euros = m.getEuro();
  
     
-    String sql = "INSERT INTO movimiento(idmovimiento,descripcion,data,euro) VALUES(?,?,?)"; //revisar la consulta
+    String sql = "INSERT INTO movimiento(descripcion,fecha,euros) VALUES(?,?,?)"; //revisar la consulta
 
         try (Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, id);
-            pstmt.setString(2, descripcion);
-            pstmt.setDate(3, (java.sql.Date) data);
-            pstmt.setDouble(3, euro);            
+            pstmt.setString(1, descripcion);
+            pstmt.setDate(2, Date.valueOf(data));
+            pstmt.setDouble(3, euros);            
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -169,7 +165,7 @@ public class Model {
 
                 s = s + rs.getInt("idmovimiento") + "\t"
                         + rs.getString("descripcion") + "\t"
-                        + rs.getDate("date") + "\t"
+                        + rs.getDate("fecha") + "\t"
                         + rs.getDouble("euros") + "\n";
             }
         } catch (SQLException e) {

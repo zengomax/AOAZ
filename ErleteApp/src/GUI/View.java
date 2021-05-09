@@ -119,7 +119,8 @@ public class View extends javax.swing.JFrame {
 
         menuProduct.setText("Product");
 
-        AddProduct.setText("AddProduct");
+        AddProduct.setText("Add Product");
+        AddProduct.setActionCommand("add2");
         AddProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddProductActionPerformed(evt);

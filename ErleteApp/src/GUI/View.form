@@ -17,7 +17,8 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="AddProduct">
               <Properties>
-                <Property name="text" type="java.lang.String" value="AddProduct"/>
+                <Property name="text" type="java.lang.String" value="Add Product"/>
+                <Property name="actionCommand" type="java.lang.String" value="add2"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddProductActionPerformed"/>

@@ -10,18 +10,18 @@ package Model;
  *
  * @author blazquez.asier
  */
-import java.util.Date;
+import java.sql.Date;
 
 public class Movimiento {
     private int idmovimiento;
     private String descripcion;
-    private Date date;
+    private String fecha;
     private double euro;
 
-    public Movimiento(int idmovimiento, String descripcion, Date data, double euro) {
+    public Movimiento(int idmovimiento, String descripcion, String fecha, double euro) {
         this.idmovimiento = idmovimiento;
         this.descripcion = descripcion;
-        this.date = data;
+        this.fecha = fecha;
         this.euro = euro;
     }
 
@@ -41,14 +41,14 @@ public class Movimiento {
         this.descripcion = descripcion;
     }
 
-
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        return fecha;
     }
 
-    public void setDate(Date data) {
-        this.date = data;
+    public void setDate(String date) {
+        this.fecha = date;
     }
+
 
     public double getEuro() {
         return euro;
@@ -60,7 +60,7 @@ public class Movimiento {
 
     @Override
     public String toString() {
-        return "Movimiento{" + "idmovimiento=" + idmovimiento + ", descripcion=" + descripcion + ", date=" + date + ", euro=" + euro + '}';
+        return "Movimiento{" + "idmovimiento=" + idmovimiento + ", descripcion=" + descripcion + ", date=" + fecha + ", euro=" + euro + '}';
     }
     
     

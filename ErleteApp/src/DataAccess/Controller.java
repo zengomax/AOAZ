@@ -11,9 +11,10 @@ import javax.swing.JOptionPane;
 import GUI.*;
 import Model.*;
 import java.util.Calendar;
-import java.util.Date;
-import javax.swing.JFrame;
-import java.util.GregorianCalendar;
+
+import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,7 +29,7 @@ public class Controller implements ActionListener {
 
     private Model model;
     private View view;
-    private MovimientosGUI movimiento= new MovimientosGUI();
+    private MovimientosGUI movimiento = new MovimientosGUI();
 
     public Controller(Model model, View view) {
         this.model = model;
@@ -45,6 +46,7 @@ public class Controller implements ActionListener {
         view.AldatuButton.addActionListener(listener);
         view.AldatuButton.addActionListener(listener);
         view.viewMovements.addActionListener(listener);
+        view.AddProduct.addActionListener(listener);
         movimiento.prueba.addActionListener(listener);
     }
 
@@ -54,6 +56,10 @@ public class Controller implements ActionListener {
         //listenerrak entzun dezakeen eragiketa bakoitzeko. Konponenteek 'actionCommad' propietatea daukate
         switch (actionCommand) {
             case "Add":
+                anadirProducto();
+                datuakKargatu();
+                break;
+            case "add2":
                 anadirProducto();
                 datuakKargatu();
                 break;
@@ -68,17 +74,17 @@ public class Controller implements ActionListener {
                 System.out.println("hola");
                 //   aldatu();
                 //   datuakKargatu();
+              
 
                 break;
 
             case "View Movements":
+                movimiento.movimientosfield.setText(model.imprimirMovimiento());
                 movimiento.setVisible(true);
-                
-
                 break;
 
             case "prueba":
-                   System.out.println("Hols");
+                System.out.println("Hols");
 
                 break;
 
@@ -118,18 +124,14 @@ public class Controller implements ActionListener {
             total = cantidad * precio;   // el total gastado al insertar productos
 
             String descripcion = "Buy of " + cantidad + " " + nombre + " for " + precio + "€";
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDateTime now = LocalDateTime.now();
+            String date = dtf.format(now);
 
-            Calendar fecha = new GregorianCalendar();
-
-            int ano = fecha.get(Calendar.YEAR);
-            int mes = fecha.get(Calendar.MONTH);
-            int dia = fecha.get(Calendar.DAY_OF_MONTH);
-
-            Date date = new Date(ano, mes, dia);  // revisar si formato fecha o formato string
             Movimiento m = new Movimiento(1, descripcion, date, total);
 
             model.anadirProducto(p);
-            //model.anadirMovimiento(m);
+            model.anadirMovimiento(m);
             JOptionPane.showMessageDialog(null, "The product was added to the inventary", "Information", JOptionPane.INFORMATION_MESSAGE);
 
             String saldo = model.mostrarSaldo();
@@ -160,7 +162,7 @@ public class Controller implements ActionListener {
             }
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Aukeratu taulatik bat", "Errorea", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You have to choose one product to be deleted", "Error", JOptionPane.WARNING_MESSAGE);
 
         }
 
