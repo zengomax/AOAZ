@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JFrame;
 import java.util.GregorianCalendar;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -27,6 +28,7 @@ public class Controller implements ActionListener {
 
     private Model model;
     private View view;
+    private MovimientosGUI movimiento= new MovimientosGUI();
 
     public Controller(Model model, View view) {
         this.model = model;
@@ -41,7 +43,9 @@ public class Controller implements ActionListener {
         view.GehituButton.addActionListener(listener);
         view.EzabatuButton.addActionListener(listener);
         view.AldatuButton.addActionListener(listener);
-
+        view.AldatuButton.addActionListener(listener);
+        view.viewMovements.addActionListener(listener);
+        movimiento.prueba.addActionListener(listener);
     }
 
     @Override
@@ -67,10 +71,20 @@ public class Controller implements ActionListener {
 
                 break;
 
+            case "View Movements":
+                movimiento.setVisible(true);
+                
+
+                break;
+
+            case "prueba":
+                   System.out.println("Hols");
+
+                break;
+
         }
 
     }
-
 
     public void inprimatu() {
         System.out.println(model.imprimirInventario());
@@ -83,17 +97,17 @@ public class Controller implements ActionListener {
         mostrarSaldo();
     }
 
-    public void mostrarSaldo(){
-    
-    view.saldoLabel.setText(model.mostrarSaldo()+" €");
+    public void mostrarSaldo() {
+
+        view.saldoLabel.setText(model.mostrarSaldo() + " €");
     }
-    
+
     public void anadirProducto() {
 
         String nombre = view.productoField.getText();
         int cantidad = 0;
         double precio = 0;
-        double total=0;
+        double total = 0;
         if (nombre.equals("") || view.cantidadField.getText().equals("") || view.precioField.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "You can´t save empty information", "Information", JOptionPane.WARNING_MESSAGE);
 
@@ -101,49 +115,48 @@ public class Controller implements ActionListener {
             cantidad = Integer.parseInt(view.cantidadField.getText());
             precio = Double.parseDouble(view.precioField.getText());
             Producto p = new Producto(1, nombre, cantidad);
-            total = cantidad* precio;   // el total gastado al insertar productos
-            
-            String descripcion = "Buy of " + cantidad + " "+ nombre + " for " + precio+ "€";
-            
-            
+            total = cantidad * precio;   // el total gastado al insertar productos
+
+            String descripcion = "Buy of " + cantidad + " " + nombre + " for " + precio + "€";
+
             Calendar fecha = new GregorianCalendar();
-            
-           int ano = fecha.get(Calendar.YEAR);
-           int mes = fecha.get(Calendar.MONTH);
+
+            int ano = fecha.get(Calendar.YEAR);
+            int mes = fecha.get(Calendar.MONTH);
             int dia = fecha.get(Calendar.DAY_OF_MONTH);
-            
-            Date date= new Date(ano, mes, dia);  // revisar si formato fecha o formato string
+
+            Date date = new Date(ano, mes, dia);  // revisar si formato fecha o formato string
             Movimiento m = new Movimiento(1, descripcion, date, total);
-            
+
             model.anadirProducto(p);
-           //model.anadirMovimiento(m);
-           JOptionPane.showMessageDialog(null, "The product was added to the inventary", "Information", JOptionPane.INFORMATION_MESSAGE);
-           
-           String saldo= model.mostrarSaldo();
+            //model.anadirMovimiento(m);
+            JOptionPane.showMessageDialog(null, "The product was added to the inventary", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+            String saldo = model.mostrarSaldo();
             System.out.println(saldo);
-          double nuevosaldo=Double.parseDouble(saldo)-total;
-           model.actualizarSaldo(nuevosaldo);
-           
+            double nuevosaldo = Double.parseDouble(saldo) - total;
+            model.actualizarSaldo(nuevosaldo);
+
             System.out.println(m);
             System.out.println(p);
-            
-        }   
+
+        }
 
     }
-    
+
     public void borrarProducto() {
 
         try {
             String idproducto = view.tabla.getValueAt(view.tabla.getSelectedRow(), 0) + "";
-            
-            int idint= Integer.parseInt(idproducto);
-            
+
+            int idint = Integer.parseInt(idproducto);
+
             int selection = JOptionPane.showConfirmDialog(null, "¿Do you want to delete the product?", "Confirm", JOptionPane.YES_NO_OPTION);
-            
-            if (selection==0){            
-             model.borrarProducto(idint);
-                    
-            JOptionPane.showMessageDialog(null, "The product was deleted from the inventary", "Informazioa", JOptionPane.INFORMATION_MESSAGE);
+
+            if (selection == 0) {
+                model.borrarProducto(idint);
+
+                JOptionPane.showMessageDialog(null, "The product was deleted from the inventary", "Informazioa", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
 
