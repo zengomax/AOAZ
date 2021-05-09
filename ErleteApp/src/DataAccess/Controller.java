@@ -58,7 +58,7 @@ public class Controller implements ActionListener {
                 datuakKargatu();
                 break;
 
-            case "EZABATU":
+            case "Delete":
                 borrarProducto();
                 datuakKargatu();
                 //  herriaEzabatu();

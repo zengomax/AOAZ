@@ -80,7 +80,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
-        EzabatuButton.setText("EZABATU");
+        EzabatuButton.setText("Delete");
 
         tabla.setModel(new TaulaModeloa());
         jScrollPane2.setViewportView(tabla);
