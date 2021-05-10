@@ -52,7 +52,6 @@ public class Controller implements ActionListener {
         view.AddCantidad.addActionListener(listener);
         //MOVIMIENTOGUI       
 
-        movimiento.prueba.addActionListener(listener);
         movimiento.detailsButton.addActionListener(listener);
 
     }
@@ -84,8 +83,8 @@ public class Controller implements ActionListener {
                 break;
 
             case "View Movements":
-                //movimiento.movimientosfield.setText(model.imprimirMovimiento());
                 movimiento.setVisible(true);
+                movimiento.modelomove = new MoveTableModel();
                 break;
 
             case "AddAnadir":
@@ -94,8 +93,8 @@ public class Controller implements ActionListener {
                 break;
 
             case "View Details":
-                movimiento.dialogoMovimiento.setVisible(true);
-                loadComboBox();
+                loadDetailsMovimiento();
+
                 break;
 
         }
@@ -108,8 +107,10 @@ public class Controller implements ActionListener {
         mostrarSaldo();
         loadComboBox();
         productos = model.printToArray();
-        movimientos= model.arrayMovimiento();
 
+        movimientos = model.arrayMovimiento();
+        movimiento.modelomove = new MoveTableModel();
+        movimiento.taulaMove.setModel(movimiento.modelomove);
     }
 
     public void mostrarSaldo() {
@@ -200,7 +201,7 @@ public class Controller implements ActionListener {
             String[] idsplit = id.split("-");
             int cantidadvieja = 0;
 
-            String descripcion = "UPDATE of " + cantidad + " " + idsplit[1] + " for " + precio + "€";
+            String descripcion = "ADD  " + cantidad + " OF " + idsplit[1] + " for " + precio + "€";
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDateTime now = LocalDateTime.now();
             String date = dtf.format(now);
@@ -230,25 +231,26 @@ public class Controller implements ActionListener {
         }
 
     }
-    
-    
-            
-        public void loadDetailsMovimiento(){
-            //movimiento.taulaMove.getse
-            
-            int id=Integer.parseInt(movimiento.taulaMove.getValueAt(movimiento.taulaMove.getSelectedRow(), 0)+"");
 
+    public void loadDetailsMovimiento() {
+        try {
+            int id = Integer.parseInt(movimiento.taulaMove.getValueAt(movimiento.taulaMove.getSelectedRow(), 0) + "");
             String descripcion = movimiento.taulaMove.getValueAt(movimiento.taulaMove.getSelectedRow(), 1) + "";
+            String fecha = movimiento.taulaMove.getValueAt(movimiento.taulaMove.getSelectedRow(), 2) + "";;
+            double euro = Double.parseDouble(movimiento.taulaMove.getValueAt(movimiento.taulaMove.getSelectedRow(), 3) + "");
 
-            
-            String fecha=movimiento.taulaMove.getValueAt(movimiento.taulaMove.getSelectedRow(), 2) + "";;
-            double euro=Double.parseDouble(movimiento.taulaMove.getValueAt(movimiento.taulaMove.getSelectedRow(), 3) + "");
-            
-            Movimiento m = new Movimiento(id, descripcion, fecha, euro);
-            
-            
-            System.out.println(m);
-        
+            movimiento.idLabel.setText(id + "");
+            movimiento.textareaMovimiento.setText(descripcion);
+            movimiento.dinerolabel.setText(euro + "");
+            movimiento.fechaslabel.setText(fecha);
+            movimiento.dialogoMovimiento.setVisible(true);
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "You have to choose one movement to see their details ", "Error", JOptionPane.WARNING_MESSAGE);
+
         }
+
+    }
 
 }
