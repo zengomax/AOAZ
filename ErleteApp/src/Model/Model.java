@@ -76,6 +76,27 @@ public class Model {
         return inventario;
     }
     
+        
+    public static ArrayList<Movimiento> arrayMovimiento() {
+        String sql = "SELECT * FROM movimiento";
+        ArrayList<Movimiento> movimientos = new ArrayList<>();
+        String s = "";
+        try (Connection conn = connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+
+            // loop through the result set
+            while (rs.next()) {
+
+                movimientos.add(new Movimiento(rs.getInt("idmovimiento"), rs.getString("descripcion"),rs.getString("fecha"), rs.getDouble("euros")));
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return movimientos;
+    }
     
     
    
@@ -95,8 +116,11 @@ public class Model {
         }
     }
 
-    public void cambiarCantidadProducto(int cantidad, int id) {
-        String sql = "UPDATE inventario SET cantidad = ? WHERE id = ?";
+    
+    public void cambiarCantidadProducto(int id, int cantidad ) {
+
+        String sql = "UPDATE inventario SET cantidad = ? "
+                    + "WHERE idproducto = ?";
 
         try (Connection conn = connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -106,12 +130,12 @@ public class Model {
             pstmt.setInt(2, id);
             // update 
             pstmt.executeUpdate();
+            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     }
-    
     
     
     public void anadirProducto(Producto p) {

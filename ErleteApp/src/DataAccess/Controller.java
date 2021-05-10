@@ -30,6 +30,7 @@ public class Controller implements ActionListener {
     private Model model;
     private View view;
     private MovimientosGUI movimiento = new MovimientosGUI();
+    private ArrayList<Producto> productos = model.printToArray();
 
     public Controller(Model model, View view) {
         this.model = model;
@@ -47,7 +48,11 @@ public class Controller implements ActionListener {
         view.AldatuButton.addActionListener(listener);
         view.viewMovements.addActionListener(listener);
         view.AddProduct.addActionListener(listener);
+        view.cambiarCantidadButton.addActionListener(listener);
+        view.AddCantidad.addActionListener(listener);
+        //MOVIMIENTOGUI       
         movimiento.prueba.addActionListener(listener);
+
     }
 
     @Override
@@ -70,10 +75,9 @@ public class Controller implements ActionListener {
                 //  herriaEzabatu();
                 break;
 
-            case "ALDATU":
-                System.out.println("hola");
-                view.jDialog1.setVisible(true);
-              
+            case "Add Quantity":
+                loadComboBox();
+                view.dialogoAnadir.setVisible(true);
 
                 break;
 
@@ -87,6 +91,11 @@ public class Controller implements ActionListener {
 
                 break;
 
+            case "AddAnadir":
+                updateProducto();
+                datuakKargatu();
+                break;
+
         }
 
     }
@@ -95,20 +104,20 @@ public class Controller implements ActionListener {
         System.out.println(model.imprimirInventario());
         System.out.println(model.printToArray());
     }
-    
-
 
     public void datuakKargatu() {
         view.modelo = new TaulaModeloa();
         view.tabla.setModel(view.modelo);
         mostrarSaldo();
+        loadComboBox();
+        productos = model.printToArray();
+
     }
 
     public void mostrarSaldo() {
 
         view.saldoLabel.setText(model.mostrarSaldo() + " €");
     }
-
 
     public void anadirProducto() {
 
@@ -125,7 +134,7 @@ public class Controller implements ActionListener {
             Producto p = new Producto(1, nombre, cantidad);
             total = cantidad * precio;   // el total gastado al insertar productos
 
-            String descripcion = "Buy of " + cantidad + " " + nombre + " for " + precio + "€";
+            String descripcion = "BUY of " + cantidad + " " + nombre + " for " + precio + "€";
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDateTime now = LocalDateTime.now();
             String date = dtf.format(now);
@@ -135,14 +144,17 @@ public class Controller implements ActionListener {
             model.anadirProducto(p);
             model.anadirMovimiento(m);
             JOptionPane.showMessageDialog(null, "The product was added to the inventary", "Information", JOptionPane.INFORMATION_MESSAGE);
-
+          
+            //Vaciar campos
+            view.productoField.setText("");
+            view.precioField.setText("");
+            view.cantidadField.setText("");
+            
+            
             String saldo = model.mostrarSaldo();
             System.out.println(saldo);
             double nuevosaldo = Double.parseDouble(saldo) - total;
             model.actualizarSaldo(nuevosaldo);
-
-            System.out.println(m);
-            System.out.println(p);
 
         }
 
@@ -169,64 +181,59 @@ public class Controller implements ActionListener {
         }
 
     }
-    public void cambiarCantidadProducto(){
-   // model.cambiarCantidadProducto(id, );
-    
-    }
-    /*
 
-    public void datuakKargatu() {
-
-//        herriak = model.inprimatuToArray();
-//
-//        int numDatos = view.modelo.getRowCount();
-//        for (int i = 0; i < numDatos; i++) {   //para borrar la tabla y no se sobrecargue
-//            view.modelo.removeRow(0);
-//        }
-//        view.tabla.setVisible(true);
-//
-//        String[] info = new String[4];
-//
-//        for (Herria h : herriak) {
-//
-//            info[0] = h.getHerria();
-//            info[1] = h.getProbintzia();
-//
-//            if (h.isHondartza()) {
-//                info[2] = "BAI";
-//
-//            } else {
-//                info[2] = "EZ";
-//
-//            }
-//            info[3] = h.getOharrak();
-//            view.modelo.addRow(info);
-//
-//        }       
-
-            view.modelo = new TaulaModeloa();
-
-            view.tabla.setModel(view.modelo);
-    }
-
-    
-
-    public void aldatu() {
-        try {
-            String herria = view.tabla.getValueAt(view.tabla.getSelectedRow(), 0) + "";
-            String probintzia = view.tabla.getValueAt(view.tabla.getSelectedRow(), 1) + "";
-            String oharrak = view.tabla.getValueAt(view.tabla.getSelectedRow(), 3) + "";
-            boolean hondartza = Boolean.parseBoolean(view.tabla.getValueAt(view.tabla.getSelectedRow(), 2) + "");
-            Herria h = new Herria(herria, probintzia, hondartza, oharrak);
-
-            model.herriaAldatu(h);
-            JOptionPane.showMessageDialog(null, "Herria Aldatu da", "Informazioa", JOptionPane.INFORMATION_MESSAGE);
-
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Aukeratu taulatik bat eta editatu aldatzeko", "Errorea", JOptionPane.WARNING_MESSAGE);
-
+    public void loadComboBox() {
+       view.elegirProduct.removeAllItems();
+        for (Producto p : productos) {
+            view.elegirProduct.addItem(p.getIdProducto() + "- " + p.getNombre());
         }
 
-    }*/
+    }
+
+    public void updateProducto() {
+
+        if (view.cantidadAnadir.equals("") || view.precioAnadir.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "You can´t save empty information", "Information", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+            int cantidad = Integer.parseInt(view.cantidadAnadir.getText());
+            double precio = Double.parseDouble(view.precioAnadir.getText());
+            double total = 0;
+            String id = view.elegirProduct.getSelectedItem() + "";
+            String[] idsplit = id.split("-");
+            int cantidadvieja=0;
+            
+            
+            String descripcion = "UPDATE of " + cantidad + " " + idsplit[1] + " for " + precio + "€";
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDateTime now = LocalDateTime.now();
+            String date = dtf.format(now);
+            total = cantidad * precio;   // el total gastado al insertar productos
+             for (Producto p : productos) {
+
+                if (p.getIdProducto() == Integer.parseInt(idsplit[0])) {
+                    cantidadvieja=p.getCantidad();
+                }
+
+            }
+            
+            model.cambiarCantidadProducto(Integer.parseInt(idsplit[0]), cantidadvieja+cantidad);       
+            Movimiento m = new Movimiento(1, descripcion, date, total);
+            model.anadirMovimiento(m);
+            
+            JOptionPane.showMessageDialog(null, "The quantity was added to the inventary", "Information", JOptionPane.INFORMATION_MESSAGE);
+            String saldo = model.mostrarSaldo();
+            System.out.println(saldo);
+            double nuevosaldo = Double.parseDouble(saldo) - total;
+            model.actualizarSaldo(nuevosaldo);
+            //vaciar datos
+            view.cantidadAnadir.setText("");
+            view.precioAnadir.setText("");
+            view.dialogoAnadir.hide();
+            
+        }
+
+        //
+    }
+
 }

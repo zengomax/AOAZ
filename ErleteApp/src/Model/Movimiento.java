@@ -10,7 +10,6 @@ package Model;
  *
  * @author blazquez.asier
  */
-import java.sql.Date;
 
 public class Movimiento {
     private int idmovimiento;

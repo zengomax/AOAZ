@@ -3,7 +3,7 @@ package GUI;
 import Model.TaulaModeloa;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-
+import Model.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,7 +20,7 @@ public class MovimientosGUI extends javax.swing.JFrame {
     /**
      * Creates new form View
      */
-    public TaulaModeloa modelo;
+    public MoveTableModel modelomove;
 
     public MovimientosGUI() {
         initComponents();
@@ -44,6 +44,8 @@ public class MovimientosGUI extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         movimientosfield = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        taulaMove = new javax.swing.JTable();
         MenuBar = new javax.swing.JMenuBar();
         menuProduct = new javax.swing.JMenu();
         menuMovement = new javax.swing.JMenu();
@@ -66,6 +68,9 @@ public class MovimientosGUI extends javax.swing.JFrame {
         movimientosfield.setRows(5);
         jScrollPane1.setViewportView(movimientosfield);
 
+        taulaMove.setModel(new MoveTableModel());
+        jScrollPane2.setViewportView(taulaMove);
+
         menuProduct.setText("Product");
         MenuBar.add(menuProduct);
 
@@ -78,10 +83,6 @@ public class MovimientosGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,6 +102,12 @@ public class MovimientosGUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(242, 242, 242))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,8 +121,10 @@ public class MovimientosGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(prueba, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -173,10 +182,12 @@ public class MovimientosGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     public javax.swing.JMenu menuMovement;
     public javax.swing.JMenu menuProduct;
     public javax.swing.JTextArea movimientosfield;
     public javax.swing.JButton prueba;
+    public javax.swing.JTable taulaMove;
     // End of variables declaration//GEN-END:variables
 }

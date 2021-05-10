@@ -44,8 +44,17 @@ public class View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
+        dialogoAnadir = new javax.swing.JDialog();
+        elegirProduct = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
+        tittle = new javax.swing.JLabel();
+        tittle1 = new javax.swing.JLabel();
+        tittle2 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        cantidadAnadir = new javax.swing.JTextField();
+        AddCantidad = new javax.swing.JButton();
+        tittle3 = new javax.swing.JLabel();
+        precioAnadir = new javax.swing.JTextField();
         AldatuButton = new javax.swing.JButton();
         GehituButton = new javax.swing.JButton();
         EzabatuButton = new javax.swing.JButton();
@@ -72,27 +81,106 @@ public class View extends javax.swing.JFrame {
         menuMovement = new javax.swing.JMenu();
         viewMovements = new javax.swing.JMenuItem();
 
-        jDialog1.setTitle("Add Amount");
-        jDialog1.setMinimumSize(new java.awt.Dimension(300, 300));
+        dialogoAnadir.setTitle("Add Amount");
+        dialogoAnadir.setMinimumSize(new java.awt.Dimension(614, 406));
 
-        jLabel9.setText("jLabel9");
+        elegirProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elegirProductActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(580, 580, 580)
-                .addComponent(jLabel9))
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel9.setText("Add Quantity");
+
+        tittle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tittle.setText("Choose Product: ");
+
+        tittle1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tittle1.setText("Quantity of product:");
+
+        tittle2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tittle2.setText("How many products do you want to add?");
+
+        cantidadAnadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidadAnadirActionPerformed(evt);
+            }
+        });
+
+        AddCantidad.setText("Add");
+        AddCantidad.setActionCommand("AddAnadir");
+
+        tittle3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tittle3.setText("Prize(€)");
+
+        precioAnadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioAnadirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogoAnadirLayout = new javax.swing.GroupLayout(dialogoAnadir.getContentPane());
+        dialogoAnadir.getContentPane().setLayout(dialogoAnadirLayout);
+        dialogoAnadirLayout.setHorizontalGroup(
+            dialogoAnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogoAnadirLayout.createSequentialGroup()
+                .addGroup(dialogoAnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogoAnadirLayout.createSequentialGroup()
+                        .addGap(178, 178, 178)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogoAnadirLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(dialogoAnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dialogoAnadirLayout.createSequentialGroup()
+                                .addComponent(tittle, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(elegirProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(dialogoAnadirLayout.createSequentialGroup()
+                                .addComponent(tittle1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(dialogoAnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(AddCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(dialogoAnadirLayout.createSequentialGroup()
+                                        .addComponent(cantidadAnadir)
+                                        .addGap(22, 22, 22))))
+                            .addComponent(tittle2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(dialogoAnadirLayout.createSequentialGroup()
+                                .addComponent(tittle3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(precioAnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(392, 392, 392)
-                .addComponent(jLabel9))
+        dialogoAnadirLayout.setVerticalGroup(
+            dialogoAnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogoAnadirLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(dialogoAnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(dialogoAnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tittle)
+                        .addComponent(elegirProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogoAnadirLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(60, 60, 60)))
+                .addGap(37, 37, 37)
+                .addComponent(tittle2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(dialogoAnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tittle1)
+                    .addComponent(cantidadAnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialogoAnadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tittle3)
+                    .addComponent(precioAnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(AddCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         AldatuButton.setText("ALDATU");
 
@@ -117,7 +205,7 @@ public class View extends javax.swing.JFrame {
         jLabel2.setText("Admin - Panel");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Add Product:");
+        jLabel3.setText("Add new product:");
 
         productoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +239,7 @@ public class View extends javax.swing.JFrame {
         });
         menuProduct.add(AddProduct);
 
-        cambiarCantidadButton.setText("Add Amount");
+        cambiarCantidadButton.setText("Add Quantity");
         menuProduct.add(cambiarCantidadButton);
 
         MenuBar.add(menuProduct);
@@ -174,9 +262,7 @@ public class View extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(200, 200, 200)
-                            .addComponent(EzabatuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(62, 62, 62)
+                            .addGap(359, 359, 359)
                             .addComponent(AldatuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -203,13 +289,15 @@ public class View extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(GehituButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(21, 21, 21))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addGap(18, 18, 18)
                                         .addComponent(saldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22))))))
+                                        .addGap(22, 22, 22))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(EzabatuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(GehituButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(21, 21, 21))))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(164, 164, 164)
@@ -247,20 +335,20 @@ public class View extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(GehituButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(79, 79, 79)
+                .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(precioField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(precioField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EzabatuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EzabatuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AldatuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(AldatuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -278,6 +366,18 @@ public class View extends javax.swing.JFrame {
     private void GehituButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GehituButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_GehituButtonActionPerformed
+
+    private void cantidadAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadAnadirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cantidadAnadirActionPerformed
+
+    private void precioAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioAnadirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precioAnadirActionPerformed
+
+    private void elegirProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirProductActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_elegirProductActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,14 +428,17 @@ public class View extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton AddCantidad;
     public javax.swing.JMenuItem AddProduct;
     public javax.swing.JButton AldatuButton;
     public javax.swing.JButton EzabatuButton;
     public javax.swing.JButton GehituButton;
     public javax.swing.JMenuBar MenuBar;
-    private javax.swing.JMenuItem cambiarCantidadButton;
+    public javax.swing.JMenuItem cambiarCantidadButton;
+    public javax.swing.JTextField cantidadAnadir;
     public javax.swing.JTextField cantidadField;
-    public javax.swing.JDialog jDialog1;
+    public javax.swing.JDialog dialogoAnadir;
+    public javax.swing.JComboBox<String> elegirProduct;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -348,12 +451,18 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     public javax.swing.JMenu menuMovement;
     public javax.swing.JMenu menuProduct;
+    public javax.swing.JTextField precioAnadir;
     public javax.swing.JTextField precioField;
     public javax.swing.JTextField productoField;
     public javax.swing.JLabel saldoLabel;
     public javax.swing.JTable tabla;
+    private javax.swing.JLabel tittle;
+    private javax.swing.JLabel tittle1;
+    private javax.swing.JLabel tittle2;
+    private javax.swing.JLabel tittle3;
     public javax.swing.JMenuItem viewMovements;
     // End of variables declaration//GEN-END:variables
 }
