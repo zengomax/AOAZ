@@ -1,146 +1,260 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Register</title>
- <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+	<head>
+		<title>Register</title>
+		<link rel="stylesheet" href="lib/css/bootstrap.min.css">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+		
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="Register.css" />
+<style type="text/css">
+		
+  #error{   
+    color: #FF0000;   
+  }
+  
+  .box input[type = "email"],.box input[type = "text"],.box input[type = "date"],.box input[type = "file"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid black;
+  padding: 5px 5px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.45s;
+}
 
-</head>
-<body>
+.box input[type = "email"]:focus,.box input[type = "text"]:focus{
+  width: 280px;
+  border-color:black;
+}
+
+#password{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid black;
+  padding: 5px 5px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.45s;
+
+}
+
+#password:focus{
+  width: 280px;
+  border-color:black;
+  
+}
+</style>
+	</head>
+	<body>
+	<div class="bs-example">
+			<nav class="navbar navbar-expand-md navbar-customclass bg-dark">
+				
+				<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div id="navbarCollapse" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav ">
+						<li class="nav-item">
+							<a href="#" class="nav-link">Home</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link">Profile</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Messages</a>
+							<div class="dropdown-menu">
+								<a href="#" class="dropdown-item">Inbox</a>
+								<a href="#" class="dropdown-item">Drafts</a>
+								<a href="#" class="dropdown-item">Sent Items</a>
+								<div class="dropdown-divider"></div>
+								<a href="#"class="dropdown-item">Trash</a>
+							</div>
+						</li>
+					</ul>
+					
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+							</a>
+							<div class="dropdown-menu dropdown-menu-right" >
+								
+								<a class="dropdown-item" href="#">Edit Profile</a>
+								<a class="dropdown-item" href="#">Debts</a>
+								<a class="dropdown-item" href="#">Reservations</a>
+								<div style="border-color:#999691" class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">Log Out</a>
+							</div>
+						</li>   
+					</ul>
+					
+					
+				</div>
+			</nav>
+		</div>
 
 
 <div class="container">
-  <h1 class="display-4">Registro</h1>
  
 
-  <form id="registro" name="registro" method="POST" enctype="multipart/form-data" action="registrarse.php">
+  <form class="box" id="registro" name="registro" method="POST" enctype="multipart/form-data" action="registrarse.php">
+ <h1 class="display-4">Register</h1>
 
-<form>
-  <div class="form-group">
-   Name: <input class="form-control" type="text" id="nombre" name="nombre" required="">
-   Surname: <input class="form-control" type="text" id="apellido" name="apellido" required="">
-   Dni: <input class="form-control" type="text" id="dni" name="dni" required pattern="^[0-9]{8,8}[A-Za-z]$">
-   Email: <input class="form-control" type="email" name="email" required>
-   Password: <input class="form-control" type="password" id="password" name="password" minlength="6" required>
-   Repeat Password: <input class="form-control" type="password" id="passwordrep" name="password" minlength="6" required>
-   Register code: <input class="form-control" type="password" id="code" name="code" placeholder="Enter register code" required>
-   Birth date: <input class="form-control" type="Date" name="fecha" value required >
-   Profile photo: &nbsp;&nbsp; <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br> <br>
-  <center><img id="argazki" name="imagen"width="150"></center> <br><br><br>
+  <div>
+   <input  type="text" id="nombre" name="nombre"  placeholder="Name" required="">
+   <input  type="text" id="apellido" name="apellido"  placeholder="Surname"  required="">
+   <input  type="text" id="dni" name="dni"  placeholder="DNI" required pattern="^[0-9]{8,8}[A-Za-z]$">
+   <input type="email" name="email"  placeholder="Email" required>
+   <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>
+   <input type="password" id="passwordrep"  placeholder="Repeat password" name="password" minlength="6" required>
+   <input  type="password" id="code" name="code" placeholder="Enter register code" required>
+   <input  type="Date" name="fecha" value required >
+   <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br>
+   <center><img id="argazki" name="imagen" width="150"></center> 
    </div>
-  <button type="submit" class="btn btn-primary" id="enviar">Register</button>
-  <button type="clear" class="btn btn-danger">Delete</button>
+  <input type="submit" class="btn" id="enviar" value="Register"/>
+  <button type="clear" class="btn btn-danger">Clear</button>
   </form>
   </div>
-<?php 
-include ("conexion.php");
-    $conexion=connectDataBase();
-
-
-  if (isset($_POST['email'])){
-        $nombre = $_POST["nombre"];
-        $apellido= $_POST["password"];                
-        $dni= $_POST["dni"];                
-        $email= $_POST["email"];                
-        $password= $_POST["password"];  
-        $fecha=$_POST["fecha"];              
-        $dir="img";
-        $imagen=$_FILES['imagen']['name'];
-        $archivo= $_FILES['imagen']['tmp_name'];
-        $dir=$dir."/".$imagen;
-        move_uploaded_file($archivo, $dir);
-        $email=$_POST['email'];
-        $code=$_POST['code'];
-        $passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
-
-
-
-  if($code!="erlete"){
-
-    echo '<script type="text/javascript">alert("The register code is not valid");</script>';      
-
-
-
-   }else{
-
-        if($dir=="img/"){  // Si no hay foto añade una foto por defecto
-
-            $sql="INSERT INTO usuario VALUES ('$dni','$nombre','$apellido','$fecha','$email','$passwordEncriptada','usuario','img/fotoperfil.png','ACTIVO')";
-
-         } 
-       else{
-             $sql="INSERT INTO usuario VALUES ('$dni','$nombre','$apellido','$fecha','$email','$passwordEncriptada','usuario','$dir','ACTIVO')";
-
-          }
-
-          $motivo="REGISTRO: ".$dni."";
-
-          
-          $eurodeuda= 30;
-          $sql2="INSERT INTO deudas VALUES ('','$motivo','$eurodeuda','$dni')";
-
-
-      
-     $ejecutar=mysqli_query($conexion, $sql);
-
-     $ejecutar2=mysqli_query($conexion, $sql2);
-    
-    if(!$ejecutar || !$ejecutar2){
-        echo '<script type="text/javascript">alert("Something was wrong");</script>';      
-    }else{ 
-        echo"The Register was complete succesfully";
-
-    }
-
-  }
-}
-  ?>
-
-</div>
-</body>
-</html>
-
-
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
- <script>
-    
-function mostrarImagen(){   //Script para mostrar la previsualización de la imagen
-
-
-        
-   var preview=$("#argazki")[0];
-   var archivo = $("#imagen")[0].files[0];
-
-   var leer = new FileReader();
-
-   if(archivo){
-    leer.readAsDataURL(archivo);
-    leer.onloadend=function(){
-      preview.src=leer.result;
-
-    };   }
-} 
-
-
-
-$("#registro").submit(function(){
-
-
-
-  if($("#password").val()!=$("#passwordrep").val()){
-        
-        alert("The passwords must match");
-        return false;
-      }
-
-
-})
-
-
-
-
-
-
-
-
-  </script>
-
+		
+		
+		
+			
+			
+			
+				
+				
+			
+		<?php 
+			include ("conexion.php");
+			$conexion=connectDataBase();
+			
+			
+			if (isset($_POST['email'])){
+				$nombre = $_POST["nombre"];
+				$apellido= $_POST["password"];                
+				$dni= $_POST["dni"];                
+				$email= $_POST["email"];                
+				$password= $_POST["password"];  
+				$fecha=$_POST["fecha"];              
+				$dir="img";
+				$imagen=$_FILES['imagen']['name'];
+				$archivo= $_FILES['imagen']['tmp_name'];
+				$dir=$dir."/".$imagen;
+				move_uploaded_file($archivo, $dir);
+				$email=$_POST['email'];
+				$code=$_POST['code'];
+				$passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
+				
+				
+				
+				if($code!="erlete"){
+					
+					echo '<script type="text/javascript">alert("The register code is not valid");</script>';      
+					
+				
+				
+				}else{
+				
+				if($dir=="img/"){  // Si no hay foto añade una foto por defecto
+				
+				$sql="INSERT INTO usuario VALUES ('$dni','$nombre','$apellido','$fecha','$email','$passwordEncriptada','usuario','img/fotoperfil.png','ACTIVO')";
+				
+				} 
+				else{
+				$sql="INSERT INTO usuario VALUES ('$dni','$nombre','$apellido','$fecha','$email','$passwordEncriptada','usuario','$dir','ACTIVO')";
+				
+				}
+				
+				$motivo="REGISTRO: ".$dni."";
+				
+				
+				$eurodeuda= 30;
+				$sql2="INSERT INTO deudas VALUES ('','$motivo','$eurodeuda','$dni')";
+				
+				
+				
+				$ejecutar=mysqli_query($conexion, $sql);
+				
+				$ejecutar2=mysqli_query($conexion, $sql2);
+				
+				if(!$ejecutar || !$ejecutar2){
+				echo '<script type="text/javascript">alert("Something was wrong");</script>';      
+				}else{ 
+				echo"The Register was complete succesfully";
+				
+				}
+				
+				}
+				}
+				?>
+				
+				</div>
+				</body>
+				</html>
+				
+				
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+				<script>
+				
+				function mostrarImagen(){   //Script para mostrar la previsualización de la imagen
+				
+				
+				
+				var preview=$("#argazki")[0];
+				var archivo = $("#imagen")[0].files[0];
+				
+				var leer = new FileReader();
+				
+				if(archivo){
+				leer.readAsDataURL(archivo);
+				leer.onloadend=function(){
+				preview.src=leer.result;
+				
+				};   }
+				} 
+				
+				
+				
+				$("#registro").submit(function(){
+				
+				
+				
+				if($("#password").val()!=$("#passwordrep").val()){
+				
+				alert("The passwords must match");
+				return false;
+				}
+				
+				
+				})
+				
+				
+				
+				
+				
+				
+				
+				
+				</script>
+				
+								
