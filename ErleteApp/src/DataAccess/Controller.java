@@ -257,7 +257,7 @@ public class Controller implements ActionListener {
 
             movimiento.idLabel.setText(id + "");
             movimiento.textareaMovimiento.setText(descripcion);
-            movimiento.dinerolabel.setText(euro + "");
+            movimiento.dinerolabel.setText(euro + " €");
             movimiento.fechaslabel.setText(fecha);
             movimiento.dialogoMovimiento.setVisible(true);
 
