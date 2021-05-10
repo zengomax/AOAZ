@@ -136,7 +136,7 @@ public class Controller implements ActionListener {
                 Producto p = new Producto(1, nombre, cantidad);
                 total = cantidad * precio;   // el total gastado al insertar productos
 
-                String descripcion = "BUY of " + cantidad + " " + nombre + " for " + precio + "€";
+                String descripcion = "BUY " + cantidad + " of " + nombre + " for " + precio + "€";
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 LocalDateTime now = LocalDateTime.now();
                 String date = dtf.format(now);
