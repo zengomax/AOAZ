@@ -128,31 +128,41 @@ public class Controller implements ActionListener {
             JOptionPane.showMessageDialog(null, "You can´t save empty information", "Information", JOptionPane.WARNING_MESSAGE);
 
         } else {
-            cantidad = Integer.parseInt(view.cantidadField.getText());
-            precio = Double.parseDouble(view.precioField.getText());
-            Producto p = new Producto(1, nombre, cantidad);
-            total = cantidad * precio;   // el total gastado al insertar productos
 
-            String descripcion = "BUY of " + cantidad + " " + nombre + " for " + precio + "€";
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDateTime now = LocalDateTime.now();
-            String date = dtf.format(now);
+            try {
 
-            Movimiento m = new Movimiento(1, descripcion, date, total);
+                cantidad = Integer.parseInt(view.cantidadField.getText());
+                precio = Double.parseDouble(view.precioField.getText());
+                Producto p = new Producto(1, nombre, cantidad);
+                total = cantidad * precio;   // el total gastado al insertar productos
 
-            model.anadirProducto(p);
-            model.anadirMovimiento(m);
-            JOptionPane.showMessageDialog(null, "The product was added to the inventary", "Information", JOptionPane.INFORMATION_MESSAGE);
+                String descripcion = "BUY of " + cantidad + " " + nombre + " for " + precio + "€";
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDateTime now = LocalDateTime.now();
+                String date = dtf.format(now);
 
-            //Vaciar campos
-            view.productoField.setText("");
-            view.precioField.setText("");
-            view.cantidadField.setText("");
+                Movimiento m = new Movimiento(1, descripcion, date, total);
 
-            String saldo = model.mostrarSaldo();
-            System.out.println(saldo);
-            double nuevosaldo = Double.parseDouble(saldo) - total;
-            model.actualizarSaldo(nuevosaldo);
+                model.anadirProducto(p);
+                model.anadirMovimiento(m);
+                JOptionPane.showMessageDialog(null, "The product was added to the inventary", "Information", JOptionPane.INFORMATION_MESSAGE);
+                //Vaciar campos
+                view.productoField.setText("");
+                view.precioField.setText("");
+                view.cantidadField.setText("");
+
+                String saldo = model.mostrarSaldo();
+                System.out.println(saldo);
+                double nuevosaldo = Double.parseDouble(saldo) - total;
+                model.actualizarSaldo(nuevosaldo);
+            } catch (Exception e) {
+
+                JOptionPane.showMessageDialog(null, "You have introduced incorrect data, please try again", "Error", JOptionPane.ERROR_MESSAGE);
+                view.productoField.setText("");
+                view.precioField.setText("");
+                view.cantidadField.setText("");
+
+            }
 
         }
 
@@ -194,40 +204,46 @@ public class Controller implements ActionListener {
             JOptionPane.showMessageDialog(null, "You can´t save empty information", "Information", JOptionPane.WARNING_MESSAGE);
 
         } else {
-            int cantidad = Integer.parseInt(view.cantidadAnadir.getText());
-            double precio = Double.parseDouble(view.precioAnadir.getText());
-            double total = 0;
-            String id = view.elegirProduct.getSelectedItem() + "";
-            String[] idsplit = id.split("-");
-            int cantidadvieja = 0;
+            try {
 
-            String descripcion = "ADD  " + cantidad + " OF " + idsplit[1] + " for " + precio + "€";
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDateTime now = LocalDateTime.now();
-            String date = dtf.format(now);
-            total = cantidad * precio;   // el total gastado al insertar productos
-            for (Producto p : productos) {
+                int cantidad = Integer.parseInt(view.cantidadAnadir.getText());
+                double precio = Double.parseDouble(view.precioAnadir.getText());
+                double total = 0;
+                String id = view.elegirProduct.getSelectedItem() + "";
+                String[] idsplit = id.split("-");
+                int cantidadvieja = 0;
 
-                if (p.getIdProducto() == Integer.parseInt(idsplit[0])) {
-                    cantidadvieja = p.getCantidad();
+                String descripcion = "ADD  " + cantidad + " OF " + idsplit[1] + " for " + precio + "€";
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDateTime now = LocalDateTime.now();
+                String date = dtf.format(now);
+                total = cantidad * precio;   // el total gastado al insertar productos
+                for (Producto p : productos) {
+
+                    if (p.getIdProducto() == Integer.parseInt(idsplit[0])) {
+                        cantidadvieja = p.getCantidad();
+                    }
+
                 }
 
+                model.cambiarCantidadProducto(Integer.parseInt(idsplit[0]), cantidadvieja + cantidad);
+                Movimiento m = new Movimiento(1, descripcion, date, total);
+                model.anadirMovimiento(m);
+
+                JOptionPane.showMessageDialog(null, "The quantity was added to the inventary", "Information", JOptionPane.INFORMATION_MESSAGE);
+                String saldo = model.mostrarSaldo();
+                System.out.println(saldo);
+                double nuevosaldo = Double.parseDouble(saldo) - total;
+                model.actualizarSaldo(nuevosaldo);
+                //vaciar datos
+                view.cantidadAnadir.setText("");
+                view.precioAnadir.setText("");
+                view.dialogoAnadir.hide();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "You have introduced incorrect data, please try again", "Error", JOptionPane.ERROR_MESSAGE);
+                view.cantidadAnadir.setText("");
+                view.precioAnadir.setText("");
             }
-
-            model.cambiarCantidadProducto(Integer.parseInt(idsplit[0]), cantidadvieja + cantidad);
-            Movimiento m = new Movimiento(1, descripcion, date, total);
-            model.anadirMovimiento(m);
-
-            JOptionPane.showMessageDialog(null, "The quantity was added to the inventary", "Information", JOptionPane.INFORMATION_MESSAGE);
-            String saldo = model.mostrarSaldo();
-            System.out.println(saldo);
-            double nuevosaldo = Double.parseDouble(saldo) - total;
-            model.actualizarSaldo(nuevosaldo);
-            //vaciar datos
-            view.cantidadAnadir.setText("");
-            view.precioAnadir.setText("");
-            view.dialogoAnadir.hide();
-
         }
 
     }
