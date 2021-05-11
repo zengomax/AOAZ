@@ -3,17 +3,7 @@
 	<head>
 		<title>Register</title>
 		<link rel="stylesheet" href="lib/css/bootstrap.min.css">
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-		
-		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		
-		<!-- Popper JS -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		
-		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
 		<link rel="stylesheet" href="Register.css" />
 <style type="text/css">
 		
@@ -91,21 +81,7 @@
 						</li>
 					</ul>
 					
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
-							</a>
-							<div class="dropdown-menu dropdown-menu-right" >
-								
-								<a class="dropdown-item" href="#">Edit Profile</a>
-								<a class="dropdown-item" href="#">Debts</a>
-								<a class="dropdown-item" href="#">Reservations</a>
-								<div style="border-color:#999691" class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Log Out</a>
-							</div>
-						</li>   
-					</ul>
+				
 					
 					
 				</div>

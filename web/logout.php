@@ -2,5 +2,5 @@
 
 	session_start();
 	session_destroy();	
-    echo "<script language=Javascript> location.href=\"login.php\"; </script>";
+    echo "<script language=Javascript> location.href=\"index.php\"; </script>";
 ?>
