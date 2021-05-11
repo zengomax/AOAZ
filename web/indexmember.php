@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
-	echo "<html> <h1>You don't have permission to load this page<h1><html>";
+	echo "<html> <marquee><h1>You don't have permission to load this page<h1></marquee><html>";
 	die();
 }
  ?>
