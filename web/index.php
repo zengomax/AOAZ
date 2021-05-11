@@ -23,7 +23,7 @@
 <body>
 	
 	<div class="container-fluid">
-		<img src="img/banner.png" width=100% height=20% ></img>
+		<img src="img/banner2.png" width=100% height=20% ></img>
 			<nav class="navbar navbar-expand-md navbar-customclass bg-dark">
 				
 				<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
