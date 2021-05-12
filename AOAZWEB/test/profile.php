@@ -15,7 +15,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 <!DOCTYPE html>
 <html>
 <head>
-	<title>INDEX</title>
+	<title>Profile</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
@@ -197,9 +197,9 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" >
 								
-								<a class="dropdown-item" id="profile" href="#">Edit Profile</a>
-								<a class="dropdown-item" href="#">Debts</a>
-								<a class="dropdown-item" href="#">Reservations</a>
+								<a class="dropdown-item" id="profile" href="profile.php">Edit Profile</a>
+								<a class="dropdown-item" href="debts.php">Debts</a>
+								<a class="dropdown-item" href="mybooks.php">Reservations</a>
 								<div style="border-color:#999691" class="dropdown-divider"></div>
 								<a class="dropdown-item" id="close" href="logout.php">Log Out &nbsp; <img src="img/exit.png" style="width:20px;height: 17px" /></a>
 							</div>
@@ -214,53 +214,13 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
 <!-- Ends nav bar-->
 
-<!-- Starts carrousel-->
-<div class="container">
-<div class="slide">
-			<div class="slide-inner">
-				<input class="slide-open" type="radio" id="slide-1" name="slide" aria-hidden="true" hidden="" checked="checked">
-				<div class="slide-item">
-					<img src="img/c2.jpg">
-				</div>
-				<input class="slide-open" type="radio" id="slide-2" name="slide" aria-hidden="true" hidden="">
-				<div class="slide-item">
-					<img src="img/c1.jpg">
-				</div>
-				<input class="slide-open" type="radio" id="slide-3" name="slide" aria-hidden="true" hidden="">
-				<div class="slide-item">
-					<img src="img/c3.jpg">
-				</div>
-				<label for="slide-3" class="slide-control prev control-1">‹</label>
-				<label for="slide-2" class="slide-control next control-1">›</label>
-				<label for="slide-1" class="slide-control prev control-2">‹</label>
-				<label for="slide-3" class="slide-control next control-2">›</label>
-				<label for="slide-2" class="slide-control prev control-3">‹</label>
-				<label for="slide-1" class="slide-control next control-3">›</label>
-				<ol class="slide-indicador">
-					<li>
-						<label for="slide-1" class="slide-circulo">•</label>
-					</li>
-					<li>
-						<label for="slide-2" class="slide-circulo">•</label>
-					</li>
-					<li>
-						<label for="slide-3" class="slide-circulo">•</label>
-					</li>
-				</ol>
-			</div>
-		</div>
 
-
-
-
-
-<!-- Ends carrousel-->
 
 
 <!--starts text--><br>
 <div style="background-color: #ffd966;" >
 	
-	<h1><b>The thick gold</b></h1>
+	<h1><b>EDIT PROFILE</b></h1>
 
 </div>
 <div style="background-color: #ffd966;">

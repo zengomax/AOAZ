@@ -42,22 +42,35 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 				<div id="navbarCollapse" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav ">
 						<li class="nav-item">
-							<a href="index.php" class="nav-link">Home</a>
+							<a href="indexmember.php" class="nav-link">Home</a>
+						</li>
+						<li class="nav-item">
+							<a href="reserva.php" class="nav-link">Make a booking</a>
 						</li>
 						
 					</ul>
 					
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
-						<li class="nav-item"><a href="registrarse.php" class="nav-link">Register</a></li>
-						
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<?php echo "&nbsp;&nbsp;<img class='rounded-circle' width=50px height=50px; src=".$_SESSION['imagen'].">"?>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right" >
+								
+								<a class="dropdown-item" id="profile" href="#">Edit Profile</a>
+								<a class="dropdown-item" href="#">Debts</a>
+								<a class="dropdown-item" href="#">Reservations</a>
+								<div style="border-color:#999691" class="dropdown-divider"></div>
+								<a class="dropdown-item" id="close" href="logout.php">Log Out &nbsp; <img src="img/exit.png" style="width:20px;height: 17px" /></a>
+							</div>
+						</li>   
 					</ul>
 					
 					
 				</div>
 			</nav>
 	
-	<div class="container" id="reserva">
+	<div class="container" id="reservadv">
 		<h1>Reservation</h1>
 		<form id="reserva" name="reserva" method="POST" enctype="multipart/form-data" action="reservar.php">
 

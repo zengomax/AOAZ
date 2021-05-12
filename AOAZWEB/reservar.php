@@ -28,8 +28,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 
   <form id="reserva" name="reserva" method="POST" enctype="multipart/form-data" action="reservar.php">
 
-<form>
-  <div class="form-group">
+
    Start Date : <input class="form-control" type="date" id="fechainicio" name="fechainicio" required="">
    <br>
 <?php

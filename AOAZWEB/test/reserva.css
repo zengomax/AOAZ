@@ -7,16 +7,20 @@ body{
 .navbar-customclass .navbar-nav .nav-link{
 	color:#ff8c00;
 }
-#reserva{
-margin-top: 5%;
-background-color: #2c333a;
-width:400px;
-text-align: center;
+#reservadv{
 
+background-color: #ffd966;
+width:50%;
+text-align: center;
+margin-top:5%;
+
+}
+#reserva{
+margin:auto;
 
 }
 
 #reserva h1{
-color:white;
+color:black;
 
 }
