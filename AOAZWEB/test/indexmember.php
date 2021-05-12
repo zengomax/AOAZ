@@ -198,8 +198,8 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 							<div class="dropdown-menu dropdown-menu-right" >
 								
 								<a class="dropdown-item" id="profile" href="#">Edit Profile</a>
-								<a class="dropdown-item" href="#">Debts</a>
-								<a class="dropdown-item" href="#">Reservations</a>
+								<a class="dropdown-item" href="debts.php">Debts</a>
+								<a class="dropdown-item" href="mybooks.php">Reservations</a>
 								<div style="border-color:#999691" class="dropdown-divider"></div>
 								<a class="dropdown-item" id="close" href="logout.php">Log Out &nbsp; <img src="img/exit.png" style="width:20px;height: 17px" /></a>
 							</div>

@@ -168,7 +168,7 @@
 				<div id="navbarCollapse" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav ">
 						<li class="nav-item">
-							<a href="index.html" class="nav-link">Home</a>
+							<a href="index.php" class="nav-link">Home</a>
 						</li>
 						
 					</ul>

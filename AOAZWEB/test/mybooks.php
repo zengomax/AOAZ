@@ -220,7 +220,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 <!--starts text--><br>
 <div style="background-color: #ffd966;" >
 	
-	<h1><b>EDIT PROFILE</b></h1>
+	<h1><b>REservations</b></h1>
 
 </div>
 <div style="background-color: #ffd966;">
