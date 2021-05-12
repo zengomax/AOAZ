@@ -224,15 +224,42 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
 </div>
 <div style="background-color: #ffd966;">
-		dbfbsbfbh<br>
-		dokfopsjkf<br>
-		dfkdfk<br>
-		dfkodkfpjk
+		
+
 
 	</div>
+<?php
+        include ("conexion.php");
+        $conexion=connectDataBase();
+        $dni=$_SESSION['dni'];
 
+  $resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE dni='$dni'");
 
+$imprimir=mysqli_fetch_array($resultado);
 
+echo $imprimir['nombre'];
+?>
+
+<form id="profileform" class="mt-4 mb-4" name="login" method="POST" enctype="multipart/form-data" action="profile.php">
+ <h1 class="display-4">Profile</h1>
+
+  <div class="form-group">
+  	<?php echo "&nbsp;&nbsp;<img class='rounded-circle' width=300px height=300px; src=".$_SESSION['imagen'].">"?>
+  	<label>
+<input type="file" name="file" ></label>
+  	<label>
+   Name:<input type="text" name="pname"  value="<?php echo $imprimir['nombre']; ?>"  readonly></label>
+   <label>
+   Surname:<input type="text" name="psurname"  value="<?php echo $imprimir['apellido']; ?>"  readonly></label>
+   <label>
+   birth date:<input type="date" name="date"  value="<?php echo $imprimir['nacimiento']; ?>"  readonly></label>
+   <label>
+   birth date:<input type="date" name="date"  value="<?php echo $imprimir['nacimiento']; ?>"  readonly></label>
+ 
+   </div>
+    <input type="button" class="btn" id="editar" value="Editar"/>
+  <input type="submit" class="btn" id="Guardar" value="Guardar"/>
+  </form>
 
 
 

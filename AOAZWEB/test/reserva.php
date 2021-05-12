@@ -72,7 +72,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 	
 	<div class="container" id="reservadv">
 		<h1>Reservation</h1>
-		<form id="reserva" name="reserva" method="POST" enctype="multipart/form-data" action="reservar.php">
+		<form id="reserva" name="reserva" method="POST" enctype="multipart/form-data" action="reserva.php">
 
 
    Start Date : <input class="form-control" type="date" id="fechainicio" name="fechainicio" required="">
@@ -114,15 +114,20 @@ if (isset($_POST['fechainicio'])){
 $sql1= mysqli_query($conexion,"SELECT * FROM reserva WHERE fechainicio = '$fechainicio'");
 
 $fila= mysqli_num_rows($sql1);
+
+
+
+
+
 if($fila>0)
 {
 
-echo("hay reservas ese dia");
+
+
+ echo '<script type="text/javascript">alert("The dates are not avaliable");</script>';
+
 
 }else{
-
-
-
 
     // insert a la reserva con el dni
     $sql="INSERT INTO reserva VALUES ('','$fechainicio','$dni','0','PENDIENTE','$metalbin')";
@@ -135,11 +140,12 @@ echo("hay reservas ese dia");
         $sql3="UPDATE metalbins SET estado='OCUPADO' WHERE idmetal='$metalbin'AND tipo!='FROM MY HOUSE' ";
         $ejecutar3=mysqli_query($conexion, $sql3);    
         if(!$ejecutar3){
-          echo ' METALBIN Fail ';      
+          echo '<script type="text/javascript">alert("It was an error.");</script>';     
         }else{ 
-          echo"Reserva OK";
-         // header("Location: reservar.php");
-
+          
+         
+			echo '<script type="text/javascript">alert("The reservation is confirmed.");</script>';
+			echo "<script language=Javascript> location.href=\"reserva.php\"; </script>";
 
     }
       
