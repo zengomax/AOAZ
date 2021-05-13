@@ -29,6 +29,32 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="reserva.css" ></link>
+
+
+		<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+<!-- 
+    RTL version
+-->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.rtl.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.rtl.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
+
+
 </head>
 <body onload="obtenerDatos()">
 	
@@ -77,8 +103,6 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 			
 </div>
 
-
-
 </body>
 </html>
 <script>
@@ -93,11 +117,6 @@ function obtenerDatos(){
 
 		url: 'gestionReserva.php',
 
-		beforeSend:function(){
-			
-		$('#datos').html('<div><img src="img/loading.gif" width="100"/></div>')},
-
-
 		success:function(datos){
 
 
@@ -114,43 +133,55 @@ function obtenerDatos(){
 
 
 
-		$(document).on("click","#eliminar",function(){
-			 alert(document.getElementById("idreserva").value)
-			var id =document.getElementById("idreserva").value=1;
-		//	var id=$(this).data("id");
-			alert(id);
 
-		});
+		function fecha(){
 
+ var fechainicioField = document.getElementById("fecha").innerText.split("-");
+  var fechainicio = new Date(parseInt(fechainicioField[0]),parseInt(fechainicioField[1]-1),parseInt(fechainicioField[2]));
+  var hoy = new Date();
+  hoy.setHours(0,0,0);
+  fechainicio.setHours(23,23,23);
 
+  
+     if(fechainicio<hoy) {
+     	alertify.alert('Date Error', 'You cant cancel because the day expired.', function(){ alertify.error('OK'); });
+   
+        return false;
+    } else {
+    	return true;
+    }
 
-function eliminar(){
+    
+		}
 
+	
+$(document).on("click","#eliminar",function(){
+	if(confirm("Do you want to cancel this book?")){
+		if(fecha()){
 
-$.ajax({
-
-		url: 'deleteBook.php',
-
-		beforeSend:function(){
-			
-		$('#datos').html('<div><img src="img/loading.gif" width="100"/></div>')},
-
+		var id = $(this).data("id");
+        var parametros = {
+                "id" : id,
+                
+        };
+        $.ajax({
+                data:  parametros, 
+                url:   'deleteBook.php', 
+                type:  'post', 
 
 		success:function(datos){
-
-
-		$('#datos').fadeIn().html(datos);},
-		error:function(){
-			$('#datos').fadeIn().html('<p><strong>The server is not working</p>');
-		}
-			});
-
+			alertify.success(datos);
+			obtenerDatos();
+		},
 		
-	
-	
+			});
+    	}
+	}
+
+	});
 
 
-}
+
 
 
   </script>

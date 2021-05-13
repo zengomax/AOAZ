@@ -100,9 +100,7 @@ public class Controller implements ActionListener {
         }
 
     }
-/**
- * 
- */
+
     public void datuakKargatu() {
         view.modelo = new TaulaModeloa();
         view.tabla.setModel(view.modelo);

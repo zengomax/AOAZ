@@ -11,7 +11,6 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 	
 
-
 <div class="container">
  <table class="table table-bordered">
       <tr>
@@ -28,23 +27,23 @@ include ("conexion.php");
 $conexion=connectDataBase();
 
 $resultado= mysqli_query($conexion,"SELECT * FROM reserva inner join metalbins on reserva.idmetal = metalbins.idmetal")or die(mysqli_error($conexion));
-
 while($imprimir=mysqli_fetch_array($resultado)){
 
-?>
-   
-      <tr>
-        <td id="id" data-id_prueba="<?php echo $imprimir['0'] ?>" ><?php echo $imprimir['0'] ?></td>
-        <td id="fecha"><?php echo $imprimir['fechainicio'] ?></td>
-        <td><?php echo $imprimir['tipo'] ?></td>
-        <td><button type="button" class="btn btn-warning">Edit</button></td>
-        <td><button type="button" data-id="<?php echo $imprimir['0'] ?>" id="eliminar" class="btn btn-danger">Delete</button></td>
 
 
-      </tr>
-  <?php } ?>
-  </table>
-
+  echo "   
+        <tr>
+        <td id='idreserva' data-id_prueba='".$imprimir['0']."'>".$imprimir['0']."</td>
+        <td id='fecha'>".$imprimir['fechainicio']."</td>
+        <td>".$imprimir['tipo']."</td>
+        <td><button type='button' class='btn btn-warning'>Edit</button></td>
+        <td><button type='button' id='eliminar' class='btn btn-danger'>Delete</button></td>
+        </tr>
+ 
+  ";  
+ } 
+echo "</table>";
+ ?>
   <br><br><br>
 </div>
 
