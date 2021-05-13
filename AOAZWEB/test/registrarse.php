@@ -125,7 +125,7 @@
 	                    echo '<script type="text/javascript">alert("This data is in used");</script>';
 
 	                } else{
-	                    $motivo="REGISTRO: ".$dni."";
+	                    $motivo="REGISTRATION: ".$dni."";
 	                    $eurodeuda= 30;
 	                    $sql2="INSERT INTO deudas VALUES ('','$motivo','$eurodeuda','$dni')";
 	                    $ejecutar2=mysqli_query($conexion, $sql2);

@@ -1,16 +1,13 @@
-<?php
-
+<?php 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
 
 if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario"){
-  echo "<html> <h1>You don't have permission to load this page<h1><html>";
+  echo "<html> <marquee><h1>You don't have permission to load this page<h1></marquee><html>";
   die();
 }
-
-
  ?>
 
 <!DOCTYPE html>
@@ -59,7 +56,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 
 
 </head>
-<body>
+<body onload="obtenerDatos()">
 	
 	
 		<img src="img/banner2.png" width=100% height=20% ></img>
@@ -100,37 +97,34 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 			</nav>
 	
 	<div class="container" id="reservadv">
-		<h1>Manage Books</h1><br>
+		<h1>Manage Books</h1><br><br>
 
 <div>
-	<label><input type="radio" id=pendiente  name="estadoreserva" value="PENDIENTE" checked onclick="obtenerDatos()"> PENDIENTES</label>	
-	<label><input type="radio"  id="finalizadas"  name="estadoreserva" value="FINALIZADA" onclick="obtenerDatos()"> FINALIZADAS</label>
+	<label><input type="radio" name="tiporeserva" value="PENDIENTE" placeholder=""> PENDIENTES</label>	
+	<label><input type="radio" name="tiporeserva" value="FINALIZADAS" placeholder=""> FINALIZADAS</label>	
+	<button id="finalizadas" onclick="finalizadas">Finalizadas</button>
+
 	
-</div><br><br>
+</div>
 
 <div id="datos"></div>
 			
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
 <script>
     
 
-$( document ).ready(function() {
-   obtenerDatos();
-});
 
 
-
+// imprime tabla de reservas
 function obtenerDatos(){
-  $estado = $('input[name="estadoreserva"]:checked').val();
 
 		$.ajax({
 
-		url: 'gestionReserva.php?estado='+$estado+'',
-		
+		url: 'gestionReserva.php',
+
 		success:function(datos){
 
 
@@ -173,7 +167,6 @@ function fecha(){
 
 
 //accion de hacer click en el boton eliminar
-//-------CANCELAR RESERVA--------
 $(document).on("click","#eliminar",function(){
 	if(confirm("Do you want to cancel this book?")){
 	
@@ -211,88 +204,103 @@ $(document).on("click","#eliminar",function(){
 
 	});
 
-//-------------FINALIZAR RESERVA---------
-$(document).on("click","#finalizar",function(){
-
-	var id = $(this).data("id");
-    var parametros = {"idreserva" : id,};
-
-$.ajax({
-		data:  parametros, 
-        url:   'finalizarReservaForm.php', 
-        type:  'post',
-		
-
-		beforeSend:function(){
-			
-		$('#datos').html('<div><img src="img/abeja.gif" width="400"/></div>')},
-
-
-		success:function(datos){
-
-
-		$('#datos').fadeIn().html(datos);},
-		error:function(){
-			$('#datos').fadeIn().html('<p><strong>The server is not working</p>');
-		}
-			});
-
-
-
-
-});
-
-
-//GENERAR DEUDA FORM
-
-$(document).on("click","#terminar",function(){
-
-
-
-if($("#kilos").val()!=""){
-	var kilos = $("#kilos").val(); //obtener kilos
-	var euros=0.25*kilos;
-		if(confirm("Do you want to finish this book?\n it will generate a debt of "+euros+"€")){
-		var reserva= $("#reserva").data("id_book"); //obtener reserva
-	
-    var parametros = {"kilos" : kilos,"idreserva" : reserva, "euros":euros,};
-
-$.ajax({
-		data:  parametros, 
-        url:   'finalizarReservaForm.php', 
-        type:  'post',
-		
-
-		beforeSend:function(){
-			
-		$('#datos').html('<div><img src="img/abeja.gif" width="400"/></div>')},
-
-
-		success:function(datos){
-
-
-		$('#datos').fadeIn().html(datos);
-
-
-		},
-		error:function(){
-			$('#datos').fadeIn().html('<p><strong>The server is not working</p>');
-		}
-			});
-
-
-	}
- }else{
-		
-	alertify.error("You cant save empty data, please isert the kilos");
- }
-
-});
-
-	
-
 
 
 
 
   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 	
+
+
+<div class="container">
+ <table class="table table-bordered">
+      <tr>
+        <th>ID Book</th>
+        <th>Date</th>
+        <th>MetalBin Kind</th>
+        <th>Cancel</th>
+        <th>Edit</th>
+
+      </tr>
+
+<?php 
+
+include ("conexion.php");
+$conexion=connectDataBase();
+
+
+$tipo=$_GET['tipo'];
+
+$resultado= mysqli_query($conexion,"SELECT * FROM reserva inner join metalbins on reserva.idmetal = metalbins.idmetal")or die(mysqli_error($conexion));
+
+while($imprimir=mysqli_fetch_array($resultado)){
+
+?>
+   
+      <tr>
+        <td id="id" data-id_prueba="<?php echo $imprimir['0'] ?>" ><?php echo $imprimir['0'] ?></td>
+        <td id="fecha"><?php echo $imprimir['fechainicio'] ?></td>
+        <td><?php echo $imprimir['tipo'] ?></td>
+        <td><button type="button" class="btn btn-warning">Edit</button></td>
+        <td><button type="button" data-id="<?php echo $imprimir['0'] ?>" data-fecha="<?php echo $imprimir['fechainicio'] ?>" id="eliminar" class="btn btn-danger">Cancel</button></td>
+
+
+      </tr>
+  <?php } ?>
+  </table>
+
+  <br><br><br>
+</div>
+
+
+<script >
+
+
+
+
+</script>
