@@ -18,14 +18,18 @@
         <th>ID Book</th>
         <th>Date</th>
         <th>MetalBin Kind</th>
+        <th>Cancel</th>
         <th>Edit</th>
-        <th>Delete</th>
+
       </tr>
 
 <?php 
 
 include ("conexion.php");
 $conexion=connectDataBase();
+
+
+$tipo=$_GET['tipo'];
 
 $resultado= mysqli_query($conexion,"SELECT * FROM reserva inner join metalbins on reserva.idmetal = metalbins.idmetal")or die(mysqli_error($conexion));
 
@@ -38,7 +42,7 @@ while($imprimir=mysqli_fetch_array($resultado)){
         <td id="fecha"><?php echo $imprimir['fechainicio'] ?></td>
         <td><?php echo $imprimir['tipo'] ?></td>
         <td><button type="button" class="btn btn-warning">Edit</button></td>
-        <td><button type="button" data-id="<?php echo $imprimir['0'] ?>" id="eliminar" class="btn btn-danger">Delete</button></td>
+        <td><button type="button" data-id="<?php echo $imprimir['0'] ?>" data-fecha="<?php echo $imprimir['fechainicio'] ?>" id="eliminar" class="btn btn-danger">Cancel</button></td>
 
 
       </tr>

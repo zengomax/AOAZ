@@ -13,7 +13,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home menu</title>
+	<title>Manage Books</title>
 
   		<link rel="shortcut icon" type="image/x-icon" href="img/ico.png" />
 
@@ -99,6 +99,14 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 	<div class="container" id="reservadv">
 		<h1>Manage Books</h1><br><br>
 
+<div>
+	<label><input type="radio" name="tiporeserva" value="PENDIENTE" placeholder=""> PENDIENTES</label>	
+	<label><input type="radio" name="tiporeserva" value="FINALIZADAS" placeholder=""> FINALIZADAS</label>	
+	<button id="finalizadas" onclick="finalizadas">Finalizadas</button>
+
+	
+</div>
+
 <div id="datos"></div>
 			
 </div>
@@ -110,7 +118,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 
 
 
-
+// imprime tabla de reservas
 function obtenerDatos(){
 
 		$.ajax({
@@ -133,8 +141,8 @@ function obtenerDatos(){
 
 
 
-
-		function fecha(){
+//funciona para comprobar fechas y dias pasados
+function fecha(){
 
  var fechainicioField = document.getElementById("fecha").innerText.split("-");
   var fechainicio = new Date(parseInt(fechainicioField[0]),parseInt(fechainicioField[1]-1),parseInt(fechainicioField[2]));
@@ -142,9 +150,12 @@ function obtenerDatos(){
   hoy.setHours(0,0,0);
   fechainicio.setHours(23,23,23);
 
+  alert(hoy);
+  alert(fechainicio);
+
   
      if(fechainicio<hoy) {
-     	alertify.alert('Date Error', 'You cant cancel because the day expired.', function(){ alertify.error('OK'); });
+     	 alertify.error("You can't cancel because the day expired");
    
         return false;
     } else {
@@ -154,12 +165,24 @@ function obtenerDatos(){
     
 		}
 
-	
+
+//accion de hacer click en el boton eliminar
 $(document).on("click","#eliminar",function(){
 	if(confirm("Do you want to cancel this book?")){
-		if(fecha()){
+	
 
-		var id = $(this).data("id");
+  var fechainicioField = $(this).data("fecha").split("-");
+  var fechainicio = new Date(parseInt(fechainicioField[0]),parseInt(fechainicioField[1]-1),parseInt(fechainicioField[2]));
+  var hoy = new Date();
+  hoy.setHours(0,0,0);
+  fechainicio.setHours(23,23,23);
+
+
+  if(fechainicio<hoy) {
+     	 alertify.error("You can't cancel because the day expired");
+   
+    } else {
+   		var id = $(this).data("id");
         var parametros = {
                 "id" : id,
                 
@@ -175,6 +198,7 @@ $(document).on("click","#eliminar",function(){
 		},
 		
 			});
+    	
     	}
 	}
 
