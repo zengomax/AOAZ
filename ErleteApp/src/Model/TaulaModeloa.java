@@ -4,7 +4,9 @@ package Model;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
-
+ /**
+    * This class is the table model of the products
+    */
 public class TaulaModeloa extends AbstractTableModel {
 
     private String[] zutabeIzenak = {"ProductID", "Name", "Amount"};

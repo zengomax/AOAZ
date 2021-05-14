@@ -16,14 +16,9 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author blazquez.asier
+ * This class purpose is to control data access
+ * @author AOAZ
  */
 public class Controller implements ActionListener {
 
@@ -100,7 +95,9 @@ public class Controller implements ActionListener {
         }
 
     }
-
+    /**
+    * This function purpose is to charge db data into an array and show it
+    */
     public void datuakKargatu() {
         view.modelo = new TaulaModeloa();
         view.tabla.setModel(view.modelo);
@@ -112,12 +109,16 @@ public class Controller implements ActionListener {
         movimiento.modelomove = new MoveTableModel();
         movimiento.taulaMove.setModel(movimiento.modelomove);
     }
-
+    /**
+    * This function purpose is to show db balance
+    */
     public void mostrarSaldo() {
 
         view.saldoLabel.setText(model.mostrarSaldo() + " €");
     }
-
+    /**
+    * This function purpose is to insert products into the database
+    */
     public void anadirProducto() {
 
         String nombre = view.productoField.getText();
@@ -167,7 +168,9 @@ public class Controller implements ActionListener {
         }
 
     }
-
+    /**
+    * This function purpose is to delete products from the database
+    */
     public void borrarProducto() {
 
         try {
@@ -189,7 +192,9 @@ public class Controller implements ActionListener {
         }
 
     }
-
+    /**
+    * This function purpose is to charge product list 
+    */
     public void loadComboBox() {
         view.elegirProduct.removeAllItems();
         for (Producto p : productos) {
@@ -197,7 +202,9 @@ public class Controller implements ActionListener {
         }
 
     }
-
+    /**
+    * This function purpose is to update the amount of a product into the database
+    */
     public void updateProducto() {
 
         if (view.cantidadAnadir.equals("") || view.precioAnadir.getText().equals("")) {
@@ -247,7 +254,9 @@ public class Controller implements ActionListener {
         }
 
     }
-
+    /**
+    * This function purpose is view transaction details
+    */
     public void loadDetailsMovimiento() {
         try {
             int id = Integer.parseInt(movimiento.taulaMove.getValueAt(movimiento.taulaMove.getSelectedRow(), 0) + "");

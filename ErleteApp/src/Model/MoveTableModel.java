@@ -4,7 +4,9 @@ package Model;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
-
+ /**
+    * This class is the table model of the movements
+    */
 public class MoveTableModel extends AbstractTableModel {
 
     private String[] zutabeIzenak = {"MovementID", "Description", "Movements-Date","Euros(€)"};

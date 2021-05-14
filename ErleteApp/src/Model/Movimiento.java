@@ -1,16 +1,8 @@
 package Model;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author blazquez.asier
- */
-
+ /**
+    * This class purpose is to manage movements
+    */
 public class Movimiento {
     private int idmovimiento;
     private String descripcion;
@@ -56,7 +48,9 @@ public class Movimiento {
     public void setEuro(double euro) {
         this.euro = euro;
     }
-
+     /**
+    * This method purpose is to show movements into a string
+    */
     @Override
     public String toString() {
         return "Movimiento{" + "idmovimiento=" + idmovimiento + ", descripcion=" + descripcion + ", date=" + fecha + ", euro=" + euro + '}';

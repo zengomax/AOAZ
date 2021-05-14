@@ -10,15 +10,9 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.sql.Date;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author blazquez.asier
- */
+* This class purpose is to manage information from the database
+*/
 public class Model {
 
    
@@ -32,7 +26,9 @@ public class Model {
 
     }
 
- 
+    /**
+    * This function purpose is to show products from the database
+    */
     public String imprimirInventario() {
         String sql = "SELECT * FROM inventario";
         String s = "";
@@ -54,7 +50,9 @@ public class Model {
         return s;
     }
 
-    
+    /**
+    * This function purpose is to enter products into an array
+    */
     public static ArrayList<Producto> printToArray() {
         String sql = "SELECT * FROM inventario";
         ArrayList<Producto> inventario = new ArrayList<>();
@@ -76,7 +74,9 @@ public class Model {
         return inventario;
     }
     
-        
+     /**
+    * This function purpose is to enter movements into an array
+    */    
     public static ArrayList<Movimiento> arrayMovimiento() {
         String sql = "SELECT * FROM movimiento";
         ArrayList<Movimiento> movimientos = new ArrayList<>();
@@ -99,7 +99,9 @@ public class Model {
     }
     
     
-   
+     /**
+    * This function purpose is to delete products from the database
+    */
     public void borrarProducto(int id) {
         String sql = "DELETE FROM inventario WHERE idproducto = ?";
 
@@ -116,7 +118,9 @@ public class Model {
         }
     }
 
-    
+     /**
+    * This function purpose is to change product amounts from the database
+    */
     public void cambiarCantidadProducto(int id, int cantidad ) {
 
         String sql = "UPDATE inventario SET cantidad = ? "
@@ -137,7 +141,9 @@ public class Model {
         }
     }
     
-    
+     /**
+    * This function purpose is to enter products into a database
+    */
     public void anadirProducto(Producto p) {
         String nombre = p.getNombre();
         int cantidad = p.getCantidad();
@@ -156,7 +162,9 @@ public class Model {
         }
     }
 
-    
+     /**
+    * This function purpose is to enter movements into the database
+    */
     public void anadirMovimiento(Movimiento m){
         String descripcion = m.getDescripcion();
         String data = m.getDate();
@@ -176,7 +184,10 @@ public class Model {
             
         }
     }
-    
+     /**
+    * This function purpose is to show movements from the database
+    * 
+    */
     public String imprimirMovimiento() {
         String sql = "SELECT * FROM movimiento";
         String s = "";
@@ -198,7 +209,9 @@ public class Model {
 
         return s;
     }
-    
+     /**
+    * This function purpose is to update the balance from the database
+    */
     public void actualizarSaldo(double euros) {
         String sql = "UPDATE bolsa SET eurostotales = ?";
 
@@ -214,7 +227,9 @@ public class Model {
         }
 
     }
-    
+     /**
+    * This function purpose is to show the balance from the database
+    */
     public String mostrarSaldo() {
         String sql = "SELECT * FROM bolsa";
         String s = "";

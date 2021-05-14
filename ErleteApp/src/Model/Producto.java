@@ -1,15 +1,8 @@
 package Model;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author blazquez.asier
- */
+ /**
+    * This class purpose is to manage products
+    */
 public class Producto {
     private int idProducto;
     private String nombre;
@@ -46,7 +39,9 @@ public class Producto {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
+     /**
+    * This method purpose is to show products into a string
+    */
     @Override
     public String toString() {
         return "Producto{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", cantidad=" + cantidad + '}';
