@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 
-if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
+if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'){
 	echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
 	die();
 }
@@ -15,7 +15,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 <!DOCTYPE html>
 <html>
 <head>
-	<title>INDEX</title>
+	<title>Members</title>
 	<link rel="shortcut icon" href="img/ico.png">
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
@@ -55,11 +55,16 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 				</button>
 				<div id="navbarCollapse" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav ">
+						
 						<li class="nav-item">
-							<a href="indexmember.php" class="nav-link">Home</a>
+							<a href="managebooking.php" class="nav-link">Modify a booking</a>
+						</li>
+
+						<li class="nav-item">
+							<a href="members.php" class="nav-link">Members</a>
 						</li>
 						<li class="nav-item">
-							<a href="reserva.php" class="nav-link">Make a booking</a>
+							<a href="debtsadmin.php" class="nav-link">Debts</a>
 						</li>
 						
 					</ul>
@@ -72,8 +77,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 							<div class="dropdown-menu dropdown-menu-right" >
 								
 								<a class="dropdown-item" id="profile" href="profile.php">Edit Profile</a>
-								<a class="dropdown-item" href="debts.php">Debts</a>
-								<a class="dropdown-item" href="mybooks.php">Reservations</a>
+						
 								<div style="border-color:#999691" class="dropdown-divider"></div>
 								<a class="dropdown-item" id="close" href="logout.php">Log Out &nbsp; <img src="img/exit.png" style="width:20px;height: 17px" /></a>
 							</div>
@@ -89,44 +93,94 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 <!-- Ends nav bar-->
 
 <!-- Starts carrousel-->
-<div class="container">
+<div class="container" id="reservadv">
+		<h1>Manage Books</h1><br>
 
-
-
-
-
-
-<!-- Ends carrousel-->
-
-
-<!--starts text--><br>
-<div style="background-color: #ffd966;" >
+<div>
+	<label><input type="radio"  id="unlocked"  name="estadomembers" value="UNLOCK" onclick="obtenerDatos()"> Unlocked</label>
+	<label><input type="radio"  id="locked"  name="estadomemberslock" value="LOCK" onclick="obtenerDatos()"> Locked</label>
 	
-	<h1><b>Debts</b></h1>
+</div><br><br>
 
-</div>
-<div style="background-color: #ffd966;">
-		dbfbsbfbh<br>
-		dokfopsjkf<br>
-		dfkdfk<br>
-		dfkodkfpjk
-
-	</div>
-
-
-
-
-
-
-
-
-<!--ends text-->
-
-	
-
-    		
+<div id="datos"></div>
+			
 </div>
 
+<br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+<script>
+   
+/*
+$( document ).ready(function() {
+   obtenerDatos();
+});
+*/
+
+
+function obtenerDatos(){
+  $estado = $('input[name="estadoreserva"]:checked').val();
+
+		$.ajax({
+
+		url: 'gestionReserva.php?estado='+$estado+'',
+		
+		success:function(datos){
+
+
+		$('#datos').fadeIn().html(datos);},
+		error:function(){
+			$('#datos').fadeIn().html('<p><strong>The server is not working</p>');
+		}
+			});
+
+		
+	
+		}
+
+
+
+//-------------FINALIZAR RESERVA---------
+$(document).on("click","#finalizar",function(){
+
+	var id = $(this).data("id");
+    var parametros = {"idreserva" : id,};
+
+$.ajax({
+		data:  parametros, 
+        url:   'managemembers.php', 
+        type:  'post',
+		
+
+		beforeSend:function(){
+			
+		$('#datos').html('<div><img src="img/abeja.gif" width="400"/></div>')},
+
+
+		success:function(datos){
+
+
+		$('#datos').fadeIn().html(datos);},
+		error:function(){
+			$('#datos').fadeIn().html('<p><strong>The server is not working</p>');
+		}
+			});
+
+
+
+
+});
+
+
+
+
+	
+
+
+
+
+
+  </script>
 </body>
 </html>
 

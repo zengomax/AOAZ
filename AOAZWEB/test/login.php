@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Login</title>
+  <link rel="shortcut icon" href="img/ico.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     
     <!-- jQuery library -->
@@ -12,6 +13,30 @@
     
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+<!-- 
+    RTL version
+-->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.rtl.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.rtl.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
 
 
     <link rel="stylesheet" href="Login.css"/>
@@ -86,13 +111,23 @@ if(password_verify($password,$imprimir['password'])==true){
     $_SESSION["imagen"]= $imprimir['imagen'];
     $_SESSION["dni"]= $imprimir['dni'];;
 
+      
+    echo "<script>alert('Welcome to the system ".$nombre."');</script>";
+ 
+    if($_SESSION["rol"]== 'admin'){
+      echo "<script language=Javascript> location.href=\"managebooking.php \"; </script>";
+  
+  
+}else{
 
-      echo "<script>alert('Welcome to the system ".$nombre."');</script>";
+ echo "<script language=Javascript> location.href=\"indexmember.php \"; </script>";
 
-    echo "<script language=Javascript> location.href=\"indexmember.php \"; </script>";
+  
+}
+   
 
 }else{
-	echo "<script>alert('The data is not correct.');</script>";
+	echo "<script>alertify.alert('The data is not correct.');</script>";
 
 }
 
@@ -104,3 +139,4 @@ if(password_verify($password,$imprimir['password'])==true){
 
 </body>
 </html>
+

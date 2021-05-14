@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 
-if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
+if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'){
 	echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
 	die();
 }
@@ -55,11 +55,16 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 				</button>
 				<div id="navbarCollapse" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav ">
+						
 						<li class="nav-item">
-							<a href="indexmember.php" class="nav-link">Home</a>
+							<a href="managebooking.php" class="nav-link">Modify a booking</a>
+						</li>
+
+						<li class="nav-item">
+							<a href="members.php" class="nav-link">Members</a>
 						</li>
 						<li class="nav-item">
-							<a href="reserva.php" class="nav-link">Make a booking</a>
+							<a href="debtsadmin.php" class="nav-link">Debts</a>
 						</li>
 						
 					</ul>
@@ -72,8 +77,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 							<div class="dropdown-menu dropdown-menu-right" >
 								
 								<a class="dropdown-item" id="profile" href="profile.php">Edit Profile</a>
-								<a class="dropdown-item" href="debts.php">Debts</a>
-								<a class="dropdown-item" href="mybooks.php">Reservations</a>
+							
 								<div style="border-color:#999691" class="dropdown-divider"></div>
 								<a class="dropdown-item" id="close" href="logout.php">Log Out &nbsp; <img src="img/exit.png" style="width:20px;height: 17px" /></a>
 							</div>

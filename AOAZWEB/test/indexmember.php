@@ -3,12 +3,13 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-
-if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
+//esto copiarlo en todas las de usuario.
+if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuario'){
 	echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
 	die();
 }
  ?>
+
 
 
 
@@ -197,7 +198,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" >
 								
-								<a class="dropdown-item" id="profile" href="#">Edit Profile</a>
+								<a class="dropdown-item" id="profile" href="profile.php">Edit Profile</a>
 								<a class="dropdown-item" href="debts.php">Debts</a>
 								<a class="dropdown-item" href="mybooks.php">Reservations</a>
 								<div style="border-color:#999691" class="dropdown-divider"></div>
@@ -294,7 +295,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
 <script>
 	
-$("#logout").click(function() {
+$("#close").click(function() {
 		alert("Session Closed");
 		$(location).attr('href', 'logout.php');
 	});

@@ -16,6 +16,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 <html>
 <head>
 	<title>Profile</title>
+	<link rel="shortcut icon" href="img/ico.png">
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
@@ -28,19 +29,30 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 		
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+<!-- 
+    RTL version
+-->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.rtl.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.rtl.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
 
 		<style type="text/css" media="screen">
-
-			 body{
-				  margin: auto;
-				  padding: 0;
-				  font-family: sans-serif;
-				  background: #FFB133;
-				}
-				.navbar-customclass .navbar-nav .nav-link{
-					  color:#ff8c00;
-					}
-
 			#close:hover{
 
 				background-color: #DE2424;
@@ -51,123 +63,53 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 				background-color: #1A9516;
 			}
 
+			 body{
+				  margin: auto;
+				  padding: 0;
+				  font-family: sans-serif;
+				  background: #FFB133;
+				}
+				.navbar-customclass .navbar-nav .nav-link{
+					  color:#ff8c00;
+					}
+			.edtpf{
 
-			.slide {
-				position: relative;
-				box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
-				margin-top: 26px;
-			}
+				background-color: #ffd966;
+				margin:auto;
 
-			.slide-inner {
-				position: relative;
-				overflow: hidden;
-				width: 100%;
-				height: calc( 450px + 3em);
-			}
 
-			.slide-open:checked + .slide-item {
-				position: static;
-				opacity: 100;
-			}
 
-			.slide-item {
-				position: absolute;
-				opacity: 0;
-				-webkit-transition: opacity 0.6s ease-out;
-				transition: opacity 0.6s ease-out;
 			}
+			input#file{
 
-			.slide-item img {
-				display: block;
-				height: auto;
-				max-width: 100%;
-			}
+				color:transparent;
+				width:158px;
+				margin-left: 35%;
 
-			.slide-control {
-				background: rgba(0, 0, 0, 0.28);
-				border-radius: 50%;
-				color: #fff;
-				cursor: pointer;
-				display: none;
-				font-size: 40px;
-				height: 40px;
-				line-height: 35px;
-				position: absolute;
-				top: 50%;
-				-webkit-transform: translate(0, -50%);
-				cursor: pointer;
-				-ms-transform: translate(0, -50%);
-				transform: translate(0, -50%);
-				text-align: center;
-				width: 40px;
-				z-index: 10;
-			}
 
-			.slide-control.prev {
-				left: 2%;
 			}
+			
+			.imgp{
 
-			.slide-control.next {
-				right: 2%;
-			}
+					margin-left: 10%;
 
-			.slide-control:hover {
-				background: rgba(0, 0, 0, 0.8);
-				color: #aaaaaa;
-			}
 
-			#slide-1:checked ~ .control-1,
-			#slide-2:checked ~ .control-2,
-			#slide-3:checked ~ .control-3 {
-				display: block;
-			}
 
-			.slide-indicador {
-				list-style: none;
-				margin: 0;
-				padding: 0;
-				position: absolute;
-				bottom: 2%;
-				left: 0;
-				right: 0;
-				text-align: center;
-				z-index: 10;
-			}
 
-			.slide-indicador li {
-				display: inline-block;
-				margin: 0 5px;
 			}
+			.data{
+					margin-top: 1%;
 
-			.slide-circulo {
-				color: #828282;
-				cursor: pointer;
-				display: block;
-				font-size: 35px;
-			}
 
-			.slide-circulo:hover {
-				color: #aaaaaa;
 			}
+			
+#btnedit{
+	margin-top: 5%;
+	margin-left:15%;
 
-			#slide-1:checked ~ .control-1 ~ .slide-indicador li:nth-child(1) .slide-circulo,
-			#slide-2:checked ~ .control-2 ~ .slide-indicador li:nth-child(2) .slide-circulo,
-			#slide-3:checked ~ .control-3 ~ .slide-indicador li:nth-child(3) .slide-circulo {
-				color: #428bca;
-			}
+}
 
-			#titulo {
-				width: 100%;
-				position: absolute;
-				padding: 0px;
-				margin: 0px auto;
-				text-align: center;
-				font-size: 27px;
-				color: rgba(255, 255, 255, 1);
-				font-family: 'Open Sans', sans-serif;
-				z-index: 9999;
-				text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
-			}
+			
 		</style>
 </head>
 <body>
@@ -218,16 +160,10 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
 
 <!--starts text--><br>
-<div style="background-color: #ffd966;" >
-	
-	<h1><b>EDIT PROFILE</b></h1>
 
-</div>
-<div style="background-color: #ffd966;">
 		
 
 
-	</div>
 <?php
         include ("conexion.php");
         $conexion=connectDataBase();
@@ -237,30 +173,86 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
 $imprimir=mysqli_fetch_array($resultado);
 
-echo $imprimir['nombre'];
 ?>
-
+<div class="edtpf container">
 <form id="profileform" class="mt-4 mb-4" name="login" method="POST" enctype="multipart/form-data" action="profile.php">
- <h1 class="display-4">Profile</h1>
+	 <h2 class="display-4">Welcome <?php echo$_SESSION['nombre'] ?></h2>
+<div class="row imgp" >
+ 	<div class="col-sm-5">
+  	<?php echo "&nbsp;&nbsp;<img class='rounded-circle' id='argazki' width=250px height=250px; src=".$_SESSION['imagen'].">"?>
+  	
+ 	<br>
+ 	<br>
+  	<label><input type="file"  name="file" id="file" onchange="mostrarImagen()"></label>
 
-  <div class="form-group">
-  	<?php echo "&nbsp;&nbsp;<img class='rounded-circle' width=300px height=300px; src=".$_SESSION['imagen'].">"?>
-  	<label>
-<input type="file" name="file" ></label>
-  	<label>
-   Name:<input type="text" name="pname"  value="<?php echo $imprimir['nombre']; ?>"  readonly></label>
-   <label>
-   Surname:<input type="text" name="psurname"  value="<?php echo $imprimir['apellido']; ?>"  readonly></label>
-   <label>
-   birth date:<input type="date" name="date"  value="<?php echo $imprimir['nacimiento']; ?>"  readonly></label>
-   <label>
-   birth date:<input type="date" name="date"  value="<?php echo $imprimir['nacimiento']; ?>"  readonly></label>
- 
-   </div>
-    <input type="button" class="btn" id="editar" value="Editar"/>
-  <input type="submit" class="btn" id="Guardar" value="Guardar"/>
+</div>
+<div class="col-sm-7 data" >
+  	<label>Name:<input type="text" name="pname" id="pname"  value="<?php echo $imprimir['nombre']; ?>"  readonly></label><br>
+   <label>Surname:<input type="text" name="psurname" id="psurname"  value="<?php echo $imprimir['apellido']; ?>"  readonly></label><br>
+   <label>Birthday:<input type="date" name="date" id="date"  value="<?php echo $imprimir['nacimiento']; ?>"  readonly></label><br>
+   <label>Email:<input type="email" name="email" id="email" value="<?php echo $imprimir['email']; ?>"  readonly></label><br>
+ <div id="btnedit">
+  <input type="button" class="btn btn-danger" id="editar" value="Editar"/>
+  <input type="submit" class="btn btn-success" id="Guardar" value="Guardar"/>
+</div>
+</div>
   </form>
+</div>
+</div>
 
+<?php
+if(isset($_POST['pname'])){
+	$apellido=$_POST['psurname'];
+	$edad=$_POST['date'];
+	$email=$_POST['email'];
+	$dni = $_SESSION['dni'];
+	$dir="img";
+	$imagen=$_FILES['file']['name'];
+	$archivo= $_FILES['file']['tmp_name'];
+	$dir=$dir."/".$imagen;
+	move_uploaded_file($archivo, $dir);
+	$nombre=$_POST['pname'];
+	$fotoactual=   $_SESSION["imagen"];
+
+    
+if ($dir=="img/"){
+        $sql3="UPDATE usuario SET nombre='$nombre', apellido= '$apellido', nacimiento= '$edad', email='$email',imagen= '$fotoactual' WHERE dni = '$dni'";
+    } else{
+        $sql3="UPDATE usuario SET nombre='$nombre', apellido= '$apellido', nacimiento= '$edad', email='$email',imagen= '$dir' WHERE dni = '$dni'";
+
+
+    }
+
+        $ejecutar3=mysqli_query($conexion, $sql3);    
+        if(!$ejecutar3){
+          echo '<script type="text/javascript">alert("It was an error.");</script>';     
+        }else{ 
+          if ($dir=="img/"){
+          
+		 $_SESSION["imagen"] = $fotoactual;
+		}else{
+		 $_SESSION["imagen"] = $dir;
+
+		}
+
+		 $_SESSION["nombre"]=$nombre;
+
+		  
+
+
+			
+			echo "<script language=Javascript> location.href=\"profile.php\"; </script>";
+
+    }
+      
+    
+
+
+
+}
+
+
+?>
 
 
 
@@ -281,10 +273,54 @@ echo $imprimir['nombre'];
 
 <script>
 	
-$("#logout").click(function() {
+$("#close").click(function() {
 		alert("Session Closed");
 		$(location).attr('href', 'logout.php');
 	});
 	
 
 </script>
+
+<script>
+
+$(document).ready(function(){
+           	$("#editar").click(function(){
+			 $('input').attr('readonly', false); 
+			 $("#Guardar").attr('hidden',false);
+			 $("#editar").attr('hidden',true);
+		     $("#file").attr('hidden',false);
+			 });
+
+           	 $("#file").attr('hidden',true);
+
+           	$("#Guardar").click(function(){
+			 $('input').attr('readonly', true); 
+			 $("#Guardar").attr('hidden',true);
+		      $("#editar").attr('hidden',false);
+		      $("#file").attr('hidden',true);
+
+			 });
+
+           	$("#Guardar").attr('hidden',true);
+
+		  });
+
+
+function mostrarImagen(){   //Script para mostrar la previsualización de la imagen
+					
+					
+					
+					var preview=$("#argazki")[0];
+					var archivo = $("#file")[0].files[0];
+					
+					var leer = new FileReader();
+					
+					if(archivo){
+					leer.readAsDataURL(archivo);
+					leer.onloadend=function(){
+					preview.src=leer.result;
+					
+					};   }
+					} 
+</script>
+
