@@ -116,7 +116,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 </body>
 </html>
 <script>
-    
+   
 
 $( document ).ready(function() {
    obtenerDatos();
