@@ -29,7 +29,7 @@ $ejecutar= mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
 		}else{ 
 
 	//Actualizamos la reserva
-		$update="UPDATE metalbins SET estado='DISPONIBLE' WHERE idmetal='$metalbin'AND tipo!='FROM MY HOUSE' ";
+		$update="UPDATE metalbins SET estado='DISPONIBLE' WHERE idmetal='$metalbin'AND tipo!='MY OWN' ";
 		$update= mysqli_query($conexion,$update) or die(mysqli_error($conexion));
 		if($update){
 				 echo"Cancelled succesfully";

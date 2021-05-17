@@ -102,7 +102,7 @@ $motivodeuda="RESERVATION: ".$idreserva. " ON DATE : ".$fecha;
 $dni=$_SESSION['dni'];
 
 //Ponemos el metalbin disponible
-$update= mysqli_query($conexion,"UPDATE metalbins SET estado='DISPONIBLE' WHERE idmetal='$metalbin'AND tipo!='FROM MY HOUSE' ") or die(mysqli_error($conexion));  
+$update= mysqli_query($conexion,"UPDATE metalbins SET estado='DISPONIBLE' WHERE idmetal='$metalbin'AND tipo!='MY OWN' ") or die(mysqli_error($conexion));  
 //Finalizamos reserva
 $ejecutar= mysqli_query($conexion,"UPDATE reserva SET kilos='$kilos',estado='FINALIZADA' WHERE idreserva='$idreserva'")or die(mysqli_error($conexion));
 //Generamos deuda
