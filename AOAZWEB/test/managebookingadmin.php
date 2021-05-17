@@ -71,7 +71,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 					<ul class="nav navbar-nav ">
 						
 						<li class="nav-item">
-							<a href="managebooking.php" class="nav-link active">Modify a booking</a>
+							<a href="managebookingadmin.php" class="nav-link active">Modify a booking</a>
 						</li>
 
 						<li class="nav-item">
