@@ -28,9 +28,36 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 		
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="reserva.css" ></link>
+
+			<link rel="stylesheet" href="reserva.css" ></link>
+<!-- librerias calendario-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link href='lib/main.css' rel='stylesheet' />
+    <script src='lib/main.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+        headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,listMonth'
+      },
+      
+      events:'selectCalendar.php',
+    });
+        calendar.render();
+      });
+
+
+
+    </script>
+
+    <!------------>
 </head>
-<body>
+<body style="  background: #FFB133">
 	
 	
 		<img src="img/banner2.png" width=100% height=20% ></img>
@@ -59,7 +86,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 								
 								<a class="dropdown-item" id="profile" href="profile.php">Edit Profile</a>
 								<a class="dropdown-item" href="debts.php">Debts</a>
-								<a class="dropdown-item" href="mybooks.php">Reservations</a>
+								<a class="dropdown-item" href="managebooking.php">Reservations</a>
 								<div style="border-color:#999691" class="dropdown-divider"></div>
 								<a class="dropdown-item" id="close" href="logout.php">Log Out &nbsp; <img src="img/exit.png" style="width:20px;height: 17px" /></a>
 							</div>
@@ -134,10 +161,10 @@ if($fila>0)
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){
-      echo("Error al insertar en reserva");
+      echo("Error making the book");
 
     }else{
-        $sql3="UPDATE metalbins SET estado='OCUPADO' WHERE idmetal='$metalbin'AND tipo!='FROM MY HOUSE' ";
+        $sql3="UPDATE metalbins SET estado='OCUPADO' WHERE idmetal='$metalbin'AND tipo!='MY OWN' ";
         $ejecutar3=mysqli_query($conexion, $sql3);    
         if(!$ejecutar3){
           echo '<script type="text/javascript">alert("It was an error.");</script>';     
@@ -164,11 +191,11 @@ if($fila>0)
   <button type="submit" class="btn btn-primary" id="Reservar">Reservar</button>
   <button type="clear" class="btn btn-danger">Delete</button>
   </form>
-			<iframe src="https://calendar.google.com/calendar/embed?src=c_gugcaartju8d2fgll0kp42uppo%40group.calendar.google.com&ctz=Europe%2FMadrid" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 </div>
+<br><br><br><br>
 
-
-
+<div class="container" style="background: white;" id="calendar"></div>
+<br><br><br><br>
 </body>
 </html>
 <script>
@@ -184,7 +211,7 @@ $("#reserva").submit(function(){
   
      if(fechainicio<hoy) {
 
-        alert("no puedes reservar en dias que ya han pasado");
+        alert("You cant book in days that have already passed");
         return false;
     }
 
@@ -193,10 +220,7 @@ $("#reserva").submit(function(){
 
       
         });
-
-
-
-
+*/
 
 
 

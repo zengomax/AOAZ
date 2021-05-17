@@ -43,3 +43,5 @@ $ejecutar= mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
 	
 
   ?>
+
+  	

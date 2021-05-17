@@ -28,6 +28,30 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 		
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+		<link rel="stylesheet" href="reserva.css" ></link>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+<!-- 
+    RTL version
+-->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.rtl.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.rtl.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
+
+
 
 		<style type="text/css" media="screen">
 
@@ -73,7 +97,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 								
 								<a class="dropdown-item" id="profile" href="profile.php">Edit Profile</a>
 								<a class="dropdown-item" href="debts.php">Debts</a>
-								<a class="dropdown-item" href="mybooks.php">Reservations</a>
+								<a class="dropdown-item" href="managebooking.php">Reservations</a>
 								<div style="border-color:#999691" class="dropdown-divider"></div>
 								<a class="dropdown-item" id="close" href="logout.php">Log Out &nbsp; <img src="img/exit.png" style="width:20px;height: 17px" /></a>
 							</div>
@@ -89,7 +113,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 <!-- Ends nav bar-->
 
 <!-- Starts carrousel-->
-<div class="container">
+<div class="container" id="reservadv">
 
 
 
@@ -100,18 +124,16 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
 
 <!--starts text--><br>
-<div style="background-color: #ffd966;" >
+
 	
 	<h1><b>Debts</b></h1>
 
-</div>
-<div style="background-color: #ffd966;">
-		dbfbsbfbh<br>
-		dokfopsjkf<br>
-		dfkdfk<br>
-		dfkodkfpjk
 
-	</div>
+
+<div id="datos"></div>
+			
+</div>
+
 
 
 
@@ -129,7 +151,82 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
 </body>
 </html>
+<script>
 
+	$( document ).ready(function() {
+   obtenerDatos();
+
+});
+
+
+
+function obtenerDatos(){
+ 
+
+		$.ajax({
+
+		url: 'gestiondebts.php',
+	
+		
+		success:function(datos){
+
+
+		$('#datos').fadeIn().html(datos);},
+		error:function(){
+			$('#datos').fadeIn().html('<p><strong>The server is not working</p>');
+		}
+			});
+
+		
+	
+		}
+
+
+
+//-------------BLoquear usuario---------
+$(document).on("click","#pay",function(){
+  
+
+  $message="Ae you sure?";
+
+ var iddeuda = $(this).data("id");
+var parametros = {"iddeuda" : iddeuda,};
+
+//if(alertify.confirm($message).set({title:"WARNING!!"},'onok', function(closeEvent){ 
+
+
+$.ajax({
+			data:  parametros, 
+	        url:   'deletedebts.php', 
+	        type:  'post',
+			
+			success:function(datos){
+
+			alertify.success(datos);
+
+		
+
+			obtenerDatos();},
+			error:function(){
+				$('#datos').fadeIn().html('<p><strong>The server is not working</p>');
+			}
+				});
+	
+	
+
+
+//} ));
+
+
+
+});
+	
+
+
+
+
+
+</script>
 
 
 

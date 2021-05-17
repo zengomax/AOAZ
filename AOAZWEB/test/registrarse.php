@@ -85,7 +85,7 @@
 				
 				if (isset($_POST['email'])){
 					$nombre = $_POST["nombre"];
-					$apellido= $_POST["password"];                
+					$apellido= $_POST["apellido"];                
 					$dni= $_POST["dni"];                
 					$email= $_POST["email"];                
 					$password= $_POST["password"];  

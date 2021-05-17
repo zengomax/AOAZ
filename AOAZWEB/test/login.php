@@ -115,7 +115,7 @@ if(password_verify($password,$imprimir['password'])==true){
     echo "<script>alert('Welcome to the system ".$nombre."');</script>";
  
     if($_SESSION["rol"]== 'admin'){
-      echo "<script language=Javascript> location.href=\"managebooking.php \"; </script>";
+      echo "<script language=Javascript> location.href=\"managebookingadmin.php \"; </script>";
   
   
 }else{

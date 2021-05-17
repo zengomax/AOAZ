@@ -12,7 +12,7 @@ body{
 background-color: #ffd966;
 width:50%;
 text-align: center;
-margin-top:5%;
+margin-top:3%;
 
 }
 #reserva{
@@ -23,4 +23,9 @@ margin:auto;
 #reserva h1{
 color:black;
 
+}
+.navbar-customclass .navbar-nav .nav-link > a{
+
+    color: white;
+    background: orange;
 }

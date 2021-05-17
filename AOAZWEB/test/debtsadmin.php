@@ -28,6 +28,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 		
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="reserva.css" ></link>
 
 		<style type="text/css" media="screen">
 
@@ -40,11 +41,13 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 				.navbar-customclass .navbar-nav .nav-link{
 					  color:#ff8c00;
 					}
+				
+
 
 			
 		</style>
 </head>
-<body>
+<body onload="obtenerDatos()">
 	<!-- Starts nav bar-->
 	<div class="bs-example">
 		<img src="img/banner2.png" width=100% height=20% ></img>
@@ -57,11 +60,11 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 					<ul class="nav navbar-nav ">
 						
 						<li class="nav-item">
-							<a href="managebooking.php" class="nav-link">Modify a booking</a>
+							<a href="managebookingadmin.php" active class="nav-link">Modify a booking</a>
 						</li>
 
 						<li class="nav-item">
-							<a href="members.php" class="nav-link">Members</a>
+							<a href="managemembers.php" class="nav-link">Members</a>
 						</li>
 						<li class="nav-item">
 							<a href="debtsadmin.php" class="nav-link">Debts</a>
@@ -93,7 +96,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 <!-- Ends nav bar-->
 
 <!-- Starts carrousel-->
-<div class="container">
+<div class="container" id="reservadv">
 
 
 
@@ -104,18 +107,14 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 
 
 <!--starts text--><br>
-<div style="background-color: #ffd966;" >
+
 	
-	<h1><b>Debts</b></h1>
+	<h1>Debts</h1>
+
+<div id="datos" >
+		
 
 </div>
-<div style="background-color: #ffd966;">
-		dbfbsbfbh<br>
-		dokfopsjkf<br>
-		dfkdfk<br>
-		dfkodkfpjk
-
-	</div>
 
 
 
@@ -147,3 +146,33 @@ $("#close").click(function() {
 	
 
 </script>
+
+<script>
+window.onload =function() {
+   obtenerDatos();
+
+};
+
+
+
+function obtenerDatos(){
+ 
+
+		$.ajax({
+
+		url: 'gestiondebtsadmin.php',
+	
+		
+		success:function(datos){
+
+
+		$('#datos').fadeIn().html(datos);},
+		error:function(){
+			$('#datos').fadeIn().html('<p><strong>The server is not working</p>');
+		}
+			});
+
+		
+	
+		}
+	</script>
