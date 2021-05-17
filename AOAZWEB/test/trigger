@@ -1,0 +1,11 @@
+triggerr
+
+CREATE OR REPLACE TRIGGER restar_inventario
+AFTER DELETE
+ON deudas
+
+FOR EACH ROW
+BEGIN
+UPDATE inventario
+SET inventario.cantidad=inventario.cantidad+(OLD.eurosdeuda/0.25) WHERE inventario.idproducto='1';
+END;

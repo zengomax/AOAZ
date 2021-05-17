@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2021 a las 13:06:19
+-- Tiempo de generación: 17-05-2021 a las 12:45:10
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 7.3.27
 
@@ -32,6 +32,25 @@ USE `erlete`;
 CREATE TABLE `bolsa` (
   `eurostotales` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `bolsa`
+--
+
+INSERT INTO `bolsa` (`eurostotales`) VALUES
+(200000);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `calendario`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `calendario` (
+`id` int(11)
+,`title` varchar(94)
+,`start` date
+);
 
 -- --------------------------------------------------------
 
@@ -75,14 +94,14 @@ CREATE TABLE `metalbins` (
 --
 
 INSERT INTO `metalbins` (`idmetal`, `tipo`, `estado`) VALUES
-(1, '100ML', 'DISPONIBLE'),
+(1, '100ML', 'OCUPADO'),
 (2, '100ML', 'DISPONIBLE'),
-(3, '100ML', 'OCUPADO'),
+(3, '100ML', 'DISPONIBLE'),
 (4, '150ML', 'DISPONIBLE'),
 (5, '150ML', 'DISPONIBLE'),
 (6, '150ML', 'DISPONIBLE'),
 (7, '250ML', 'DISPONIBLE'),
-(8, 'FROM MY HOUSE', 'DISPONIBLE');
+(8, 'MY OWN', 'DISPONIBLE');
 
 -- --------------------------------------------------------
 
@@ -129,6 +148,15 @@ CREATE TABLE `usuario` (
   `imagen` varchar(300) NOT NULL,
   `estado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `calendario`
+--
+DROP TABLE IF EXISTS `calendario`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `calendario`  AS SELECT `reserva`.`idreserva` AS `id`, concat(`usuario`.`nombre`,' ',`usuario`.`apellido`,' | ',`metalbins`.`tipo`) AS `title`, `reserva`.`fechainicio` AS `start` FROM ((`reserva` join `usuario` on(`reserva`.`dni` = `usuario`.`dni`)) join `metalbins` on(`reserva`.`idmetal` = `metalbins`.`idmetal`)) ;
 
 --
 -- Índices para tablas volcadas
@@ -188,7 +216,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `deudas`
 --
 ALTER TABLE `deudas`
-  MODIFY `iddeuda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `iddeuda` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
@@ -206,7 +234,7 @@ ALTER TABLE `movimiento`
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `idreserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idreserva` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
