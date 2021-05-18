@@ -183,17 +183,15 @@ function obtenerDatos(){
 
 
 
-//-------------BLoquear usuario---------
+//-------------Pagar deuda-----------
 $(document).on("click","#pay",function(){
   
 
-  $message="Ae you sure?";
 
  var iddeuda = $(this).data("id");
 var parametros = {"iddeuda" : iddeuda,};
 
-//if(alertify.confirm($message).set({title:"WARNING!!"},'onok', function(closeEvent){ 
-
+	if (confirm("Do you want to pay this debt?")){
 
 $.ajax({
 			data:  parametros, 
@@ -212,7 +210,7 @@ $.ajax({
 			}
 				});
 	
-	
+	}
 
 
 //} ));

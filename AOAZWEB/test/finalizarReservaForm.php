@@ -115,7 +115,7 @@ if(!$ejecutar||!$update||!$insert){
 	echo "ERROR";
 }else{
 
-	echo "Reserva Finalizada deuda generada";
+	echo "The Booking have been completed succesfully!";
 }
 
 }

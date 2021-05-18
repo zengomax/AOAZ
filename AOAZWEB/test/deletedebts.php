@@ -15,7 +15,7 @@ $conexion=connectDataBase();
  $resultado= mysqli_query($conexion,"SELECT * FROM deudas WHERE iddeuda ='$id'");
 
 $imprimir= mysqli_fetch_array($resultado);
-$motivo=$imprimir['motivo'];
+$motivo="PAY OF ".$imprimir['motivo'];
 $fecha=date('Y-m-d');
 $euros=$imprimir['eurosdeuda'];
 //eliminamos la reserva

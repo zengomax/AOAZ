@@ -190,7 +190,7 @@ if($fila>0)
 
   ?>
 
-  <button type="submit" class="btn btn-primary" id="Reservar">Reservar</button>
+  <button type="submit" class="btn btn-primary" id="Reservar">Book</button>
   <button type="clear" class="btn btn-danger">Delete</button>
   </form>
 </div>
