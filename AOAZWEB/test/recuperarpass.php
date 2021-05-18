@@ -1,5 +1,13 @@
+<?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
+require 'lib/PHPMailer/Exception.php';
+require 'lib/PHPMailer/PHPMailer.php';
+require 'lib/PHPMailer/SMTP.php';
+
+  ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +60,7 @@
   
   <div class="container" id="reservadv">
     <h1>Restore Password</h1>
-    <form id="restore" name="restore" method="POST" enctype="multipart/form-data" action="recuperarContra.php">
+    <form id="restore" name="restore" method="POST" enctype="multipart/form-data" action="recuperarpass.php">
     	<br><br><br>
 	<p>Please introduce your email to restore your password, you will recive an email with instructions</p>
     <label>Email:  <input type="email" name="email" placeholder="Please enter your email"></label>
@@ -79,53 +87,53 @@ $fila= mysqli_num_rows($resultado);
 // si el email existe
 if($fila>0){
 
-//email destinatario
-$emailpara= $emailingresado;
+	//email destinatario
+	$emailpara= $emailingresado;
 
-$asunto= "Restore Password Erlete.";
+	$asunto= "Restore Password Erlete.";
 
-$codigo= rand(10000,99999);
+	$codigo= rand(10000,99999);
 
 
-//variables de sesion
-session_start();
-$_SESSION['codigo']=$codigo;
-$_SESSION['email']=$emailingresado;
-
-echo "<script>alert('$codigo');</script>"; //Borrar al subir a la nube
+	//variables de sesion
+	session_start();
+	$_SESSION['codigo']=$codigo;
+	$_SESSION['email']=$emailingresado;
 
 
 
-$mensaje=" <html>To restore your passworod, click in the code and add it to the form <br>  <a href='".$enlace."/AOAZ/AOAZWEB/test/recuperarContraCode.php?mail=".$emailingresado."'>
-<h1>".$codigo."</h1>
- </html>";
+	//Instantiation and passing `true` enables exceptions
+	$mail = new PHPMailer(true);
 
+	try {
+	    //Server settings
+	    $mail->SMTPDebug =0;                      //Enable verbose debug output
+	    $mail->isSMTP();                                            //Send using SMTP
+	    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+	    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+	    $mail->Username   = 'aoazdevelopers@gmail.com';                     //SMTP username
+	    $mail->Password   = 'Aoazdam1';                               //SMTP password
+	    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+	    $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
+	    //Recipients
+	    $mail->setFrom('aoazdevelopers@gmail.com', 'Erlete');
+	    $mail->addAddress($emailingresado);     //Add a recipient
 
-// Para enviar un correo HTML, debe establecerse la cabecera Content-type
-$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
-$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	    //Content
+	    $mail->isHTML(true);                                  //Set email format to HTML
+	    $mail->Subject = 'Password Restore';
+	    $mail->Body    = " <html>To restore your password, click in the code and add it to the form <br>  <a href='".$enlace."/AOAZ/AOAZWEB/test/recuperarpasscode.php?mail=".$emailingresado."'><h1>".$codigo."</h1> </html>";;
 
-// Cabeceras adicionales
-$cabeceras .= 'To: Usuario <'.$emailpara.'>' . "\r\n";
-$cabeceras .= 'From: Restore password erlete <aoazdevelopers@gmail.com>' . "\r\n";
-$cabeceras .= 'Cc: aoazdevelopers@gmail.com' . "\r\n";
-$cabeceras .= 'Bcc: aoazdevelopers@gmail.com' . "\r\n";
-
-
-
-//ENVIAMOS EL EMAIL
-mail($emailpara, $asunto, $mensaje, $cabeceras);
-
-
-echo "<p style='color:green'>The email has been sent correctly, you will recibe a verification code";
-echo "<a href='".$enlace."/AOAZ/AOAZWEB/test/recuperarContraCode.php?mail=".$emailingresado."'>Click aqui</a>"; //esto solamente en local cuando no hay mail
+	    $mail->send();
+		echo "<p style='color:green'>The email has been sent correctly, you will recibe a verification code, check your email please.";
+	} catch (Exception $e) {
+	    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+	}
 
 }else{
-echo "<p style='color:red'> The introduced email doesn't exist.</p>";
+	echo "<p style='color:red'> The introduced email doesn't exist.</p>";
+	}
 }
-
-
-}
-
+	
  ?>
