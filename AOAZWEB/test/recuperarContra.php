@@ -82,19 +82,25 @@ if($fila>0){
 //email destinatario
 $emailpara= $emailingresado;
 
-$asunto= "Recuperación de Contraseña.";
+$asunto= "Restore Password Erlete.";
 
 $codigo= rand(10000,99999);
 
 
 //variables de sesion
-
+session_start();
 $_SESSION['codigo']=$codigo;
 $_SESSION['email']=$emailingresado;
 
-$mensaje=" <html>Para recuperar su contraseña,haga click en el codigo y añadalo al formulario <br>  <a href='https://localhost/recuperaContra.php?mail=".$emailingresado."'>
+echo "<script>alert('$codigo');</script>"; //Borrar al subir a la nube
+
+
+
+$mensaje=" <html>To restore your passworod, click in the code and add it to the form <br>  <a href='https://".$enlace."/AOAZ/AOAZWEB/test/recuperarContraCode.php?mail=".$emailingresado."'>
 <h1>".$codigo."</h1>
  </html>";
+
+
 
 // Para enviar un correo HTML, debe establecerse la cabecera Content-type
 $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
@@ -102,16 +108,19 @@ $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 // Cabeceras adicionales
 $cabeceras .= 'To: Usuario <'.$emailpara.'>' . "\r\n";
-$cabeceras .= 'From: Recuperar Password <admin000@ehu.es>' . "\r\n";
-$cabeceras .= 'Cc: admin000@ehu.es' . "\r\n";
-$cabeceras .= 'Bcc: admin000@ehu.es' . "\r\n";
+$cabeceras .= 'From: Recuperar Password <aoazdevelopers@gmail.com>' . "\r\n";
+$cabeceras .= 'Cc: aoazdevelopers@gmail.com' . "\r\n";
+$cabeceras .= 'Bcc: aoazdevelopers@gmail.com' . "\r\n";
 
 
 
 //ENVIAMOS EL EMAIL
 mail($emailpara, $asunto, $mensaje, $cabeceras);
 
+
 echo "<p style='color:green'>The email has been sent correctly, you will recibe a verification code";
+echo "<a href='https://".$enlace."/AOAZ/AOAZWEB/test/recuperarContraCode.php?mail=".$emailingresado."'>Click aqui</a>"; //esto solamente en local cuando no hay mail
+
 }else{
 echo "<p style='color:red'> The introduced email doesn't exist.</p>";
 }

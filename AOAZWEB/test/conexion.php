@@ -1,9 +1,9 @@
 <?php
 
-
+$enlace='10.2.197';
 function ConnectDataBase()		{
 
-$local=0;		
+$local=1;		
 
 	if($local==0){		
 
@@ -21,7 +21,7 @@ $local=0;
 			return $conexion;
 		}
 		else {
-			if (!($conexion=mysqli_connect("204.204.3.1","AOAZ","dam1")))
+			if (!($conexion=mysqli_connect("localhost","root","dam1")))
 			{
 			echo "There is an error connecting the server.";
 			exit();

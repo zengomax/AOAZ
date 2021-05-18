@@ -49,7 +49,9 @@
 <!-- Ends nav bar-->
 
 <?php 
-$email=$_GET['email'];
+//error_reporting(0);
+
+session_start();
  ?>
   
   <div class="container" id="reservadv">
@@ -59,7 +61,7 @@ $email=$_GET['email'];
     <form id="restore" name="restore" method="POST" enctype="multipart/form-data" action="recuperarContraCode.php">
     	<br><br><br>
 	<p>Enter the requested data to restore your password.</p><br>
-    <label>Email*         :  <input class="form-control" type="email" name="email" id="email" placeholder="Please enter your email" value="<?php echo $email; ?>"></label><br>
+    <label>Email*         :  <input class="form-control" type="email" name="email" id="email" placeholder="Please enter your email"></label><br>
     <label>Code*          :  <input class="form-control" type="number" name="codigo" id="codigo" placeholder="Please enter the code"></label><br>
     <label>Password*      :  <input class="form-control" type="password" name="password" id="password" placeholder="Please enter your password"></label><br>
     <label>Repit Password*:  <input class="form-control" type="password" name="repassword" id="passwordrep" placeholder="Please enter your password again"></label><br>
@@ -92,7 +94,7 @@ $email=$_GET['email'];
 
 <?php
 if (isset($_POST['email'])){
-include "ParametrosBD.php";
+include ("conexion.php");
 $conexion=connectDataBase();
 	
 	//recuperar las variables
