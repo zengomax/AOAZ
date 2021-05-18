@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-05-2021 a las 12:45:10
+-- Tiempo de generación: 18-05-2021 a las 09:17:09
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 7.3.27
 
@@ -29,6 +29,7 @@ USE `erlete`;
 -- Estructura de tabla para la tabla `bolsa`
 --
 
+DROP TABLE IF EXISTS `bolsa`;
 CREATE TABLE `bolsa` (
   `eurostotales` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -38,7 +39,7 @@ CREATE TABLE `bolsa` (
 --
 
 INSERT INTO `bolsa` (`eurostotales`) VALUES
-(200000);
+(200033);
 
 -- --------------------------------------------------------
 
@@ -46,6 +47,7 @@ INSERT INTO `bolsa` (`eurostotales`) VALUES
 -- Estructura Stand-in para la vista `calendario`
 -- (Véase abajo para la vista actual)
 --
+DROP VIEW IF EXISTS `calendario`;
 CREATE TABLE `calendario` (
 `id` int(11)
 ,`title` varchar(94)
@@ -58,6 +60,7 @@ CREATE TABLE `calendario` (
 -- Estructura de tabla para la tabla `deudas`
 --
 
+DROP TABLE IF EXISTS `deudas`;
 CREATE TABLE `deudas` (
   `iddeuda` int(11) NOT NULL,
   `motivo` varchar(50) NOT NULL,
@@ -65,17 +68,33 @@ CREATE TABLE `deudas` (
   `dni` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `deudas`
+--
+
+INSERT INTO `deudas` (`iddeuda`, `motivo`, `eurosdeuda`, `dni`) VALUES
+(1, 'REGISTRATION: 12345678M', 30, '12345678M'),
+(2, 'REGISTRATION: 12345678T', 30, '12345678T');
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `inventario`
 --
 
+DROP TABLE IF EXISTS `inventario`;
 CREATE TABLE `inventario` (
   `idproducto` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `inventario`
+--
+
+INSERT INTO `inventario` (`idproducto`, `nombre`, `cantidad`) VALUES
+(1, 'JAR OF HONEY', 7990);
 
 -- --------------------------------------------------------
 
@@ -83,6 +102,7 @@ CREATE TABLE `inventario` (
 -- Estructura de tabla para la tabla `metalbins`
 --
 
+DROP TABLE IF EXISTS `metalbins`;
 CREATE TABLE `metalbins` (
   `idmetal` int(11) NOT NULL,
   `tipo` varchar(30) NOT NULL,
@@ -94,7 +114,7 @@ CREATE TABLE `metalbins` (
 --
 
 INSERT INTO `metalbins` (`idmetal`, `tipo`, `estado`) VALUES
-(1, '100ML', 'OCUPADO'),
+(1, '100ML', 'DISPONIBLE'),
 (2, '100ML', 'DISPONIBLE'),
 (3, '100ML', 'DISPONIBLE'),
 (4, '150ML', 'DISPONIBLE'),
@@ -109,6 +129,7 @@ INSERT INTO `metalbins` (`idmetal`, `tipo`, `estado`) VALUES
 -- Estructura de tabla para la tabla `movimiento`
 --
 
+DROP TABLE IF EXISTS `movimiento`;
 CREATE TABLE `movimiento` (
   `idmovimiento` int(11) NOT NULL,
   `descripcion` varchar(400) NOT NULL,
@@ -122,6 +143,7 @@ CREATE TABLE `movimiento` (
 -- Estructura de tabla para la tabla `reserva`
 --
 
+DROP TABLE IF EXISTS `reserva`;
 CREATE TABLE `reserva` (
   `idreserva` int(11) NOT NULL,
   `fechainicio` date NOT NULL,
@@ -131,12 +153,25 @@ CREATE TABLE `reserva` (
   `idmetal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Disparadores `reserva`
+--
+DROP TRIGGER IF EXISTS `restar_jarras`;
+DELIMITER $$
+CREATE TRIGGER `restar_jarras` AFTER UPDATE ON `reserva` FOR EACH ROW BEGIN
+UPDATE inventario
+SET inventario.cantidad=inventario.cantidad-new.kilos WHERE inventario.idproducto=1;
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `usuario`
 --
 
+DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `dni` varchar(9) NOT NULL,
   `nombre` varchar(30) NOT NULL,
@@ -149,6 +184,14 @@ CREATE TABLE `usuario` (
   `estado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`dni`, `nombre`, `apellido`, `nacimiento`, `email`, `password`, `rol`, `imagen`, `estado`) VALUES
+('12345678M', 'admin', 'admin', '1981-05-19', 'admin@admin.com', '$2y$10$QHj2yERZVQnoVc07j0esBOBWVOw8.mNZOltLOWMnJGC9D4tNl6XpC', 'admin', 'img/SeÃ±orX.jpg', 'ACTIVO'),
+('12345678T', 'asier', 'asier', '1988-05-20', 'asier@asier.com', '$2y$10$EfsTe1BilvzrNmGhgcCVzu/mUoGPm.wEpP/agl9CH2AFhIw5dF2OS', 'usuario', 'img/fotoperfil.png', 'ACTIVO');
+
 -- --------------------------------------------------------
 
 --
@@ -156,7 +199,8 @@ CREATE TABLE `usuario` (
 --
 DROP TABLE IF EXISTS `calendario`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `calendario`  AS SELECT `reserva`.`idreserva` AS `id`, concat(`usuario`.`nombre`,' ',`usuario`.`apellido`,' | ',`metalbins`.`tipo`) AS `title`, `reserva`.`fechainicio` AS `start` FROM ((`reserva` join `usuario` on(`reserva`.`dni` = `usuario`.`dni`)) join `metalbins` on(`reserva`.`idmetal` = `metalbins`.`idmetal`)) ;
+DROP VIEW IF EXISTS `calendario`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `calendario`  AS SELECT `reserva`.`idreserva` AS `id`, ucase(concat(`usuario`.`nombre`,' ',`usuario`.`apellido`,' | ',`metalbins`.`tipo`)) AS `title`, `reserva`.`fechainicio` AS `start` FROM ((`reserva` join `usuario` on(`reserva`.`dni` = `usuario`.`dni`)) join `metalbins` on(`reserva`.`idmetal` = `metalbins`.`idmetal`)) ;
 
 --
 -- Índices para tablas volcadas
@@ -216,13 +260,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `deudas`
 --
 ALTER TABLE `deudas`
-  MODIFY `iddeuda` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iddeuda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `idproducto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `movimiento`

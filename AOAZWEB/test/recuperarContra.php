@@ -96,7 +96,7 @@ echo "<script>alert('$codigo');</script>"; //Borrar al subir a la nube
 
 
 
-$mensaje=" <html>To restore your passworod, click in the code and add it to the form <br>  <a href='https://".$enlace."/AOAZ/AOAZWEB/test/recuperarContraCode.php?mail=".$emailingresado."'>
+$mensaje=" <html>To restore your passworod, click in the code and add it to the form <br>  <a href='".$enlace."/AOAZ/AOAZWEB/test/recuperarContraCode.php?mail=".$emailingresado."'>
 <h1>".$codigo."</h1>
  </html>";
 
@@ -108,7 +108,7 @@ $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 // Cabeceras adicionales
 $cabeceras .= 'To: Usuario <'.$emailpara.'>' . "\r\n";
-$cabeceras .= 'From: Recuperar Password <aoazdevelopers@gmail.com>' . "\r\n";
+$cabeceras .= 'From: Restore password erlete <aoazdevelopers@gmail.com>' . "\r\n";
 $cabeceras .= 'Cc: aoazdevelopers@gmail.com' . "\r\n";
 $cabeceras .= 'Bcc: aoazdevelopers@gmail.com' . "\r\n";
 
@@ -119,7 +119,7 @@ mail($emailpara, $asunto, $mensaje, $cabeceras);
 
 
 echo "<p style='color:green'>The email has been sent correctly, you will recibe a verification code";
-echo "<a href='https://".$enlace."/AOAZ/AOAZWEB/test/recuperarContraCode.php?mail=".$emailingresado."'>Click aqui</a>"; //esto solamente en local cuando no hay mail
+echo "<a href='".$enlace."/AOAZ/AOAZWEB/test/recuperarContraCode.php?mail=".$emailingresado."'>Click aqui</a>"; //esto solamente en local cuando no hay mail
 
 }else{
 echo "<p style='color:red'> The introduced email doesn't exist.</p>";

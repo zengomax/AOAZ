@@ -1,9 +1,10 @@
 <?php
 
-$enlace='10.2.197';
+//$enlace='10.2.1.197';
+$enlace='localhost';
 function ConnectDataBase()		{
 
-$local=1;		
+$local=0;		
 
 	if($local==0){		
 
