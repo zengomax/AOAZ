@@ -94,31 +94,54 @@ echo "<label>Kilos: $kilos </label>";
 <?php 
 //UPDATE DE KILOS MAS GENERAR DEUDA
 
-if(isset($_POST['kilos'])){
-$idreserva=$_POST['idreserva'];
-$fecha=$imprimir["fechainicio"];
-$euros =$_POST['euros'];
-$motivodeuda="RESERVATION: ".$idreserva. " ON DATE : ".$fecha;
-$dni=$_SESSION['dni'];
-
-//Ponemos el metalbin disponible
-$update= mysqli_query($conexion,"UPDATE metalbins SET estado='DISPONIBLE' WHERE idmetal='$metalbin'AND tipo!='MY OWN' ") or die(mysqli_error($conexion));  
-//Finalizamos reserva
-$ejecutar= mysqli_query($conexion,"UPDATE reserva SET kilos='$kilos',estado='FINALIZADA' WHERE idreserva='$idreserva'")or die(mysqli_error($conexion));
-//Generamos deuda
-$insert= mysqli_query($conexion,"INSERT INTO deudas VALUES ('','$motivodeuda','$euros','$dni')")or die(mysqli_error($conexion));
 
 
 
-if(!$ejecutar||!$update||!$insert){
+		if(isset($_POST['kilos'])){
+		$idreserva=$_POST['idreserva'];
+		$fecha=$imprimir["fechainicio"];
+		$euros =$_POST['euros'];
+		$motivodeuda="RESERVATION: ".$idreserva. " ON DATE : ".$fecha;
+		$dni=$_SESSION['dni'];
+		if($_POST['kilos']== 0){
+			$idreserva=$_POST['idreserva'];
+			$fecha=$imprimir["fechainicio"];
 
-	echo "ERROR";
-}else{
+	
 
-	echo "The Booking have been completed succesfully!";
-}
 
-}
+				$sinkilos= mysqli_query($conexion,"UPDATE reserva SET estado='FINALIZADA' WHERE idreserva='$idreserva'")or die(mysqli_error($conexion));
+				if($sinkilos){
+
+
+						echo "<p style='color:green'> The booking has been completed successfully, you don't have a debt.</p>";
+
+				}else{
+
+
+					echo "error";
+				}
+				
+		}else{
+		//Ponemos el metalbin disponible
+		$update= mysqli_query($conexion,"UPDATE metalbins SET estado='DISPONIBLE' WHERE idmetal='$metalbin'AND tipo!='MY OWN' ") or die(mysqli_error($conexion));  
+		//Finalizamos reserva
+		$ejecutar= mysqli_query($conexion,"UPDATE reserva SET kilos='$kilos',estado='FINALIZADA' WHERE idreserva='$idreserva'")or die(mysqli_error($conexion));
+		//Generamos deuda
+		$insert= mysqli_query($conexion,"INSERT INTO deudas VALUES ('','$motivodeuda','$euros','$dni')")or die(mysqli_error($conexion));
+
+
+
+		if(!$ejecutar||!$update||!$insert){
+
+			echo "ERROR";
+		}else{
+
+			echo "<p style='color:green'> The booking has been completed successfully, you have a new debt.</p>";
+		}
+
+		}
+	}
 
 
  ?>

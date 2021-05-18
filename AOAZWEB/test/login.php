@@ -94,14 +94,16 @@ include ("conexion.php");
   if (isset($_POST['email'])){
         $email= $_POST["email"];                
         $password= $_POST["password"];  
+         
                      
     $consulta= "SELECT * FROM usuario WHERE email='$email'";
     $resultado=mysqli_query($conexion,$consulta);
 
 
 $imprimir= mysqli_fetch_array($resultado);
+$estado= $imprimir['estado'];
 
-if(password_verify($password,$imprimir['password'])==true){
+if(password_verify($password,$imprimir['password'])==true && $estado=="ACTIVO"){
   
   session_start();
 
@@ -109,27 +111,46 @@ if(password_verify($password,$imprimir['password'])==true){
     $_SESSION["nombre"]=$nombre;
     $_SESSION["rol"]= $imprimir['rol'];
     $_SESSION["imagen"]= $imprimir['imagen'];
-    $_SESSION["dni"]= $imprimir['dni'];;
+    $_SESSION["dni"]= $imprimir['dni'];
 
-      
-    echo "<script>alert('Welcome to the system ".$nombre."');</script>";
- 
-    if($_SESSION["rol"]== 'admin'){
-      echo "<script language=Javascript> location.href=\"managebookingadmin.php \"; </script>";
-  
-  
-}else{
 
- echo "<script language=Javascript> location.href=\"indexmember.php \"; </script>";
-
-  
-}
    
 
-}else{
-	echo "<script>alertify.alert('The data is not correct.');</script>";
+        echo "<script>alert('Welcome to the system ".$nombre."');</script>";
 
-}
+             
+           
+         
+        if($_SESSION["rol"]== 'admin'){
+          echo "<script language=Javascript> location.href=\"managebookingadmin.php \"; </script>";
+          
+          
+        }else{
+
+         echo "<script language=Javascript> location.href=\"indexmember.php \"; </script>";
+
+              
+        }
+
+
+
+    
+      
+    
+
+
+
+    }else{
+      if($estado=="BLOQUEADO"){
+        echo "<script>alertify.alert('This user is blocked');</script>";
+
+      }else{
+
+              echo "<script>alertify.alert('The data is not correct.');</script>";
+
+      }
+
+    }
 
 }
 

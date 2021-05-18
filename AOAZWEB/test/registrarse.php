@@ -62,6 +62,7 @@
 	   <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>
 	   <input type="password" id="passwordrep"  placeholder="Repeat password" name="password" minlength="6" required>
 	   <input  type="password" id="code" name="code" placeholder="Enter register code" required>
+	   <img src="img/eye.png" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();" style="width:10%;height: 10%" />
 	   <input  type="Date" name="fecha" id="fecha" value required >
 	   <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br>
 	   <center><img id="argazki" name="imagen" width="150"></center> 
@@ -200,7 +201,15 @@
 	                return false;
 	                }
 	                })
-					
+
+					function mouseoverPass(obj) {
+					  var obj = document.getElementById('code');
+					  obj.type = "text";
+					}
+					function mouseoutPass(obj) {
+					  var obj = document.getElementById('code');
+					  obj.type = "password";
+					}
 					
 					
 					</script>
