@@ -1,11 +1,9 @@
 <?php
 
 
-
 function ConnectDataBase()		{
 
 $local=0;		
-
 
 	if($local==0){		
 
