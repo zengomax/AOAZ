@@ -123,7 +123,15 @@ if($fila>0){
 	    //Content
 	    $mail->isHTML(true);                                  //Set email format to HTML
 	    $mail->Subject = 'Password Restore';
-	    $mail->Body    = " <html>To restore your password, click in the code and add it to the form <br>  <a href='".$enlace."/AOAZ/AOAZWEB/test/recuperarpasscode.php?mail=".$emailingresado."'><h1>".$codigo."</h1> </html>";;
+	    $mail->Body    = $mensaje="<h2>Erlete System| Restore your password</h2>
+		Dear user, to restore your password click in the link bellow and add the recived code to the form.<br>
+		<br>
+		YOUR RESTORE CODE:<h2 style='color: blue'>".$codigo."</h2>
+		<br>
+		<a href='".$enlace."/AOAZ/AOAZWEB/test/recuperarpasscode.php?mail=".$emailingresado."'>RESTORE YOUR PASSWORD CLICKING HERE!</a>
+		<br><br><br><br>
+
+		Erlete Association | aoazdevelopers";
 
 	    $mail->send();
 		echo "<p style='color:green'>The email has been sent correctly, you will recibe a verification code, check your email please.";

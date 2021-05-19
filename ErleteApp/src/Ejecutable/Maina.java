@@ -1,4 +1,4 @@
-package Ejecutables;
+package Ejecutable;
 
 
 import Model.Model;
