@@ -29,5 +29,9 @@ YOUR RESTORE CODE:<h2 style='color: blue'>".$codigo."</h2>
 <a href='".$enlace."/AOAZ/AOAZWEB/test/recuperarpasscode.php?mail=".$emailingresado."'>RESTORE YOUR PASSWORD CLICKING HERE!</a>
 <br><br><br><br>
 
-Erlete Association | aoazdevelopers"
+Erlete Association | aoazdevelopers";
  ?>
+
+
+
+ 	    $mail->Body    = " <html>To restore your password, click in the code and add it to the form <br>  <a href='".$enlace."/AOAZ/AOAZWEB/test/recuperarpasscode.php?mail=".$emailingresado."'><h1>".$codigo."</h1> </html>";
