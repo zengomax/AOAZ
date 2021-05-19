@@ -1,4 +1,3 @@
-
 <?php 
 
 include ("conexion.php");
@@ -7,14 +6,14 @@ $conexion=connectDataBase();
 session_start();
 
 $estado=$_GET['estado'];
-$dni= $_POST['dni'];
+
 
 if($estado=="ACTIVO"){  //SI LA RESERVA ESTA PENDIENTE CARGA LA TABLA CON BOTONES
 
 ?>
 <div class="container">
 
-  <h5 class="display-6"> My active users</h5>
+  <h5 class="display-6"> Active users</h5>
  <table class="table table-bordered">
       <tr>
         <th>DNI</th>
@@ -28,6 +27,7 @@ if($estado=="ACTIVO"){  //SI LA RESERVA ESTA PENDIENTE CARGA LA TABLA CON BOTONE
       </tr>
 
 <?php
+$i=0;
 $resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado= 'ACTIVO'")or die(mysqli_error($conexion));
 while($imprimir=mysqli_fetch_array($resultado)){
 
@@ -39,21 +39,14 @@ while($imprimir=mysqli_fetch_array($resultado)){
        
         
         <td><button type="button" data-id="<?php echo $imprimir['dni'] ?>" id="bloquear" class="btn btn-warning">Lock</button></td>
-        <td><button type="button" id="editar"class="btn btn-warning" data-id="<?php echo $imprimir['dni'] ?>" data-toggle="modal" data-target="#edit" onclick="dni()">Edit</button></td>
+        <td><button type="button" id="editar"class="btn btn-warning" data-id="<?php echo $imprimir['dni'] ?>" data-toggle="modal" data-target="#edit<?php echo $i ?>" >Edit</button></td>
   
         
 
 
       </tr>
-  <?php }
 
-
-$resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado= 'ACTIVO' and  dni = '$dni'")or die(mysqli_error($conexion));
-
-  $imprimir=mysqli_fetch_array($resultado);
-
-   ?>
-    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="background: orange;" >
       <div class="modal-header" style="background: orange;" >
@@ -67,32 +60,39 @@ $resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado= 'ACTIVO'
             
   
             <label for="recipient-name"   class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="name" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php   echo $imprimir['nombre']   ?>">
+            <input type="text" class="form-control" id="name<?php echo $i ?>" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php echo $imprimir['nombre']  ?>">
         
             <label for="recipient-name" class="col-form-label">Surname:</label>
-            <input type="text" class="form-control" id="surname"style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php   echo $imprimir['apellido']   ?>">
+            <input type="text" class="form-control" id="surname<?php echo $i ?>"style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php echo $imprimir['apellido']  ?>">
      
       
             <label for="recipient-name" class="col-form-label">Email:</label>
-            <input type="text"   class="form-control" id="email" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php   echo $imprimir['email']   ?>">
+            <input type="text"   class="form-control" id="email<?php echo $i ?>" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php echo $imprimir['email']  ?>">
 
          
             <label for="recipient-name" class="col-form-label"> New Password:</label>
-            <input type="Password" class="form-control" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" id="password">
+            <input type="Password" class="form-control" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" id="password<?php echo $i ?>">
           
             
             <label for="recipient-name" class="col-form-label">Repeat
              new Password:</label>
-            <input type="Password"  class="form-control" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" id="repeatpassword" >
+            <input type="Password"  class="form-control" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;"  id="repeatpassword<?php echo $i ?>" >
   
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" id="save" value="<?php echo $i ?>"data-id="<?php echo $imprimir['dni'] ?>" class="btn btn-success">Save</button>
       </div>
     </div>
   </div>
+
+    <?php
+    $i=$i+1;
+     } //fin while
+
+
+   ?>
 </div>
   </table>
 
@@ -108,7 +108,7 @@ $resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado= 'ACTIVO'
 <?php 
 
 if($estado=="BLOQUEADO"){
-
+//__________________________________________________________________________________________________________________
 
 ?>
 <div class="container">
@@ -128,9 +128,8 @@ if($estado=="BLOQUEADO"){
 <?php
 
 $resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado ='BLOQUEADO'")or die(mysqli_error($conexion));
-
+$j=0;
 while($imprimir=mysqli_fetch_array($resultado)){
-
 ?>
    
        <tr>
@@ -141,16 +140,16 @@ while($imprimir=mysqli_fetch_array($resultado)){
        
         
         <td><button type="button" data-id="<?php echo $imprimir['dni'] ?>" id="bloquear" class="btn btn-warning">Unblock</button></td>
-        <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit" >Edit</button></td>
-  
+          <td><button type="button" id="editar"class="btn btn-warning" data-id="<?php echo $imprimir['dni'] ?>" data-toggle="modal" data-target="#edit<?php echo $j ?>" >Edit</button></td>
+
         
 
 
       </tr>
 
 
-  <?php } ?>
-    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal fade" id="edit<?php echo $j  ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="background: orange;" >
       <div class="modal-header" style="background: orange;" >
@@ -164,22 +163,22 @@ while($imprimir=mysqli_fetch_array($resultado)){
             
   
             <label for="recipient-name"   class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="name" value="<?php   echo $imprimir['nombre']   ?>">
+            <input type="text" class="form-control" id="name<?php echo $j ?>"  required value="<?php   echo $imprimir['nombre']   ?>">
         
             <label for="recipient-name" class="col-form-label">Surname:</label>
-            <input type="text" class="form-control" id="surname" value="<?php   echo $imprimir['apellido']   ?>">
+            <input type="text" class="form-control" id="surname<?php echo $j ?>" value="<?php   echo $imprimir['apellido']   ?>">
      
       
             <label for="recipient-name" class="col-form-label">Email:</label>
-            <input type="text"   class="form-control" id="email" value="<?php   echo $imprimir['email']   ?>">
+            <input type="text"   class="form-control" id="email<?php echo $j ?>" value="<?php   echo $imprimir['email']   ?>">
 
          
             <label for="recipient-name" class="col-form-label">Password:</label>
-            <input type="Password" class="form-control" id="password" placeholder="Password">
+            <input type="Password" class="form-control" id="password<?php echo $j ?>" placeholder="Password">
           
             
             <label for="recipient-name" class="col-form-label">Repeat Password:</label>
-            <input type="Password"  class="form-control" id="repeatpassword" placeholder="Repeat password">
+            <input type="Password"  class="form-control"id="repeatpassword<?php echo $j ?>" placeholder="Repeat password">
   
 
          
@@ -187,10 +186,11 @@ while($imprimir=mysqli_fetch_array($resultado)){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" id="save" value="<?php echo $j ?>"data-id="<?php echo $imprimir['dni'] ?>" class="btn btn-success">Save</button>
       </div>
     </div>
   </div>
+    <?php $j=$j+1;} ?>
 </div>
   </table>
 
@@ -198,6 +198,7 @@ while($imprimir=mysqli_fetch_array($resultado)){
   <br><br><br>
 </div>
 <?php 
+
 
 }
  ?>

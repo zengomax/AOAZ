@@ -1,3 +1,4 @@
+
 <?php 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -188,7 +189,6 @@ if(estado=="ACTIVO"){
  	 $message="Do you want to unblock this user?";
  }
  var dni = $(this).data("id");
- alert(dni);
 var parametros = {"dni" : dni, "estado": estado,};
 
 //if(alertify.confirm($message).set({title:"WARNING!!"},'onok', function(closeEvent){ 
@@ -211,32 +211,52 @@ $.ajax({
 
 
 });
-//-----------------------------
+//----------------CAMBIAR DATOS USUARIO-------------
+$(document).on("click","#save",function(){
+	$valor=$(this).val(); //obtiene el valor para saber el id de cada fila 
+	 var dni = $(this).data("id");
+	 var nombre = $("#name"+$valor).val();
+	 var apellido = $("#surname"+$valor).val();
+	 var email=$("#email"+$valor).val();
+	 var password = $("#password"+$valor).val();
+	 var passwordrep = $("#repeatpassword"+$valor).val();
 
-$(document).on("click","#editar",function(){
-  
- var dni = $(this).data("id");
-var parametros = {"dni" : dni,};
+
+if(dni==""||nombre==""||apellido==""||email==""||password==""||passwordrep==""){
+
+	alert("You cant save empty data");
+
+
+}else{
+	if(password!=passwordrep){
+		alert("Passwords must match");
+
+	}else{
+	var parametros = {"dni" : dni, "nombre": nombre,"apellido": apellido,"email": email,"password": password,};
+
+
 
 $.ajax({
 			data:  parametros, 
-	        url:   'gestionmember.php', 
+	        url:   'editmemberadmin.php', 
 	        type:  'post',
 			
 			success:function(datos){
 
-			alertify.success(datos);		
-		},
-			
+					
+			alert(datos)
+			obtenerDatos();},
+			error:function(){
+				$('#edit'+$valor).fadeIn().html('<p><strong>The server is not working</p>');
+			}
 				});
-	
-
-
-
-	
-
+	}	
+}
 
 });
+
+//--------------------------------------------------------
+
 
 
 

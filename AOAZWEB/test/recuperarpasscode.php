@@ -64,7 +64,7 @@ $email = $_GET['mail']; ?>
     <label>Email*         :  <input class="form-control" type="email" name="email" id="email" value="<?php echo $email ?>"></label><br>
     <label>Code*          :  <input class="form-control" type="number" name="codigo" id="codigo" placeholder="Please enter the code"></label><br>
     <label>Password*      :  <input class="form-control" type="password" name="password" id="password" placeholder="Please enter your password"></label><br>
-    <label>Repit Password*:  <input class="form-control" type="password" name="repassword" id="passwordrep" placeholder="Please enter your password again"></label><br>
+    <label>Repeat Password*:  <input class="form-control" type="password" name="repassword" id="passwordrep" placeholder="Please enter your password again"></label><br>
   
     
 
