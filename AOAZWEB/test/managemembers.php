@@ -64,7 +64,14 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 				.navbar-customclass .navbar-nav .nav-link{
 					  color:#ff8c00;
 					}
+				#formu input{
 
+					border:2px solid black; 
+					box-shadow:0 0 0px;	
+					background: none;
+
+
+				}
 			
 		</style>
 </head>
@@ -181,6 +188,7 @@ if(estado=="ACTIVO"){
  	 $message="Do you want to unblock this user?";
  }
  var dni = $(this).data("id");
+ alert(dni);
 var parametros = {"dni" : dni, "estado": estado,};
 
 //if(alertify.confirm($message).set({title:"WARNING!!"},'onok', function(closeEvent){ 
@@ -200,20 +208,33 @@ $.ajax({
 			}
 				});
 	
+
+
+});
+//-----------------------------
+
+$(document).on("click","#editar",function(){
+  
+ var dni = $(this).data("id");
+var parametros = {"dni" : dni,};
+
+$.ajax({
+			data:  parametros, 
+	        url:   'gestionmember.php', 
+	        type:  'post',
+			
+			success:function(datos){
+
+			alertify.success(datos);		
+		},
+			
+				});
 	
 
 
-//
-
 
 	
 
-
-
-
-
-
-  	
 
 });
 
@@ -228,6 +249,9 @@ $.ajax({
 
 
   </script>
+
+
+
 </body>
 </html>
 

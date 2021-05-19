@@ -116,7 +116,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 			
 </div>
 
-
+<br><br><br><br>
 </body>
 </html>
 <script>

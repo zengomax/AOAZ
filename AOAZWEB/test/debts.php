@@ -148,7 +148,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
     		
 </div>
-
+<br><br><br><br>
 </body>
 </html>
 <script>

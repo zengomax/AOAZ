@@ -79,7 +79,7 @@
   }
   
   .box input[type = "email"],.box input[type = "text"],.box input[type = "date"],.box input[type = "file"]{
-  border:0;
+
   background: none;
   display: block;
   margin: 20px auto;
