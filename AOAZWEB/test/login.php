@@ -83,6 +83,7 @@
    <input type="email" name="email"  placeholder="Email" required>
    <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>
    </div>
+   <a href="recuperarpass.php">Password Forgotten? Click here</a>
   <input type="submit" class="btn" id="enviar" value="Login"/>
   </form>
   
