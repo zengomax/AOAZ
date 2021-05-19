@@ -1,4 +1,4 @@
-package Model;
+package modelo;
 
  /**
     * This class purpose is to manage movements

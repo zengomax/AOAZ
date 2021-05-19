@@ -1,4 +1,4 @@
-package Model;
+package modelo;
 
 import java.sql.Statement;
 import java.sql.Connection;

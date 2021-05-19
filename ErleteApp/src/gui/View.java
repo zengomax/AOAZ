@@ -1,6 +1,6 @@
-package GUI;
+package gui;
 
-import Model.TaulaModeloa;
+import modelo.TaulaModeloa;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 

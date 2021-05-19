@@ -1,9 +1,9 @@
-package GUI;
+package gui;
 
-import Model.TaulaModeloa;
+import modelo.MoveTableModel;
+import modelo.TaulaModeloa;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import Model.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

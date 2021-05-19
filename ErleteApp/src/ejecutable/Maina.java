@@ -1,9 +1,9 @@
-package Ejecutable;
+package ejecutable;
 
 
-import Model.Model;
-import DataAccess.Controller;
-import GUI.*;
+import gui.View;
+import modelo.Model;
+import dataAccess.Controller;
 
 
 public class Maina {

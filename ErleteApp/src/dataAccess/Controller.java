@@ -1,15 +1,17 @@
-package DataAccess;
+package dataAccess;
 
-import Model.Model;
-import Model.TaulaModeloa;
-import GUI.View;
+import gui.MovimientosGUI;
+import modelo.MoveTableModel;
+import modelo.Movimiento;
+import modelo.Producto;
+import modelo.Model;
+import modelo.TaulaModeloa;
+import gui.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
-import GUI.*;
-import Model.*;
 import java.util.Calendar;
 
 import java.sql.Date;
