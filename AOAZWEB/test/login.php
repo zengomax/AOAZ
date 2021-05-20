@@ -113,7 +113,8 @@ if(password_verify($password,$imprimir['password'])==true && $estado=="ACTIVO"){
     $_SESSION["rol"]= $imprimir['rol'];
     $_SESSION["imagen"]= $imprimir['imagen'];
     $_SESSION["dni"]= $imprimir['dni'];
-
+    $_SESSION["email"]= $imprimir['email'];
+    $_SESSION["apellido"]=$imprimir['apellido'];
 
    
 

@@ -210,7 +210,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 					
 				</div>
 			</nav>
-		</div>
+	</div>
 
 
 <!-- Ends nav bar-->
