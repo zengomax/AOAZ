@@ -1,0 +1,121 @@
+ body{
+  margin: auto;
+  padding: 0;
+  font-family: sans-serif;
+  background: #FFB133;
+}
+.navbar-customclass .navbar-nav .nav-link{
+  color:#ff8c00;
+}
+
+
+.box{
+  width: 400px;
+  padding: 40px;
+  left: 50%;
+  margin:auto;
+  background: #2c333a;
+  text-align: center;
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.7);
+   border-radius: 10px;
+
+}
+
+.box h1{
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.box input[type = "password"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid black;
+  padding: 1px 1px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.45s;
+
+}
+
+.box input[type = "password"]:focus{
+  width: 280px;
+  border-color:black;
+  
+}
+
+.box input[type = "submit"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid black;
+  padding: 14px 40px;
+  outline: none;
+  color:#ffffff;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.box input[type = "submit"]:hover{
+  color:white;
+  background-color: #ff8c00;
+}
+.box a:link{
+  color:#ff8c00;
+}
+.box a:visited{
+  color:#ff8c00;
+}
+    
+  #error{   
+    color: #FF0000;   
+  }
+  
+  .box input[type = "email"],.box input[type = "text"],.box input[type = "date"],.box input[type = "file"]{
+
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid black;
+  padding: 5px 5px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.45s;
+}
+
+.box input[type = "email"]:focus,.box input[type = "text"]:focus{
+  width: 280px;
+  border-color:black;
+}
+
+#password{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid black;
+  padding: 5px 5px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.45s;
+
+}
+
+#password:focus{
+  width: 280px;
+  border-color:black;
+  
+}
