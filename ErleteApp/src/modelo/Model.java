@@ -18,7 +18,7 @@ public class Model {
    
         private static Connection connect() throws SQLException {
    
-        // Connection conn = DriverManager.getConnection("jdbc:mariadb://192.168.65.1:3306/HerrienDBa", "dam1", "dam1");
+       // Connection conn = DriverManager.getConnection("jdbc:mariadb://192.168.65.1:3306/HerrienDBa", "dam1", "dam1");
           Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost/erlete", "root","");
 
    
