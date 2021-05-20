@@ -10,18 +10,19 @@ $apellido=$_POST['apellido'];
 $email=$_POST['email'];
 $password=$_POST['password'];
 
+		$passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
 
-        $sql="UPDATE usuario SET nombre='$nombre', apellido= '$apellido', email='$email',password= '$password' WHERE dni = '$dni'";
+        $sql="UPDATE usuario SET nombre='$nombre', apellido='$apellido', email='$email',password='$passwordEncriptada' WHERE dni='$dni'";
 
         $ejecutar=mysqli_query($conexion, $sql);
 
         if($ejecutar) {
 
 
-        	echo "funciona";
+        	echo "Data changed succesfully";
         } else{
 
-        	"no";
+        	"Something was wrong";
         }
 
 

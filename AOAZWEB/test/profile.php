@@ -228,14 +228,19 @@ $imprimir=mysqli_fetch_array($resultado);
   	<label><input type="file"  name="file" id="file"  onchange="mostrarImagen()"></label>
 
 </div>
-<div class="col-sm-7 data" >
+<div class="col-sm-7 data" id="datos" >
   	<label>Name:<input type="text" name="pname" id="pname"  value="<?php echo $imprimir['nombre']; ?>"  readonly></label><br>
    <label>Surname:<input type="text" name="psurname" id="psurname"  value="<?php echo $imprimir['apellido']; ?>"  readonly></label><br>
    <label>Birthday:<input type="date" name="date" id="date"  value="<?php echo $imprimir['nacimiento']; ?>"  readonly></label><br>
    <label>Email:<input type="email" name="email" id="email" value="<?php echo $imprimir['email']; ?>"  readonly></label><br>
+
+
  <div id="btnedit">
   <input type="button" class="btn btn-danger" id="editar" value="Edit"/>
   <input type="submit" class="btn btn-success" id="Guardar" value="Save"/>
+   <input type="button" class="btn btn-info" id="buttonpassword" onclick="cambiarPassword()" value="Change Password"/>
+
+
 </div>
 </div>
   </form>
@@ -364,5 +369,86 @@ function mostrarImagen(){   //Script para mostrar la previsualización de la ima
 					
 					};   }
 					} 
+
+
+//Verificacion del formulario, para no guardar datos vacios
+
+ $("#profileform").submit(function(){
+
+ 	$nombre = $("#pname").val();
+ 	$apellido = $("#pname").val();
+ 	$fecha = $("#date").val();
+ 	$email = $("#email").val();
+
+if($nombre==""||$apellido==""||$fecha==""||$email==""){
+	alert("You can't save empty data");
+	return false;
+}
+
+	                })
+
+
+//funcion para desplegar form de cambio de contraseña
+ function cambiarPassword(){
+
+$.ajax({
+        url:   'cambiarPassword.php', 
+		
+
+		beforeSend:function(){
+			
+		$('#datos').html('<div><img src="img/loading.gif" width="100"/></div>')},
+
+
+		success:function(datos){
+
+
+		$('#datos').fadeIn().html(datos);},
+		error:function(){
+			$('#datos').fadeIn().html('<p><strong>The server is not working</p>');
+		}
+			});
+
+
+ 	
+ }
+
+//FORM DE CAMBIO DE CONTRASEÑA
+
+
+$(document).on("click","#buton",function(){
+	alert("hola");
+	var passwordvieja = $('#passwordvieja').val();
+	var password = $('#password').val();
+	var passwordrep = $('#passwordrep').val();
+
+    var parametros = {"passwordvieja" : password,"password" : passwordrep, "passwordrep":passwordrep,};
+
+
+$.ajax({
+
+		data:   parametros,
+        url:   'cambiarPassword.php', 
+        type: 'post',
+		
+
+		beforeSend:function(){
+			
+		$('#datos').html('<div><img src="img/loading.gif" width="100"/></div>')},
+
+
+		success:function(datos){
+
+
+		$('#datos').fadeIn().html(datos);},
+		error:function(){
+			$('#datos').fadeIn().html('<p><strong>The server is not working</p>');
+		}
+			});
+
+
+ 	
+ });
+
 </script>
 

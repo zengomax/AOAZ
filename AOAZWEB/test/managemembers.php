@@ -244,8 +244,10 @@ $.ajax({
 			success:function(datos){
 
 					
-			alert(datos)
-			obtenerDatos();},
+			alert(datos);			
+			location.href="managemembers.php";
+
+			 },
 			error:function(){
 				$('#edit'+$valor).fadeIn().html('<p><strong>The server is not working</p>');
 			}
