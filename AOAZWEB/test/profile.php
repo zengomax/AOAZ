@@ -376,7 +376,7 @@ function mostrarImagen(){   //Script para mostrar la previsualización de la ima
  $("#profileform").submit(function(){
 
  	$nombre = $("#pname").val();
- 	$apellido = $("#pname").val();
+ 	$apellido = $("#psurname").val();
  	$fecha = $("#date").val();
  	$email = $("#email").val();
 
@@ -417,15 +417,16 @@ $.ajax({
 
 
 $(document).on("click","#buton",function(){
-	alert("hola");
+	
 	var passwordvieja = $('#passwordvieja').val();
 	var password = $('#password').val();
 	var passwordrep = $('#passwordrep').val();
+    var parametros = {"passwordvieja" : passwordvieja,"password" : password,"passwordrep":passwordrep,};
+	if(passwordvieja==""||password==""||passwordrep==""){
+		alert("You cant save empty data");
+	}else{
 
-    var parametros = {"passwordvieja" : password,"password" : passwordrep, "passwordrep":passwordrep,};
-
-
-$.ajax({
+	$.ajax({
 
 		data:   parametros,
         url:   'cambiarPassword.php', 
@@ -446,8 +447,7 @@ $.ajax({
 		}
 			});
 
-
- 	
+ }	
  });
 
 </script>
