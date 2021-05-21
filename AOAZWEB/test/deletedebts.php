@@ -1,5 +1,8 @@
 <?php
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $id = $_POST['iddeuda'];
 
@@ -8,7 +11,6 @@ $id = $_POST['iddeuda'];
 include ("conexion.php");
 
 $conexion=connectDataBase();
-
 
 // hacemos select para obtener el metalbin y ponerlo disponible
 
@@ -45,6 +47,11 @@ $ejecutar= mysqli_query($conexion,$sql) or die(mysqli_error($conexion));
 				 if($update){
 
 						echo"Paid succesfully";
+
+						$_SESSION['motivodeuda']=$_POST['motivo'];
+						$_SESSION['eurodeuda']=$_POST['euro'];
+						
+
 
 
 				 }else{

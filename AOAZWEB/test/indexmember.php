@@ -17,10 +17,11 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 <html>
 <head>
 	<title>INDEX</title>
-
+		<link rel="shortcut icon" href="img/ico.png">
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		
@@ -169,6 +170,45 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 				z-index: 9999;
 				text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
 			}
+
+	footer {
+  				text-align: center;
+ 				padding: 3px;
+  				background-color: #828282;
+  				color: white;
+			}
+			.fa {
+			  padding: 10px;
+			  font-size: 30px;
+			  margin: auto;
+			  text-decoration: none;
+			  margin: 5px 2px;
+			  border-radius: 80%;
+			}
+
+			.fa:hover{
+			    opacity: 0.7;
+			}
+
+			.fa-facebook {
+			  background: #3B5998;
+			  color: white;
+			}
+			.fa-twitter {
+			  background: #55ACEE;
+			  color: white;
+			}
+
+			.fa-youtube {
+			  background: #bb0000;
+			  color: white;
+			}
+
+			.fa-instagram {
+			  background: #125688;
+			  color: white;
+			}
+
 		</style>
 </head>
 <body>
@@ -188,6 +228,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 						<li class="nav-item">
 							<a href="reserva.php" class="nav-link">Make a booking</a>
 						</li>
+						
 						
 					</ul>
 					
@@ -210,7 +251,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 					
 				</div>
 			</nav>
-		</div>
+	</div>
 
 
 <!-- Ends nav bar-->
@@ -263,14 +304,55 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 	
 	<h1><b>The thick gold</b></h1>
 
+<div style="background-color: #ffd966;" >
+	
+	<h1><b>Honey Bee Society Structure and Organization</b></h1>
+
 </div>
 <div style="background-color: #ffd966;">
-		dbfbsbfbh<br>
-		dokfopsjkf<br>
-		dfkdfk<br>
-		dfkodkfpjk
+		<p>The bee society is consisted of the queen (which is the only sexually developed female), the worker bees and the drones. Each colony has only one queen. The primary purpose of queen is to reproduce. The queen mates only once or twice in her life (but with multiple drones), and the mating takes place during her first days. After mating in the air with the drones, she stores the drones’ sperm in a special area of her body and can lay eggs for the rest of her life (3-5 years). The queen’s second purpose is to organize and motivate (through pheromones) workers to complete the workload of the hive. Workers (sexually underdeveloped females) are responsible for nearly all the required heavy work of the hive. This means guarding the hive, comb building, caring for the queen, cleaning, polishing, feeding the brood, storing, collecting nectar, pollen and water, chewing the nectar and transform it to honey through enzymes, adjusting the temperature inside the hive by fanning with their wings and many more. The sole purpose of drones is to fertilize virgin queens. Drones do not have a sting, thus they cannot even guard the hive against intruders. They do not participate in any other operation of the colony other than mating with virgin queens.</p>
+		<br>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/xE2V8etxOeg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<br>
+		<br>
+		<p>The queen is larger in size than the drone and double in size than the workers. A beekeeper can easily spot the queen: Apart from its different size, shape and color, the other worker bees often surround the queen at a small distance, showing respect and allowing her the proper space to walk without problems. They can also feed her in the mouth with royal jelly during brood rearing (mainly in the spring). During the rest of the year, they offer pollen and honey mixture to the queen. The average queen lives 3-5 years, but can lay eggs at good rate (200.000 eggs per year) during the first 2-3 years of its life. It is very important to have a young and thriving queen in our hive (preferably up to 2 years old). A queen can lay fertile or unfertile eggs. Unfertile eggs become drones, while fertile eggs become workers or new queens.</p>
 
 	</div>
+	<div style="background-color: #ffd966;" >
+	
+	<h1><b>How do bees produce Honey?</b></h1>
+
+	</div>
+	<div style="background-color: #ffd966;" >
+	
+	<p>Worker bees (who account for at least 98% of the beehive population) are the ones that produce honey under a complicated procedure. A great number of worker bees are necessary; no single honeybee can produce honey without the other members of the team. In a few words, “transport bees” suck the nectar out of flowers and they store it in their second special stomach (designed especially for storing honey) while they fly back to the hive. Once they arrive at the hive, they deliver the nectar to the “chewing” bees. The chewing bees collect the nectar and they chew it for about 30 minutes. During the chewing, enzymes are transforming nectar into a substance that contains honey along with water. After chewing, the worker bees diffuse the substance into honeycombs, so that the water can evaporate, making the honey less watery. Water evaporation is accelerated as other bees fan it with their wings. When the honey production has finished, other bees are responsible for sealing the cells of honeycombs with wax, so that the product is protected.</p>
+<p>
+Bees produce and store their products (honey, royal jelly, propolis, etc.) for their own use. They can survive eating honey during winter and other periods when pollen is not available. Beekeepers actually “steal” a portion of this emergency stock, when they harvest honey. But if harvesting is done rationally, bees will counter produce and deputize the honey quantity taken from humans, and they will continue their lifecycle without further problems.</p>
+
+	</div>
+
+
+
+
+</div>
+
+
+</div>
+<!--Footer-->
+<div style="width: 100%">
+	<footer>
+		Email:aoazdevelopers@gmail.com<br>
+		Telf:654389234
+		<br>
+		<a href="#" class="fa fa-facebook"></a>
+		<a href="#" class="fa fa-twitter"></a>
+		<a href="#" class="fa fa-youtube"></a>
+		<a href="#" class="fa fa-instagram"></a>
+		<p>&copy; 2021 Erlete.com</p>
+	</footer>	
+
+</div>
+
 
 
 
@@ -284,7 +366,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 	
 
     		
-</div>
+
 
 </body>
 </html>

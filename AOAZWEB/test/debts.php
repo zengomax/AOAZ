@@ -189,7 +189,10 @@ $(document).on("click","#pay",function(){
 
 
  var iddeuda = $(this).data("id");
-var parametros = {"iddeuda" : iddeuda,};
+ var motivo = $(this).data("motivo");
+ var euro = $(this).data("euro");
+
+var parametros = {"iddeuda" : iddeuda,"motivo": motivo,"euro": euro,};
 
 	if (confirm("Do you want to pay this debt?")){
 
@@ -209,8 +212,11 @@ $.ajax({
 				$('#datos').fadeIn().html('<p><strong>The server is not working</p>');
 			}
 				});
-	
+
+
 	}
+
+	
 
 
 //} ));

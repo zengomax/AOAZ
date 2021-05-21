@@ -58,11 +58,14 @@
 	   <input  type="text" id="nombre" name="nombre"  placeholder="Name" required="">
 	   <input  type="text" id="apellido" name="apellido"  placeholder="Surname"  required="">
 	   <input  type="text" id="dni" name="dni"  placeholder="DNI" required pattern="^[0-9]{8,8}[A-Za-z]$">
-	   <input type="email" name="email"  placeholder="Email" required>
+	   <input type="email" name="email"  placeholder="Email" required>  
+	   <img src="img/eye.png" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();" style="width:10%;float:right;margin-left: -10%;" />
 	   <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>
+	   <img src="img/eye.png" onmouseover="mouseoverrPass();" onmouseout="mouseoutrPass();" style="width:10%;float:right;margin-left: -10%;" />
 	   <input type="password" id="passwordrep"  placeholder="Repeat password" name="password" minlength="6" required>
+	   
 	   <input  type="password" id="code" name="code" placeholder="Enter register code" required>
-	   <img src="img/eye.png" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();" style="width:10%;height: 10%" />
+	  
 	   <input  type="Date" name="fecha" id="fecha" value required >
 	   <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br>
 	   <center><img id="argazki" name="imagen" width="150"></center> 
@@ -203,12 +206,22 @@
 	                })
 
 					function mouseoverPass(obj) {
-					  var obj = document.getElementById('code');
+					  var obj = document.getElementById('password');
 					  obj.type = "text";
 					}
 					function mouseoutPass(obj) {
-					  var obj = document.getElementById('code');
+					  var obj = document.getElementById('password');
 					  obj.type = "password";
+					}
+					function mouseoverrPass(obj) {
+					  var obj = document.getElementById('passwordrep');
+					  obj.type = "text";
+					  
+					}
+					function mouseoutrPass(obj) {
+					  var obj = document.getElementById('passwordrep');
+					  obj.type = "password";
+				
 					}
 					
 					
