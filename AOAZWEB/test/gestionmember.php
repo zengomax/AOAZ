@@ -6,7 +6,7 @@ $conexion=connectDataBase();
 session_start();
 
 $estado=$_GET['estado'];
-
+$dni=$_SESSION['dni'];
 
 if($estado=="ACTIVO"){  //SI LA RESERVA ESTA PENDIENTE CARGA LA TABLA CON BOTONES
 
@@ -28,7 +28,7 @@ if($estado=="ACTIVO"){  //SI LA RESERVA ESTA PENDIENTE CARGA LA TABLA CON BOTONE
 
 <?php
 $i=0;
-$resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado= 'ACTIVO'")or die(mysqli_error($conexion));
+$resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado= 'ACTIVO' AND dni != '$dni'")or die(mysqli_error($conexion));
 while($imprimir=mysqli_fetch_array($resultado)){
 
 ?>      <tr>

@@ -7,8 +7,20 @@ $conexion=connectDataBase();
 
 session_start();
 
-$dni=$_SESSION['dni'];
-$resultado= mysqli_query($conexion,"SELECT * FROM deudas ")or die(mysqli_error($conexion));
+$dni=$_GET['dni'];
+
+if($dni=="all"){
+
+  $consulta="SELECT * FROM deudas inner join usuario where deudas.dni=usuario.dni ORDER BY usuario.dni";
+
+}else{
+
+  $consulta="SELECT * FROM deudas inner join usuario where deudas.dni=usuario.dni and usuario.dni='$dni'";
+
+}
+
+
+$resultado= mysqli_query($conexion,$consulta)or die(mysqli_error($conexion));
 
 if(isset($resultado)){ 
 
@@ -21,6 +33,7 @@ if(isset($resultado)){
         <th>Cause</th>
         <th>Euros</th>
         <th>DNI</th>
+        <th>Name & Surname</th>
         </tr>
 
 <?php
@@ -32,6 +45,7 @@ while($imprimir=mysqli_fetch_array($resultado)){
         <td id="cause" data-id_prueba="<?php echo $imprimir['motivo'] ?>" ><?php echo $imprimir['motivo'] ?></td>
         <td id="euros"><?php echo $imprimir['eurosdeuda']." €" ?></td>  
         <td id="dni"><?php echo $imprimir['dni'] ?></td>  
+        <td id="nombre"><?php echo $imprimir['nombre']." ".$imprimir['apellido'] ?></td>  
   
         
 

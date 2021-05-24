@@ -109,7 +109,29 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 <!--starts text--><br>
 
 	
-	<h1>Debts</h1>
+	<h1>Debts</h1><br><br>
+
+
+<select onchange="obtenerDatos();" class="form-control" id="deudadni"  name="metalbin">
+ <option value="all">ALL USERS</option>
+
+  <?php
+
+        include ("conexion.php");
+        $conexion=connectDataBase();
+
+          $resultado= mysqli_query($conexion,"SELECT * FROM deudas inner join usuario where deudas.dni=usuario.dni ");
+
+          while($imprimir=mysqli_fetch_array($resultado)){ 
+            ?>
+             <option value="<?php echo $imprimir['dni'] ?>"><?php echo $imprimir['dni']." : ".$imprimir['nombre']." ".$imprimir['apellido'] ?></option>
+            <?php 
+            }
+             ?>
+</select>
+          <br><br>
+
+
 
 <div id="datos" >
 		
@@ -157,12 +179,12 @@ window.onload =function() {
 
 function obtenerDatos(){
  
-
+ $dni= $("#deudadni").val();
 		$.ajax({
 
-		url: 'gestiondebtsadmin.php',
-	
-		
+		url: 'gestiondebtsadmin.php?dni='+$dni+'',
+
+
 		success:function(datos){
 
 
@@ -175,4 +197,7 @@ function obtenerDatos(){
 		
 	
 		}
+
+
+
 	</script>
