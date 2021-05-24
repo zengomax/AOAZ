@@ -20,7 +20,8 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		
@@ -51,66 +52,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css"/>
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
-
-		<style type="text/css" media="screen">
-			#close:hover{
-
-				background-color: #DE2424;
-				border-radius:5px;
-			}
-
-			#profile:hover{
-				background-color: #1A9516;
-			}
-
-			 body{
-				  margin: auto;
-				  padding: 0;
-				  font-family: sans-serif;
-				  background: #FFB133;
-				}
-				.navbar-customclass .navbar-nav .nav-link{
-					  color:#ff8c00;
-					}
-			.edtpf{
-
-				background-color: #ffd966;
-				margin:auto;
-
-
-
-			}
-			input#file{
-
-				color:transparent;
-				width:158px;
-				margin-left: 35%;
-
-
-			}
-			
-			.imgp{
-
-					margin-left: 10%;
-
-
-
-
-			}
-			.data{
-					margin-top: 1%;
-
-
-			}
-			
-#btnedit{
-	margin-top: 5%;
-	margin-left:15%;
-
-}
-
-			
-		</style>
+<link rel="stylesheet" href="allcss.css" ></link>
 </head>
 <body>
 	<!-- Starts nav bar-->
@@ -217,19 +159,24 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 $imprimir=mysqli_fetch_array($resultado);
 
 ?>
-<div class="edtpf container">
+<div class="infod2">
+	
 <form id="profileform" class="mt-4 mb-4" name="login" method="POST" enctype="multipart/form-data" action="profile.php">
-	 <h2 class="display-4">Welcome <?php echo$_SESSION['nombre'] ?></h2>
-<div class="row imgp" >
- 	<div class="col-sm-5">
-  	<?php echo "&nbsp;&nbsp;<img class='rounded-circle' id='argazki' width=250px height=250px; src=".$_SESSION['imagen'].">"?>
+	 <h2 class="display-4" style="text-align: center;">Welcome <?php echo$_SESSION['nombre'] ?> !</h2>
+<br>
+<div class="infop1">
+		
+
+<div class="row" >
+ 	<div class="col-4">
+  	<?php echo "<img class='rounded-circle' id='argazki' width=250px height=250px; src=".$_SESSION['imagen'].">"?>
   	
  	<br>
  	<br>
   	<label><input type="file"  name="file" id="file"  onchange="mostrarImagen()"></label>
 
 </div>
-<div class="col-sm-7 data" id="datos" >
+<div class="col-8 data imgp" id="datos" >
   	<label>Name:<input type="text" name="pname" id="pname"  value="<?php echo $imprimir['nombre']; ?>"  readonly></label><br>
    <label>Surname:<input type="text" name="psurname" id="psurname"  value="<?php echo $imprimir['apellido']; ?>"  readonly></label><br>
    <label>Birthday:<input type="date" name="date" id="date"  value="<?php echo $imprimir['nacimiento']; ?>"  readonly></label><br>
@@ -239,14 +186,18 @@ $imprimir=mysqli_fetch_array($resultado);
  <div id="btnedit">
   <input type="button" class="btn btn-danger" id="editar" value="Edit"/>
   <input type="submit" class="btn btn-success" id="Guardar" value="Save"/>
-   <input type="button" class="btn btn-info" id="buttonpassword" onclick="cambiarPassword()" value="Change Password"/>
+   <input type="button" class="btn btn-warning" id="buttonpassword" onclick="cambiarPassword()" value="Change Password"/>
 
 
+</div>
 </div>
 </div>
   </form>
+
 </div>
-</div>
+
+
+
 
 <?php
 if(isset($_POST['pname'])){
@@ -307,10 +258,37 @@ if ($dir=="img/"){
 
 <!--ends text-->
 
-	
+</div>	
+<?php if($_SESSION["rol"]=='usuario'){?> 
+<br><br>
+<footer>
+  <div class="container-fluid">
+    <div class="row">
 
-    		
+    <div class="col-4" style="float:left;margin:auto;">
+      <p>Achondo, Jauregi Street 28<br>
+      Email:aoazdebelopers@gmail.com<br>
+      Telf: <b>654389234</b></p>      
+    </div>
+    <div class="col-4" style="float:center;margin:auto;">
+      <h1 style="font-size: 25px">Public opening hours</h1>
+      <p>Monday-Friday: 9:00AM-8:00PM<br>
+      Saturday: 10:00AM-5:00PM<br>
+      Sunday: 11:00AM-6:00PM</p>
+      <p>Holiday hours may vary.</p>
+    </div>
+    <div class="col-4" style="margin:auto;">
+      <h1 style="font-size: 25px">Follow Us</h1>
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-youtube"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      <p>@Desing by:AOAZ</p>
+    </div>
+  </div>
 </div>
+</footer> 
+<?php } ?>
 
 </body>
 </html>

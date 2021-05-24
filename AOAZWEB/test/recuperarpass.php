@@ -27,7 +27,7 @@ require 'lib/PHPMailer/SMTP.php';
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-      <link rel="stylesheet" href="reserva.css" ></link>
+      <link rel="stylesheet" href="allcss.css" ></link>
 <!-- Starts nav bar-->
 	<div class="bs-example">
 		<img src="img/banner2.png" width=100% height=20% ></img>
@@ -57,10 +57,18 @@ require 'lib/PHPMailer/SMTP.php';
 
 
 <!-- Ends nav bar-->
-  
-  <div class="container" id="reservadv">
-    <h1>Restore Password</h1>
-    <form id="restore" name="restore" method="POST" enctype="multipart/form-data" action="recuperarpass.php">
+
+
+<br>
+<div class="infod1">
+<div class="infoh3">
+	
+	<h1><b>Restore Password</b></h1>
+
+</div>
+<br>
+<div class="infop1">
+		<form id="restore" name="restore" method="POST" enctype="multipart/form-data" action="recuperarpass.php">
     	<br><br><br>
 	<p>Please introduce your email to restore your password, you will recive an email with instructions</p>
     <label>Email:  <input type="email" name="email" placeholder="Please enter your email"></label>
@@ -68,8 +76,18 @@ require 'lib/PHPMailer/SMTP.php';
 
    <br><br><br>
 
-  <button type="submit" class="btn btn-primary" id="restoreButton">Restore Password</button>
-  </form><br><br>
+  <button type="submit" class="btn btn-warning" id="restoreButton">Restore Password</button>
+  </form>
+
+	</div>
+	</div>	
+
+
+
+
+
+  
+  
 </body>
 </html>
 

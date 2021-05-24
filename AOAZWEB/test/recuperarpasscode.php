@@ -17,7 +17,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-      <link rel="stylesheet" href="reserva.css" ></link>
+     <link rel="stylesheet" href="allcss.css" ></link>
 <!-- Starts nav bar-->
 	<div class="bs-example">
 		<img src="img/banner2.png" width=100% height=20% ></img>
@@ -49,31 +49,47 @@
 <!-- Ends nav bar-->
 
 <?php 
-error_reporting(0);
+error_reporting(0);//para que no salte email nulo
 
 session_start();
 $email = $_GET['mail']; ?>
-  
-  <div class="container" id="reservadv">
-    <h1>Restore Password</h1>
 
-    <div class="form-group">
+<br>
+
+<div class="infod3">
+<div class="infoh2">
+	
+	<h1><b>Restore Password</b></h1>
+
+</div>
+
+<div class="infop2" style="text-align: center;">
+	
+	 <div class="form-group">
     <form id="restore" name="restore" method="POST" enctype="multipart/form-data" action="recuperarpasscode.php">
-    	<br><br><br>
+    	<br>
 	<p>Enter the requested data to restore your password.</p><br>
-    <label>Email*         :  <input class="form-control" type="email" name="email" id="email" value="<?php echo $email ?>"></label><br>
-    <label>Code*          :  <input class="form-control" type="number" name="codigo" id="codigo" placeholder="Please enter the code"></label><br>
-    <label>Password*      :  <input class="form-control" type="password" name="password" id="password" placeholder="Please enter your password"></label><br>
-    <label>Repeat Password*:  <input class="form-control" type="password" name="repassword" id="passwordrep" placeholder="Please enter your password again"></label><br>
+    <label>Email*         :  <input class="form-control" type="email" name="email" id="email" required value="<?php echo $email ?>"></label><br>
+    <label>Code*          :  <input class="form-control" type="number" name="codigo" id="codigo" required placeholder="Please enter the code"></label><br>
+    <label>Password*      :  <input class="form-control" type="password" name="password" id="passwordd" required placeholder="Please enter your password"></label><br>
+    <label>Repeat Password*:  <input class="form-control" type="password" name="repassword" id="passwordrep" required placeholder="Please enter your password again"></label><br>
   
     
 
 
    <br><br><br>
 
-  <button type="submit" class="btn btn-primary" id="restoreButton">Restore Password</button>
+  <button type="submit" class="btn btn-warning" id="restoreButton">Restore Password</button>
   </form><br><br>
 </div>
+
+
+
+
+
+	</div>
+	</div>	
+
 
 </body>
 </html>
@@ -82,7 +98,7 @@ $email = $_GET['mail']; ?>
 		// validación de registro
     $("#restore").submit(function(){
 
-    if($("#password").val()!=$("#passwordrep").val()){
+    if($("#passwordd").val()!=$("#passwordrep").val()){
 
     alert("The passwords must match");
     return false;
@@ -128,7 +144,7 @@ $passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
 	 
 	 }
 else{ 
-	echo "The code or the mail are not correct";
+	echo '<script type="text/javascript">alert("he code or the mail are not correct");</script>';
 	} 
 
 }

@@ -13,7 +13,8 @@ if($estado=="ACTIVO"){  //SI LA RESERVA ESTA PENDIENTE CARGA LA TABLA CON BOTONE
 ?>
 <div class="container">
 
-  <h5 class="display-6"> Active users</h5>
+  <h5 class="display-6" style="text-align: center;"> Active users</h5>
+  <br>
  <table class="table table-bordered">
       <tr>
         <th>DNI</th>
@@ -48,8 +49,8 @@ while($imprimir=mysqli_fetch_array($resultado)){
 
     <div class="modal fade" id="edit<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="background: orange;" >
-      <div class="modal-header" style="background: orange;" >
+    <div class="modal-content" style="background:#ffd24d;" >
+      <div class="modal-header" style=" background: #ffd24d;" >
         <h5 class="modal-title" id="exampleModalLabel">Edit information</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -59,25 +60,23 @@ while($imprimir=mysqli_fetch_array($resultado)){
        <form id="formu">
             
   
-            <label for="recipient-name"   class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="name<?php echo $i ?>" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php echo $imprimir['nombre']  ?>">
+             <label for="recipient-name"   class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="name<?php echo $j ?>"  required value="<?php   echo $imprimir['nombre']   ?>">
         
             <label for="recipient-name" class="col-form-label">Surname:</label>
-            <input type="text" class="form-control" id="surname<?php echo $i ?>"style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php echo $imprimir['apellido']  ?>">
+            <input type="text" class="form-control" id="surname<?php echo $j ?>" value="<?php   echo $imprimir['apellido']   ?>">
      
       
             <label for="recipient-name" class="col-form-label">Email:</label>
-            <input type="text"   class="form-control" id="email<?php echo $i ?>" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php echo $imprimir['email']  ?>">
+            <input type="text"   class="form-control" id="email<?php echo $j ?>" value="<?php   echo $imprimir['email']   ?>">
 
          
-            <label for="recipient-name" class="col-form-label"> New Password:</label>
-            <input type="Password" class="form-control" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" id="password<?php echo $i ?>">
+            <label for="recipient-name" class="col-form-label">Password:</label>
+            <input type="Password" class="form-control" id="password<?php echo $j ?>" placeholder="Password">
           
             
-            <label for="recipient-name" class="col-form-label">Repeat
-             new Password:</label>
-            <input type="Password"  class="form-control" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;"  id="repeatpassword<?php echo $i ?>" >
-  
+            <label for="recipient-name" class="col-form-label">Repeat Password:</label>
+            <input type="Password"  class="form-control"id="repeatpassword<?php echo $j ?>" placeholder="Repeat password">
         </form>
       </div>
       <div class="modal-footer">
@@ -112,7 +111,8 @@ if($estado=="BLOQUEADO"){
 
 ?>
 <div class="container">
-    <h5 class="display-6"> My BLOCKED USERS</h5>
+    <h5 class="display-6" style="text-align: center;">Blocked users</h5>
+    <br>
 
  <table class="table table-bordered">
       <tr>
@@ -151,8 +151,8 @@ while($imprimir=mysqli_fetch_array($resultado)){
 
     <div class="modal fade" id="edit<?php echo $j  ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="background: orange;" >
-      <div class="modal-header" style="background: orange;" >
+    <div class="modal-content" style="background: #ffd24d;" >
+      <div class="modal-header" style="background: #ffd24d;" >
         <h5 class="modal-title" id="exampleModalLabel">Edit information</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

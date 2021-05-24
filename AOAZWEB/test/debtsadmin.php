@@ -15,7 +15,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 <!DOCTYPE html>
 <html>
 <head>
-	<title>INDEX</title>
+	<title>Debts</title>
 	<link rel="shortcut icon" href="img/ico.png">
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
@@ -28,24 +28,9 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 		
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="reserva.css" ></link>
+		<link rel="stylesheet" href="allcss.css" ></link>
 
-		<style type="text/css" media="screen">
-
-			 body{
-				  margin: auto;
-				  padding: 0;
-				  font-family: sans-serif;
-				  background: #FFB133;
-				}
-				.navbar-customclass .navbar-nav .nav-link{
-					  color:#ff8c00;
-					}
-				
-
-
-			
-		</style>
+		
 </head>
 <body onload="obtenerDatos()">
 	<!-- Starts nav bar-->
@@ -95,24 +80,18 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 
 <!-- Ends nav bar-->
 
-<!-- Starts carrousel-->
-<div class="container" id="reservadv">
 
-
-
-
-
-
-<!-- Ends carrousel-->
-
-
-<!--starts text--><br>
-
+<br>
+<div class="infod2">
+<div class="infoh4">
 	
-	<h1>Debts</h1><br><br>
+	<h1><b>Debts</b></h1>
 
+</div>
+<br>
+<div id="infomap">
 
-<select onchange="obtenerDatos();" class="form-control" id="deudadni"  name="metalbin">
+		<select onchange="obtenerDatos();" class="form-control" id="deudadni"  name="metalbin">
  <option value="all">ALL USERS</option>
 
   <?php
@@ -138,19 +117,15 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 
 </div>
 
+	</div>
+	</div>	
 
 
 
 
 
+<!-- Starts carrousel-->
 
-
-<!--ends text-->
-
-	
-
-    		
-</div>
 
 </body>
 </html>

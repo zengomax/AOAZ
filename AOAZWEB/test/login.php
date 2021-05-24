@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
 
 
-    <link rel="stylesheet" href="Login.css"/>
+    <link rel="stylesheet" href="allcss.css" ></link>
 
 </head>
 
@@ -77,7 +77,7 @@
  
 
   <form id="login" class="box mt-4 mb-4" name="login" method="POST" enctype="multipart/form-data" action="login.php">
- <h1 class="display-4">Login</h1>
+ <h1 class="display-4" style="color:#ffd966;">Login</h1>
 
   <div class="form-group">
    <input type="email" name="email"  placeholder="Email" required>

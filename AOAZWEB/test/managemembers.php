@@ -16,7 +16,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Members</title>
+	<title>Manage Members</title>
 	<link rel="shortcut icon" href="img/ico.png">
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
@@ -29,7 +29,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 		
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="reserva.css" ></link>
+		
 				<!-- JavaScript -->
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
@@ -54,27 +54,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
 
 
-		<style type="text/css" media="screen">
-
-			 body{
-				  margin: auto;
-				  padding: 0;
-				  font-family: sans-serif;
-				  background: #FFB133;
-				}
-				.navbar-customclass .navbar-nav .nav-link{
-					  color:#ff8c00;
-					}
-				#formu input{
-
-					border:2px solid black; 
-					box-shadow:0 0 0px;	
-					background: none;
-
-
-				}
-			
-		</style>
+	<link rel="stylesheet" href="allcss.css" ></link>
 </head>
 <body>
 	<!-- Starts nav bar-->
@@ -123,22 +103,34 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 
 
 <!-- Ends nav bar-->
+<br>
+<div style="    background-color: #ffffff;border-radius: 20px;padding-top: 2%;padding-bottom: 2%;width: 60%;margin: auto;">
+<div style="    background-color: #ffd966;border-radius: 20px;text-align: center;width: 30%;margin: auto;">
+	
+	<h1><b>Manage members</b></h1>
 
-<!-- Starts carrousel-->
-<div class="container" id="reservadv">
-		<h1>Manage members</h1><br>
-
-<div>
+</div>
+<br>
+<div style="    background-color: #737373;border-radius: 20px;width: 90%;padding: 2%;text-align: justify;margin: auto;">
+		<div style="text-align: center">
 	<label><input type="radio"  id="unlocked"  name="estadomembers" value="ACTIVO" checked onclick="obtenerDatos()"> Unblocked</label>
-	<label><input type="radio"  id="locked"  name="estadomembers" value="BLOQUEADO" onclick="obtenerDatos()"> Locked</label>
+	<label><input type="radio"  id="locked"  name="estadomembers" value="BLOQUEADO" onclick="obtenerDatos()"> Blocked</label>
 	
 </div><br><br>
 
 <div id="datos"></div>
-			
-</div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br>
+
+	</div>
+	</div>	
+<br><br><br>
+
+
+
+
+<!-- Starts carrousel-->
+		
+
 </body>
 </html>
 <script>
