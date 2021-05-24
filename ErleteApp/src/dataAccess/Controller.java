@@ -87,12 +87,12 @@ public class Controller implements ActionListener {
             case "Add Quantity":
                 loadComboBox();
                 view.dialogoAnadir.setVisible(true);
+                datuakKargatu();
 
                 break;
 
             case "View Movements":
                 movimiento.setVisible(true);
-                movimiento.modelomove = new MoveTableModel();
                 break;
 
             case "AddAnadir":
@@ -102,7 +102,6 @@ public class Controller implements ActionListener {
 
             case "View Details":
                 loadDetailsMovimiento();
-
                 break;
 
             case "Manage Products":
@@ -112,12 +111,11 @@ public class Controller implements ActionListener {
             case "anadirCantidadMenu":
                 loadComboBox();
                 view.dialogoAnadir.setVisible(true);
+
                 break;
 
             case "verMovimientos":
-                movimiento= new MovimientosGUI();
                 movimiento.setVisible(true);
-                movimiento.modelomove = new MoveTableModel();
                 break;
 
             case "Deposit Money":
@@ -127,6 +125,7 @@ public class Controller implements ActionListener {
             case "Deposit":
                 depositMoney();
                 mostrarSaldo();
+                datuakKargatu();
                 break;
 
         }
@@ -339,8 +338,8 @@ public class Controller implements ActionListener {
                 JOptionPane.showMessageDialog(null, "You have to deposit at least 1€", "Error", JOptionPane.WARNING_MESSAGE);
 
             } else {
-                
-                double total= dinero+Double.parseDouble(model.mostrarSaldo());
+
+                double total = dinero + Double.parseDouble(model.mostrarSaldo());
                 model.actualizarSaldo(total);
                 String descripcion = "DEPOSIT OF  " + dinero + "€";
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
