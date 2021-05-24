@@ -55,6 +55,15 @@ public class View extends javax.swing.JFrame {
         AddCantidad = new javax.swing.JButton();
         tittle3 = new javax.swing.JLabel();
         precioAnadir = new javax.swing.JTextField();
+        dialogoDinero = new javax.swing.JDialog();
+        jLabel10 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        DepositButton = new javax.swing.JButton();
+        moneyField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        balancelabel = new javax.swing.JLabel();
         GehituButton = new javax.swing.JButton();
         EzabatuButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -79,9 +88,12 @@ public class View extends javax.swing.JFrame {
         cambiarCantidadButton = new javax.swing.JMenuItem();
         menuMovement = new javax.swing.JMenu();
         viewMovements = new javax.swing.JMenuItem();
+        menuDinero = new javax.swing.JMenu();
+        depositMoneyMenu = new javax.swing.JMenuItem();
 
         dialogoAnadir.setTitle("Add Amount");
         dialogoAnadir.setMinimumSize(new java.awt.Dimension(614, 406));
+        dialogoAnadir.setResizable(false);
 
         elegirProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +191,82 @@ public class View extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        dialogoDinero.setTitle("Add Amount");
+        dialogoDinero.setMinimumSize(new java.awt.Dimension(614, 406));
+        dialogoDinero.setResizable(false);
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel10.setText("Deposit Money");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setText("Add money to the account:");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setText("Amount (€)");
+
+        DepositButton.setText("Deposit");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel13.setText("Balance:");
+
+        balancelabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        balancelabel.setText("jLabel9");
+
+        javax.swing.GroupLayout dialogoDineroLayout = new javax.swing.GroupLayout(dialogoDinero.getContentPane());
+        dialogoDinero.getContentPane().setLayout(dialogoDineroLayout);
+        dialogoDineroLayout.setHorizontalGroup(
+            dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogoDineroLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addGroup(dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogoDineroLayout.createSequentialGroup()
+                        .addGap(0, 390, Short.MAX_VALUE)
+                        .addComponent(jLabel13)
+                        .addGap(18, 18, 18)
+                        .addComponent(balancelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogoDineroLayout.createSequentialGroup()
+                        .addGroup(dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(dialogoDineroLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(36, 36, 36)
+                                .addComponent(moneyField, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel11))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(dialogoDineroLayout.createSequentialGroup()
+                .addGroup(dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogoDineroLayout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(DepositButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogoDineroLayout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        dialogoDineroLayout.setVerticalGroup(
+            dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogoDineroLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(balancelabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(moneyField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addComponent(DepositButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         GehituButton.setText("Add");
         GehituButton.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +334,18 @@ public class View extends javax.swing.JFrame {
         menuMovement.add(viewMovements);
 
         MenuBar.add(menuMovement);
+
+        menuDinero.setText("Money");
+
+        depositMoneyMenu.setText("Deposit Money");
+        depositMoneyMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositMoneyMenuActionPerformed(evt);
+            }
+        });
+        menuDinero.add(depositMoneyMenu);
+
+        MenuBar.add(menuDinero);
 
         setJMenuBar(MenuBar);
 
@@ -369,43 +468,14 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_elegirProductActionPerformed
 
+    private void depositMoneyMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositMoneyMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_depositMoneyMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new View().setVisible(true);
-            }
-        });
-    }
+    
 
     public static View viewaSortuBistaratu() {
         View v = new View();
@@ -420,15 +490,23 @@ public class View extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton AddCantidad;
     public javax.swing.JMenuItem AddProduct;
+    public javax.swing.JButton DepositButton;
     public javax.swing.JButton EzabatuButton;
     public javax.swing.JButton GehituButton;
     public javax.swing.JMenuBar MenuBar;
+    public javax.swing.JLabel balancelabel;
     public javax.swing.JMenuItem cambiarCantidadButton;
     public javax.swing.JTextField cantidadAnadir;
     public javax.swing.JTextField cantidadField;
+    public javax.swing.JMenuItem depositMoneyMenu;
     public javax.swing.JDialog dialogoAnadir;
+    public javax.swing.JDialog dialogoDinero;
     public javax.swing.JComboBox<String> elegirProduct;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -441,8 +519,11 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    public javax.swing.JMenu menuDinero;
     public javax.swing.JMenu menuMovement;
     public javax.swing.JMenu menuProduct;
+    public javax.swing.JTextField moneyField;
     public javax.swing.JTextField precioAnadir;
     public javax.swing.JTextField precioField;
     public javax.swing.JTextField productoField;

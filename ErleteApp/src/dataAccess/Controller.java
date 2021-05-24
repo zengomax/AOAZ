@@ -1,5 +1,6 @@
 package dataAccess;
 
+import gui.Menu;
 import gui.MovimientosGUI;
 import modelo.MoveTableModel;
 import modelo.Movimiento;
@@ -20,19 +21,21 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * This class purpose is to control data access
+ *
  * @author AOAZ
  */
 public class Controller implements ActionListener {
 
     private Model model;
-    private View view;
+    private View view = new View();
+    private Menu menu;
     private MovimientosGUI movimiento = new MovimientosGUI();
     private ArrayList<Producto> productos = model.printToArray();
     private ArrayList<Movimiento> movimientos = model.arrayMovimiento();
 
-    public Controller(Model model, View view) {
+    public Controller(Model model, Menu menu) {
         this.model = model;
-        this.view = view;
+        this.menu = menu;
         anadirActionListener(this);
         mostrarSaldo();
     }
@@ -40,6 +43,7 @@ public class Controller implements ActionListener {
     private void anadirActionListener(ActionListener listener) {
         //GUIaren konponente guztiei gehitu listenerra
 
+        //VIEW       
         view.GehituButton.addActionListener(listener);
         view.EzabatuButton.addActionListener(listener);
 
@@ -47,10 +51,17 @@ public class Controller implements ActionListener {
         view.AddProduct.addActionListener(listener);
         view.cambiarCantidadButton.addActionListener(listener);
         view.AddCantidad.addActionListener(listener);
-        //MOVIMIENTOGUI       
+        view.depositMoneyMenu.addActionListener(listener);
+        view.DepositButton.addActionListener(listener);
 
+//MOVIMIENTOGUI       
         movimiento.detailsButton.addActionListener(listener);
 
+        //MENU
+        menu.manageProductsButton.addActionListener(listener);
+        menu.anadirCantidadButton.addActionListener(listener);
+        menu.movementsButton.addActionListener(listener);
+        menu.depositDineroButton.addActionListener(listener);
     }
 
     @Override
@@ -94,12 +105,37 @@ public class Controller implements ActionListener {
 
                 break;
 
+            case "Manage Products":
+                view.setVisible(true);
+                break;
+
+            case "anadirCantidadMenu":
+                loadComboBox();
+                view.dialogoAnadir.setVisible(true);
+                break;
+
+            case "verMovimientos":
+                movimiento= new MovimientosGUI();
+                movimiento.setVisible(true);
+                movimiento.modelomove = new MoveTableModel();
+                break;
+
+            case "Deposit Money":
+                view.dialogoDinero.setVisible(true);
+                break;
+
+            case "Deposit":
+                depositMoney();
+                mostrarSaldo();
+                break;
+
         }
 
     }
+
     /**
-    * This function purpose is to charge db data into an array and show it
-    */
+     * This function purpose is to charge db data into an array and show it
+     */
     public void datuakKargatu() {
         view.modelo = new TaulaModeloa();
         view.tabla.setModel(view.modelo);
@@ -111,16 +147,20 @@ public class Controller implements ActionListener {
         movimiento.modelomove = new MoveTableModel();
         movimiento.taulaMove.setModel(movimiento.modelomove);
     }
+
     /**
-    * This function purpose is to show db balance
-    */
+     * This function purpose is to show db balance
+     */
     public void mostrarSaldo() {
 
         view.saldoLabel.setText(model.mostrarSaldo() + " €");
+        view.balancelabel.setText(model.mostrarSaldo() + " €");
+
     }
+
     /**
-    * This function purpose is to insert products into the database
-    */
+     * This function purpose is to insert products into the database
+     */
     public void anadirProducto() {
 
         String nombre = view.productoField.getText();
@@ -170,9 +210,10 @@ public class Controller implements ActionListener {
         }
 
     }
+
     /**
-    * This function purpose is to delete products from the database
-    */
+     * This function purpose is to delete products from the database
+     */
     public void borrarProducto() {
 
         try {
@@ -194,9 +235,10 @@ public class Controller implements ActionListener {
         }
 
     }
+
     /**
-    * This function purpose is to charge product list 
-    */
+     * This function purpose is to charge product list
+     */
     public void loadComboBox() {
         view.elegirProduct.removeAllItems();
         for (Producto p : productos) {
@@ -204,9 +246,11 @@ public class Controller implements ActionListener {
         }
 
     }
+
     /**
-    * This function purpose is to update the amount of a product into the database
-    */
+     * This function purpose is to update the amount of a product into the
+     * database
+     */
     public void updateProducto() {
 
         if (view.cantidadAnadir.equals("") || view.precioAnadir.getText().equals("")) {
@@ -256,9 +300,10 @@ public class Controller implements ActionListener {
         }
 
     }
+
     /**
-    * This function purpose is view transaction details
-    */
+     * This function purpose is view transaction details
+     */
     public void loadDetailsMovimiento() {
         try {
             int id = Integer.parseInt(movimiento.taulaMove.getValueAt(movimiento.taulaMove.getSelectedRow(), 0) + "");
@@ -276,6 +321,37 @@ public class Controller implements ActionListener {
 
             JOptionPane.showMessageDialog(null, "You have to choose one movement to see their details ", "Error", JOptionPane.WARNING_MESSAGE);
 
+        }
+
+    }
+
+    public void depositMoney() {
+
+        double dinero = 0;
+
+        if (view.moneyField.getText() == "") {
+            JOptionPane.showMessageDialog(null, "You cant save empty data ", "Error", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+            dinero = Double.parseDouble(view.moneyField.getText());// el dinero que esta en el text area
+
+            if (dinero < 1) {
+                JOptionPane.showMessageDialog(null, "You have to deposit at least 1€", "Error", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+                
+                double total= dinero+Double.parseDouble(model.mostrarSaldo());
+                model.actualizarSaldo(total);
+                String descripcion = "DEPOSIT OF  " + dinero + "€";
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDateTime now = LocalDateTime.now();
+                String date = dtf.format(now);
+                Movimiento m = new Movimiento(1, descripcion, date, dinero);
+                model.anadirMovimiento(m);
+
+                JOptionPane.showMessageDialog(null, "The money was added to your account", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            }
         }
 
     }
