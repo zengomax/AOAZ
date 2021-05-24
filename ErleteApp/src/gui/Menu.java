@@ -49,7 +49,7 @@ public class Menu extends javax.swing.JFrame {
                 manageProductsButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(manageProductsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 140, 80));
+        getContentPane().add(manageProductsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 140, 80));
 
         anadirCantidadButton.setText("Add Quantity");
         anadirCantidadButton.setActionCommand("anadirCantidadMenu");
@@ -58,7 +58,7 @@ public class Menu extends javax.swing.JFrame {
                 anadirCantidadButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(anadirCantidadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 140, 80));
+        getContentPane().add(anadirCantidadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 140, 80));
 
         movementsButton.setText("Movements");
         movementsButton.setActionCommand("verMovimientos");
@@ -67,7 +67,7 @@ public class Menu extends javax.swing.JFrame {
                 movementsButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(movementsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 140, 80));
+        getContentPane().add(movementsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 140, 80));
 
         depositDineroButton.setText("Deposit Money");
         depositDineroButton.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +75,7 @@ public class Menu extends javax.swing.JFrame {
                 depositDineroButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(depositDineroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 140, 80));
+        getContentPane().add(depositDineroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 140, 80));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 700, 540));
