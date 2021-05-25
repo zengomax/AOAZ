@@ -161,7 +161,7 @@ public class Controller implements ActionListener {
      */
     public void anadirProducto() {
 
-        String nombre = view.productoField.getText();
+        String nombre = view.productoField.getText().toUpperCase();
         int cantidad = 0;
         double precio = 0;
         double total = 0;
