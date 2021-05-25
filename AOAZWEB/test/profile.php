@@ -164,7 +164,7 @@ $imprimir=mysqli_fetch_array($resultado);
 <form id="profileform" class="mt-4 mb-4" name="login" method="POST" enctype="multipart/form-data" action="profile.php">
 	 <h2 class="display-4" style="text-align: center;">Welcome <?php echo$_SESSION['nombre'] ?> !</h2>
 <br>
-<div class="infop1">
+<div class="infop11">
 		
 
 <div class="row" >
@@ -392,13 +392,13 @@ $.ajax({
  	
  }
 
-//FORM DE CAMBIO DE CONTRASEÑA
+//Accion del boton del formulario
 
 
 $(document).on("click","#buton",function(){
 	
 	var passwordvieja = $('#passwordvieja').val();
-	var password = $('#password').val();
+	var password = $('#passwordintroducida').val();
 	var passwordrep = $('#passwordrep').val();
     var parametros = {"passwordvieja" : passwordvieja,"password" : password,"passwordrep":passwordrep,};
 	if(passwordvieja==""||password==""||passwordrep==""){

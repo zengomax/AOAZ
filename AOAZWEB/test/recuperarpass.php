@@ -53,7 +53,7 @@ require 'lib/PHPMailer/SMTP.php';
 					
 				</div>
 			</nav>
-		</div>
+		
 
 
 <!-- Ends nav bar-->
@@ -67,7 +67,7 @@ require 'lib/PHPMailer/SMTP.php';
 
 </div>
 <br>
-<div class="infop1">
+<div class="infop11">
 		<form id="restore" name="restore" method="POST" enctype="multipart/form-data" action="recuperarpass.php">
     	<br><br><br>
 	<p>Please introduce your email to restore your password, you will recive an email with instructions</p>
@@ -76,20 +76,10 @@ require 'lib/PHPMailer/SMTP.php';
 
    <br><br><br>
 
-  <button type="submit" class="btn btn-warning" id="restoreButton">Restore Password</button>
+  <button type="submit" class="btn btn-warning" id="restoreButton">Restore Password</button><br><br><br>
+
   </form>
 
-	</div>
-	</div>	
-
-
-
-
-
-  
-  
-</body>
-</html>
 
 <?php 
 
@@ -112,7 +102,7 @@ if($fila>0){
 
 	$codigo= rand(10000,99999);
 
-
+	//echo $codigo; solo en local
 	//variables de sesion
 	session_start();
 	$_SESSION['codigo']=$codigo;
@@ -164,3 +154,16 @@ Erlete Association | aoazdevelopers";
 }
 	
  ?>
+
+	</div>
+		</div>
+ 			</div>	
+
+
+
+
+
+  
+  
+</body>
+</html>

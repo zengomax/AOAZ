@@ -109,7 +109,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 
 </div>
 <br>
-<div class="infop1">
+<div class="infop11">
       <form id="reserva" name="reserva" method="POST" enctype="multipart/form-data" action="reserva.php">
 
 
@@ -200,7 +200,6 @@ if($fila>0)
   ?>
 
   <button type="submit" class="btn btn-warning" id="Reservar">Book</button>
-  <button type="clear" class="btn btn-danger">Clear</button>
   </form>
   </div>
   </div>  

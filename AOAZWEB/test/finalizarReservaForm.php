@@ -95,7 +95,7 @@ echo "<label><h4>Kilos: $kilos </h4></label>";
 			echo "ERROR";
 		}else{
 
-			echo "<p class='bg-success'> <b>The booking has been completed successfully, you can go to the debts page to pay it.</b></p>";
+			echo "<p class='bg-success' style='color:black'> <b>The booking has been completed successfully, you can go to the debts page to pay it.</b></p>";
 		}
 
 		}

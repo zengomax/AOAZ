@@ -47,7 +47,7 @@ while($imprimir=mysqli_fetch_array($resultado)){
 
       </tr>
 
-    <div class="modal fade" id="edit<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="color:black"aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="background:#ffd24d;" >
       <div class="modal-header" style=" background: #ffd24d;" >
@@ -61,22 +61,22 @@ while($imprimir=mysqli_fetch_array($resultado)){
             
   
              <label for="recipient-name"   class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="name<?php echo $j ?>"  required value="<?php   echo $imprimir['nombre']   ?>">
+            <input type="text" class="form-control" id="name<?php echo $i ?>"  required value="<?php   echo $imprimir['nombre']   ?>">
         
             <label for="recipient-name" class="col-form-label">Surname:</label>
-            <input type="text" class="form-control" id="surname<?php echo $j ?>" value="<?php   echo $imprimir['apellido']   ?>">
+            <input type="text" class="form-control" id="surname<?php echo $i ?>" value="<?php   echo $imprimir['apellido']   ?>">
      
       
             <label for="recipient-name" class="col-form-label">Email:</label>
-            <input type="text"   class="form-control" id="email<?php echo $j ?>" value="<?php   echo $imprimir['email']   ?>">
+            <input type="text"   class="form-control" id="email<?php echo $i ?>" value="<?php   echo $imprimir['email']   ?>">
 
          
             <label for="recipient-name" class="col-form-label">Password:</label>
-            <input type="Password" class="form-control" id="password<?php echo $j ?>" placeholder="Password">
+            <input type="Password" class="form-control" id="password<?php echo $i ?>" placeholder="Password">
           
             
             <label for="recipient-name" class="col-form-label">Repeat Password:</label>
-            <input type="Password"  class="form-control"id="repeatpassword<?php echo $j ?>" placeholder="Repeat password">
+            <input type="Password"  class="form-control"id="repeatpassword<?php echo $i ?>" placeholder="Repeat password">
         </form>
       </div>
       <div class="modal-footer">
@@ -149,7 +149,7 @@ while($imprimir=mysqli_fetch_array($resultado)){
 
 
 
-    <div class="modal fade" id="edit<?php echo $j  ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit<?php echo $j  ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="color:black" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="background: #ffd24d;" >
       <div class="modal-header" style="background: #ffd24d;" >

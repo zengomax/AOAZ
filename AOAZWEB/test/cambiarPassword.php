@@ -13,7 +13,7 @@ sleep(1);
 <br>
 <form>
 <label>Old Password:<input type="password" name="passwordvieja" id="passwordvieja" placeholder="Please insert your old password" ></label><br>
-<label>Password:<input type="password" name="password" id="password" placeholder="Please insert your new password"></label><br>
+<label>Password:<input type="password" name="password" id="passwordintroducida" placeholder="Please insert your new password"></label><br>
 <label>Repeat Password:<input type="password" name="passwordrep" id="passwordrep" placeholder="Please insert again your new password"></label><br><br>
  <input type="button" class="btn btn-info" id="buton" value="Change Password"/>
 
@@ -53,7 +53,7 @@ if(!$update){
 	
 	}else{
 
-		echo "The introduced password is not correct";
+		echo "<br><br>The introduced password is not correct";
 	}
 }
 

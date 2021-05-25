@@ -63,7 +63,7 @@ $email = $_GET['mail']; ?>
 
 </div>
 
-<div class="infop2" style="text-align: center;">
+<div class="infop2" style="text-align: center; background-color: #737373">
 	
 	 <div class="form-group">
     <form id="restore" name="restore" method="POST" enctype="multipart/form-data" action="recuperarpasscode.php">
@@ -81,18 +81,7 @@ $email = $_GET['mail']; ?>
 
   <button type="submit" class="btn btn-warning" id="restoreButton">Restore Password</button>
   </form><br><br>
-</div>
 
-
-
-
-
-	</div>
-	</div>	
-
-
-</body>
-</html>
 
 <script >
 		// validación de registro
@@ -144,11 +133,23 @@ $passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
 	 
 	 }
 else{ 
-	echo '<script type="text/javascript">alert("he code or the mail are not correct");</script>';
+	echo '<script type="text/javascript">alert("The code or the mail are not correct");</script>';
 	} 
 
 }
 
 ?>
 
+
+</div>
+
+
+
+
+
+	</div>
+	</div>	
+
 <br><br><br>
+</body>
+</html>

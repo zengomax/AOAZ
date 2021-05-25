@@ -111,7 +111,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 
 </div>
 <br>
-<div style="    background-color: #737373;border-radius: 20px;width: 90%;padding: 2%;text-align: justify;margin: auto;">
+<div id="membersdiv" style="    background-color: #ffd966;border-radius: 20px;width: 90%;padding: 2%;text-align: justify;margin: auto;">
 		<div style="text-align: center">
 	<label><input type="radio"  id="unlocked"  name="estadomembers" value="ACTIVO" checked onclick="obtenerDatos()"> Unblocked</label>
 	<label><input type="radio"  id="locked"  name="estadomembers" value="BLOQUEADO" onclick="obtenerDatos()"> Blocked</label>
@@ -183,7 +183,7 @@ if(estado=="ACTIVO"){
  var dni = $(this).data("id");
 var parametros = {"dni" : dni, "estado": estado,};
 
-//if(alertify.confirm($message).set({title:"WARNING!!"},'onok', function(closeEvent){ 
+if(confirm($message)){ 
 
 
 $.ajax({
@@ -201,7 +201,7 @@ $.ajax({
 				});
 	
 
-
+}
 });
 //----------------CAMBIAR DATOS USUARIO-------------
 $(document).on("click","#save",function(){

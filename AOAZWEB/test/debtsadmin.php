@@ -99,7 +99,8 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
         include ("conexion.php");
         $conexion=connectDataBase();
 
-          $resultado= mysqli_query($conexion,"SELECT * FROM deudas inner join usuario where deudas.dni=usuario.dni ");
+       //   $resultado= mysqli_query($conexion,"SELECT * FROM deudas inner join usuario where deudas.dni=usuario.dni "); evitamos repetidos
+          $resultado= mysqli_query($conexion,"SELECT * FROM usuario where dni in (select dni from deudas) ");
 
           while($imprimir=mysqli_fetch_array($resultado)){ 
             ?>
@@ -112,10 +113,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 
 
 
-<div id="datos" >
-		
-
-</div>
+<div id="datos"></div>
 
 	</div>
 	</div>	

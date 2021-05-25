@@ -14,7 +14,7 @@ if($estado=="PENDIENTE"){  //SI LA RESERVA ESTA PENDIENTE CARGA LA TABLA CON BOT
 ?>
 <div class="container">
 
-  <h5 class="display-6"> My Pending Books</h5>
+  <center><h5 class="display-6"> My Pending Books</h5></center>
  <table class="table table-bordered">
       <tr>
         <th>ID Book</th>

@@ -16,6 +16,7 @@ if(isset($resultado)){
 <div class="container">
 
  <table class="table table-bordered">
+
       <tr>
         
         <th>Cause</th>
