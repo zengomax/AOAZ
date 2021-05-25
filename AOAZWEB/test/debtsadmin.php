@@ -89,7 +89,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 
 </div>
 <br>
-<div id="infomap">
+<div class="infop1">
 
 		<select onchange="obtenerDatos();" class="form-control" id="deudadni"  name="metalbin">
  <option value="all">ALL USERS</option>
