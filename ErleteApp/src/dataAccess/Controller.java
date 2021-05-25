@@ -81,7 +81,6 @@ public class Controller implements ActionListener {
             case "Delete":
                 borrarProducto();
                 datuakKargatu();
-                //  herriaEzabatu();
                 break;
 
             case "Add Quantity":
@@ -194,7 +193,6 @@ public class Controller implements ActionListener {
                 view.cantidadField.setText("");
 
                 String saldo = model.mostrarSaldo();
-                System.out.println(saldo);
                 double nuevosaldo = Double.parseDouble(saldo) - total;
                 model.actualizarSaldo(nuevosaldo);
             } catch (Exception e) {
