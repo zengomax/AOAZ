@@ -1,5 +1,6 @@
-
 <?php 
+//controller para gestionar los miembros siendo admin
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -141,7 +142,7 @@ $( document ).ready(function() {
 });
 
 
-
+//Carga las tablas con los datos de las personas dependiendo del radio button seleccionado
 function obtenerDatos(){
   $estado = $('input[name="estadomembers"]:checked').val();
 

@@ -50,7 +50,7 @@
 
 
 	
- 
+ <!--Formulario de registro- utilizamos varios patterns para la verificacion de los datos-->
 
 	 <form class="boxr mt-4 mb-4"  id="registro" name="registro" method="POST" enctype="multipart/form-data" action="registrarse.php">
 	 <h1 class="display-4" style="color:#ffd966;">Register</h1>
@@ -88,7 +88,7 @@
 				$conexion=connectDataBase();
 				
 				
-				if (isset($_POST['email'])){
+				if (isset($_POST['email'])){  //recogemos los datos del formulario
 					$nombre = $_POST["nombre"];
 					$apellido= $_POST["apellido"];                
 					$dni= $_POST["dni"];                
@@ -106,7 +106,7 @@
 					
 					
 					
-					if($code!="erlete"){
+					if($code!="erlete"){ //Si la contraseña de registro no coincide salta un error
 
 	                echo '<script type="text/javascript">alert("The register code is not valid");</script>';
 
@@ -132,7 +132,7 @@
 	                } else{
 	                    $motivo="REGISTRATION: ".$dni."";
 	                    $eurodeuda= 30;
-	                    $sql2="INSERT INTO deudas VALUES ('','$motivo','$eurodeuda','$dni')";
+	                    $sql2="INSERT INTO deudas VALUES ('','$motivo','$eurodeuda','$dni')"; //genera una deuda de 30 euros con el motivo regsitro+dni
 	                    $ejecutar2=mysqli_query($conexion, $sql2);
 
 	                    if(!$ejecutar2){
@@ -185,7 +185,7 @@
 					
 					
 					
-					// validación de registro
+					// validación de registro, comprueba fechas, campos vacios y contraseñas
 	                $("#registro").submit(function(){
 
 

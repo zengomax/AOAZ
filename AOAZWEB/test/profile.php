@@ -1,4 +1,5 @@
 <?php 
+//Controller para gestionar el cambio de datos del usuario
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -305,10 +306,10 @@ $("#close").click(function() {
 	});
 	
 
-</script>
 
-<script>
 
+
+//funcion para cambiar de no editable a editable los input
 $(document).ready(function(){
            	$("#editar").click(function(){
 			 $('input').attr('readonly', false); 
@@ -330,6 +331,7 @@ $(document).ready(function(){
            	$("#Guardar").attr('hidden',true);
 
 		  });
+
 
 
 function mostrarImagen(){   //Script para mostrar la previsualización de la imagen
@@ -392,7 +394,7 @@ $.ajax({
  	
  }
 
-//Accion del boton del formulario
+//Funcion del boton del formulario
 
 
 $(document).on("click","#buton",function(){

@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+//Controller para gestionar las deudas siendo admin
+ 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -143,6 +146,8 @@ $("#close").click(function() {
 </script>
 
 <script>
+//Cuando se inicia la pagina carga todas las deudas
+
 window.onload =function() {
    obtenerDatos();
 
@@ -150,7 +155,7 @@ window.onload =function() {
 
 
 
-function obtenerDatos(){
+function obtenerDatos(){ //Carga los datos cuando el select cambia y lo filtra por el dni
  
  $dni= $("#deudadni").val();
 		$.ajax({

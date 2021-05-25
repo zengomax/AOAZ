@@ -1,4 +1,6 @@
 <?php 
+//controller para gestionar las reservas si estas conectado como admin
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -143,7 +145,7 @@ $( document ).ready(function() {
    obtenerDatos();
 });
 
-
+//Carga las reservas pendientes de los demas usuarios
 
 function obtenerDatos(){
   $estado = 'PENDIENTE';

@@ -1,6 +1,6 @@
-
-
 <?php 
+
+//imprime las deudas de los usuarios dependiendo del dni que reciba
 
 include ("conexion.php");
 $conexion=connectDataBase();
@@ -11,11 +11,11 @@ $dni=$_GET['dni'];
 
 if($dni=="all"){
 
-  $consulta="SELECT * FROM deudas inner join usuario where deudas.dni=usuario.dni ORDER BY usuario.dni";
+  $consulta="SELECT * FROM deudas inner join usuario where deudas.dni=usuario.dni ORDER BY usuario.dni"; //si es all muestra todos
 
 }else{
 
-  $consulta="SELECT * FROM deudas inner join usuario where deudas.dni=usuario.dni and usuario.dni='$dni'";
+  $consulta="SELECT * FROM deudas inner join usuario where deudas.dni=usuario.dni and usuario.dni='$dni'"; //muestra dependiendo del dni elegido
 
 }
 

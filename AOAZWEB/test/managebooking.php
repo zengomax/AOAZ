@@ -1,4 +1,6 @@
 <?php 
+
+//Controller para gestionar las reservas
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -162,12 +164,13 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 </html>
 <script>
    
-
+//cuando la pagina cargue 
 $( document ).ready(function() {
    obtenerDatos();
 });
 
 
+//imprimimos las tablas de las reservas dependiendo del radiobutton seleccionado
 
 function obtenerDatos(){
   $estado = $('input[name="estadoreserva"]:checked').val();
@@ -257,6 +260,7 @@ $(document).on("click","#eliminar",function(){
 	});
 
 //-------------FINALIZAR RESERVA---------
+//se nos abre un nuevo form para finalizar la reserva
 $(document).on("click","#finalizar",function(){
 
 	var id = $(this).data("id");
@@ -288,7 +292,8 @@ $.ajax({
 });
 
 
-//GENERAR DEUDA FORM
+//GENERAR DEUDA FORM 
+//finalizamos la reserva cambiando su estado a finalizado
 
 $(document).on("click","#terminar",function(){
 

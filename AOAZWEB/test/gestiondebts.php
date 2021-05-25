@@ -1,6 +1,5 @@
-
-
 <?php 
+//Imprime las deudas de los usuarios dependiendo del dni conectado
 
 include ("conexion.php");
 $conexion=connectDataBase();
@@ -8,7 +7,7 @@ $conexion=connectDataBase();
 session_start();
 
 $dni=$_SESSION['dni'];
-$resultado= mysqli_query($conexion,"SELECT * FROM deudas WHERE dni= '$dni'")or die(mysqli_error($conexion));
+$resultado= mysqli_query($conexion,"SELECT * FROM deudas WHERE dni= '$dni'")or die(mysqli_error($conexion));//select deudas de usuario conectado
 
 if(isset($resultado)){ 
 
@@ -40,7 +39,7 @@ while($imprimir=mysqli_fetch_array($resultado)){
 
       </tr>
   <?php
-  $total=$imprimir['eurosdeuda']+$total;
+  $total=$imprimir['eurosdeuda']+$total; //mostramos el total de las deudas
 
    } ?>
   </table>

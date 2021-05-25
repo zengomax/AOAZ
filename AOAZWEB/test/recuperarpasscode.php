@@ -52,7 +52,7 @@
 error_reporting(0);//para que no salte email nulo
 
 session_start();
-$email = $_GET['mail']; ?>
+$email = $_GET['mail']; ?> 
 
 <br>
 
@@ -108,16 +108,16 @@ $conexion=connectDataBase();
 	$codigo=$_POST['codigo'];
 
 
-if($_SESSION['email']==$email && $_SESSION['codigo']==$codigo ){
+if($_SESSION['email']==$email && $_SESSION['codigo']==$codigo ){ //si el email y el codigo coinciden nos dejara cambiar la contraseña
 
 
 
-$passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
+$passwordEncriptada= password_hash($password, PASSWORD_DEFAULT); //encriptamos la contraseña
 	
 	$sql="UPDATE usuario SET password='$passwordEncriptada' WHERE email='$email'";
 
 
-	 $ejecutar=mysqli_query($conexion, $sql);
+	 $ejecutar=mysqli_query($conexion, $sql); // Actualizamos los datos en la bd
 	
 	 //verificacion de la ejecucioon
 

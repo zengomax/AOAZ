@@ -1,4 +1,6 @@
 <?php 
+
+//pagina para generar el ticket de la deuda
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -393,6 +395,8 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
                   <td id="greetingSummary">
                     <p> </p>
                     <div class="greeting">
+
+                      <!--Utiliza los datos de una sesion creada anteriormente al eliminar la deuda-->
                       Hello <?php echo $_SESSION['nombre']." ".$_SESSION['apellido'] ?>,
                     </div><br /> Thank you for staying with us.  <p></p>
                   </td>

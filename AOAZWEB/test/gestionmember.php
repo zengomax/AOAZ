@@ -1,4 +1,5 @@
 <?php 
+//Imprime las tablas de los usuarios con sus datos
 
 include ("conexion.php");
 $conexion=connectDataBase();
@@ -31,6 +32,8 @@ if($estado=="ACTIVO"){  //SI LA RESERVA ESTA PENDIENTE CARGA LA TABLA CON BOTONE
 $i=0;
 $resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado= 'ACTIVO' AND dni != '$dni'")or die(mysqli_error($conexion));
 while($imprimir=mysqli_fetch_array($resultado)){
+
+  //Concatenamos el id de los input  del modal con el indice i para poder obtenerlos con el controler
 
 ?>      <tr>
         <td id="id" data-id_prueba="<?php echo $imprimir['dni'] ?>" ><?php echo $imprimir['dni'] ?></td>
@@ -106,8 +109,8 @@ while($imprimir=mysqli_fetch_array($resultado)){
 
 <?php 
 
-if($estado=="BLOQUEADO"){
-//__________________________________________________________________________________________________________________
+if($estado=="BLOQUEADO"){//Si esta bloqueado carga los bloqueados dependiendo de lo que se elija
+//___________________________________________________________________________________________________________________
 
 ?>
 <div class="container">
@@ -130,6 +133,8 @@ if($estado=="BLOQUEADO"){
 $resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado ='BLOQUEADO'")or die(mysqli_error($conexion));
 $j=0;
 while($imprimir=mysqli_fetch_array($resultado)){
+    //Concatenamos el id de los input  del modal con el indice j para poder obtenerlos con el controler
+
 ?>
    
        <tr>

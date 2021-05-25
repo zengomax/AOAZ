@@ -1,5 +1,5 @@
-
 <?php 
+//carga los datos de las reservas y los botones para utilzarlos con los controlers
 
 include ("conexion.php");
 $conexion=connectDataBase();

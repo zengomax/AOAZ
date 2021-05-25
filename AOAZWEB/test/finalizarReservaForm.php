@@ -1,3 +1,5 @@
+
+<!--Formulario intermedio para finalizar reserva-->
 <html>
 <body>
 <div>
@@ -13,6 +15,7 @@ include ("conexion.php");
 $conexion=connectDataBase();
 
 session_start();
+
 // hacemos select para obtener el metalbin los datos de la reserva
 
 $idreserva=$_POST['idreserva'];
@@ -30,14 +33,14 @@ $metalbin= $imprimir['idmetal'];
 <label><h4>MetalBin Kind:  <?php echo $imprimir['tipo'] ?></h4></label><br><br>
 
 <?php
-if(!isset($_POST['kilos'])){
+if(!isset($_POST['kilos'])){  //solo se mostrara si el usuario no ha intoducido kilos
 
 echo "<label><h5>Please insert the amount of generated honey(Kilo): </h5> <input type='number'  id='kilos' required></label><br>";
 echo "<input type='submit' id='terminar' value='FINALIZE' class='btn btn-warning'>";
 
 }else{
 $kilos=$_POST['kilos'];
-echo "<label><h4>Kilos: $kilos </h4></label>";
+echo "<label><h4>Kilos: $kilos </h4></label>"; //cuando se haya hecho click en finalizar y recoge datos se muestra
 
 }
 
@@ -52,9 +55,6 @@ echo "<label><h4>Kilos: $kilos </h4></label>";
 <?php 
 //UPDATE DE KILOS MAS GENERAR DEUDA
 
-
-
-
 		if(isset($_POST['kilos'])){
 		$idreserva=$_POST['idreserva'];
 		$fecha=$imprimir["fechainicio"];
@@ -65,14 +65,11 @@ echo "<label><h4>Kilos: $kilos </h4></label>";
 			$idreserva=$_POST['idreserva'];
 			$fecha=$imprimir["fechainicio"];
 
-	
-
-
-				$sinkilos= mysqli_query($conexion,"UPDATE reserva SET estado='FINALIZADA' WHERE idreserva='$idreserva'")or die(mysqli_error($conexion));
+			$sinkilos= mysqli_query($conexion,"UPDATE reserva SET estado='FINALIZADA' WHERE idreserva='$idreserva'")or die(mysqli_error($conexion));
 				if($sinkilos){
 
 
-						echo "<p class='bg-success'> <b>The booking has been completed successfully, you don't have a debt.</b></p>";
+						echo "<p class='bg-success'> <b>The booking has been completed successfully, you don't have a debt.</b></p>"; //si introducimos 0
 
 				}else{
 

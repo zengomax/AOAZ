@@ -97,18 +97,19 @@ include ("conexion.php");
         $password= $_POST["password"];  
          
                      
-    $consulta= "SELECT * FROM usuario WHERE email='$email'";
+    $consulta= "SELECT * FROM usuario WHERE email='$email'"; //seleccionamos los datos del email introducido
     $resultado=mysqli_query($conexion,$consulta);
 
 
 $imprimir= mysqli_fetch_array($resultado);
 $estado= $imprimir['estado'];
 
-if(password_verify($password,$imprimir['password'])==true && $estado=="ACTIVO"){
+if(password_verify($password,$imprimir['password'])==true && $estado=="ACTIVO"){ //comprobamos si la contraseña coincide con la de la bd
   
   session_start();
+//guardamos en variables de session los datos que utilizaremos a lo largo de la sesion:
 
-    $nombre= $imprimir['nombre'];
+    $nombre= $imprimir['nombre']; 
     $_SESSION["nombre"]=$nombre;
     $_SESSION["rol"]= $imprimir['rol'];
     $_SESSION["imagen"]= $imprimir['imagen'];
@@ -124,12 +125,12 @@ if(password_verify($password,$imprimir['password'])==true && $estado=="ACTIVO"){
            
          
         if($_SESSION["rol"]== 'admin'){
-          echo "<script language=Javascript> location.href=\"managebookingadmin.php \"; </script>";
+          echo "<script language=Javascript> location.href=\"managebookingadmin.php \"; </script>"; //si el rol es admin vamos al apartado de admin
           
           
         }else{
 
-         echo "<script language=Javascript> location.href=\"indexmember.php \"; </script>";
+         echo "<script language=Javascript> location.href=\"indexmember.php \"; </script>";//si el rol es usuario vamos al apartado de usuario
 
               
         }

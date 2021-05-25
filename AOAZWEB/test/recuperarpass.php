@@ -1,5 +1,7 @@
 <?php
 
+//Para el envio de emails utilizamos la libreria php mailer
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -67,7 +69,7 @@ require 'lib/PHPMailer/SMTP.php';
 
 </div>
 <br>
-<div class="infop11">
+<div class="infop1">
 		<form id="restore" name="restore" method="POST" enctype="multipart/form-data" action="recuperarpass.php">
     	<br><br><br>
 	<p>Please introduce your email to restore your password, you will recive an email with instructions</p>
@@ -83,13 +85,13 @@ require 'lib/PHPMailer/SMTP.php';
 
 <?php 
 
-if(isset($_POST['email'])){
+if(isset($_POST['email'])){ 
 include ("conexion.php");
 $conexion=connectDataBase();
 
 $emailingresado=$_POST['email'];
 
-$resultado=mysqli_query($conexion,"SELECT * FROM usuario where email='$emailingresado'");
+$resultado=mysqli_query($conexion,"SELECT * FROM usuario where email='$emailingresado'"); //comprobamos si el email introducido esta en la base de datos
 
 $fila= mysqli_num_rows($resultado);
 // si el email existe
@@ -105,8 +107,8 @@ if($fila>0){
 	//echo $codigo; solo en local
 	//variables de sesion
 	session_start();
-	$_SESSION['codigo']=$codigo;
-	$_SESSION['email']=$emailingresado;
+	$_SESSION['codigo']=$codigo; //guardamos el codigo en una sesion para comprobarlo despues
+	$_SESSION['email']=$emailingresado;//guardamos el email en una sesion para comprobarlo despues
 
 
 

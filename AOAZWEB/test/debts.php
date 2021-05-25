@@ -1,4 +1,7 @@
 <?php 
+
+//Controller para gestionar las deudas siendo usuario
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -177,7 +180,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
 });
 
-
+// Imprimir la tabla con las deudas en el div datos
 
 function obtenerDatos(){
  
@@ -232,16 +235,7 @@ $.ajax({
 			}
 				});
 
-
 	}
-
-	
-
-
-//} ));
-
-
-
 });
 	
 
@@ -256,6 +250,10 @@ $.ajax({
 
 <script>
 	
+
+// Cerrar sesion
+
+
 $("#close").click(function() {
 		alert("Session Closed");
 		$(location).attr('href', 'logout.php');

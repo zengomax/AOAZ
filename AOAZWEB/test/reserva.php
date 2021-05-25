@@ -1,4 +1,6 @@
 <?php 
+//controller de la reserva
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -38,6 +40,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
     <link href='lib/main.css' rel='stylesheet' />
     <script src='lib/main.js'></script>
     <script>
+//Utilizamos la libreria FullCalendar y mediante una vista sql generamos unos eventos para que puedan visualizarse en el calendario
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -123,7 +126,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION['rol']!="usuario
 
 //SELECIONA LOS METAL BINS DISPONIBLES
 
-        $resultado= mysqli_query($conexion,"SELECT * FROM metalbins WHERE estado='DISPONIBLE'");
+        $resultado= mysqli_query($conexion,"SELECT * FROM metalbins WHERE estado='DISPONIBLE'"); //introducimos en un select los metalbins disponibles
 ?>
 
   Select MetalBin: <select class="form-control" id="metalbin"  name="metalbin">
@@ -149,7 +152,7 @@ if (isset($_POST['fechainicio'])){
 //COMPRUEBA QUE LAS FECHAS ESTAN DISPONIBLES
   
 
-$sql1= mysqli_query($conexion,"SELECT * FROM reserva WHERE fechainicio = '$fechainicio'");
+$sql1= mysqli_query($conexion,"SELECT * FROM reserva WHERE fechainicio = '$fechainicio'"); //comprueba si existe alguna reserva con esa fecha
 
 $fila= mysqli_num_rows($sql1);
 
@@ -162,20 +165,20 @@ if($fila>0)
 
 
 
- echo '<script type="text/javascript">alert("The dates are not avaliable");</script>';
+ echo '<script type="text/javascript">alert("The dates are not avaliable");</script>'; //si alguna fecha existe salta error
 
 
 }else{
 
     // insert a la reserva con el dni
-    $sql="INSERT INTO reserva VALUES ('','$fechainicio','$dni','0','PENDIENTE','$metalbin')";
+    $sql="INSERT INTO reserva VALUES ('','$fechainicio','$dni','0','PENDIENTE','$metalbin')"; //crea una reserva
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){
       echo("Error making the book");
 
     }else{
-        $sql3="UPDATE metalbins SET estado='OCUPADO' WHERE idmetal='$metalbin'AND tipo!='MY OWN' ";
+        $sql3="UPDATE metalbins SET estado='OCUPADO' WHERE idmetal='$metalbin'AND tipo!='MY OWN' "; //actualiza el estado del metalbin
         $ejecutar3=mysqli_query($conexion, $sql3);    
         if(!$ejecutar3){
           echo '<script type="text/javascript">alert("It was an error.");</script>';     
@@ -277,7 +280,7 @@ if($fila>0)
 </html>
 <script>
     
-
+//comprobamos la fecha actual para que el usuario no pueda reservar en una que ya ha pasado
 $("#reserva").submit(function(){
   var fechainicioField = document.getElementById("fechainicio").value.split("-");
   var fechainicio = new Date(parseInt(fechainicioField[0]),parseInt(fechainicioField[1]-1),parseInt(fechainicioField[2]));
