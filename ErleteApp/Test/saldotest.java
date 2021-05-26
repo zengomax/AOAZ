@@ -18,8 +18,9 @@ public class saldotest extends TestCase {
     Model model = new Model();
     double saldoActual;
     double d1;
-    double d2;
-
+    double d2;.
+    
+  
     public saldotest() {
 
         setUp();
