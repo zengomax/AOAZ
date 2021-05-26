@@ -1,6 +1,5 @@
-
-
 <?php 
+//Imprime las deudas de los usuarios dependiendo del dni conectado
 
 include ("conexion.php");
 $conexion=connectDataBase();
@@ -8,7 +7,7 @@ $conexion=connectDataBase();
 session_start();
 
 $dni=$_SESSION['dni'];
-$resultado= mysqli_query($conexion,"SELECT * FROM deudas WHERE dni= '$dni'")or die(mysqli_error($conexion));
+$resultado= mysqli_query($conexion,"SELECT * FROM deudas WHERE dni= '$dni'")or die(mysqli_error($conexion));//select deudas de usuario conectado
 
 if(isset($resultado)){ 
 
@@ -16,6 +15,7 @@ if(isset($resultado)){
 <div class="container">
 
  <table class="table table-bordered">
+
       <tr>
         
         <th>Cause</th>
@@ -25,7 +25,7 @@ if(isset($resultado)){
 
 <?php
 
-
+$total = 0;
 while($imprimir=mysqli_fetch_array($resultado)){
 
 ?>      <tr>
@@ -33,11 +33,15 @@ while($imprimir=mysqli_fetch_array($resultado)){
         <td id="euros"><?php echo $imprimir['eurosdeuda']." €" ?></td>  
         <td><a target="_blank" href="payment.php"><button type="button" data-euro="<?php echo $imprimir['eurosdeuda']?>" data-motivo="<?php echo $imprimir['motivo'] ?>" data-id="<?php echo $imprimir['iddeuda'] ?>" id="pay" class="btn btn-warning">Pay</button></a></td>
   
-        
+        <br><br>
+
 
 
       </tr>
-  <?php } ?>
+  <?php
+  $total=$imprimir['eurosdeuda']+$total; //mostramos el total de las deudas
+
+   } ?>
   </table>
 
   <br><br><br>
@@ -47,6 +51,7 @@ while($imprimir=mysqli_fetch_array($resultado)){
 }
 
 ?>
+    <b>Total to pay : <?php  echo $total." €" ?>  </b>
 
   <br><br><br>
 </div>

@@ -1,4 +1,6 @@
 <?php
+
+//Para editar datos del resto de usuarios siendo admin 
 sleep(2);
 
 include ("conexion.php");
@@ -10,11 +12,11 @@ $apellido=$_POST['apellido'];
 $email=$_POST['email'];
 $password=$_POST['password'];
 
-		$passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
+		$passwordEncriptada= password_hash($password, PASSWORD_DEFAULT); //encriptamos la contraseña
 
         $sql="UPDATE usuario SET nombre='$nombre', apellido='$apellido', email='$email',password='$passwordEncriptada' WHERE dni='$dni'";
 
-        $ejecutar=mysqli_query($conexion, $sql);
+        $ejecutar=mysqli_query($conexion, $sql); //insertamos los datos en la base de datos
 
         if($ejecutar) {
 

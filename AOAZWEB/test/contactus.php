@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CONTACT US</title>
+	<title>Contact us</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="shortcut icon" href="img/ico.png">
@@ -18,82 +18,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		
 
-		<style type="text/css" media="screen">
-
-			 body{
-				  margin: auto;
-				  padding: 0;
-				  font-family: sans-serif;
-				  background: #FFB133;
-				}
-				.navbar-customclass .navbar-nav .nav-link{
-					  color:#ff8c00;
-					}
-
-			#close:hover{
-
-				background-color: #DE2424;
-				border-radius:5px;
-			}
-
-			#profile:hover{
-				background-color: #1A9516;
-			}
-
-
-			
-
-			#titulo {
-				width: 100%;
-				position: absolute;
-				padding: 0px;
-				margin: 0px auto;
-				text-align: center;
-				font-size: 27px;
-				color: rgba(255, 255, 255, 1);
-				font-family: 'Open Sans', sans-serif;
-				z-index: 9999;
-				text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
-			}
-			footer {
-  				text-align: center;
- 				padding: 3px;
-  				background-color: #828282;
-  				color: white;
-			}
-			.fa {
-			  padding: 10px;
-			  font-size: 30px;
-			  margin: auto;
-			  text-decoration: none;
-			  margin: 5px 2px;
-			  border-radius: 80%;
-			}
-
-			.fa:hover{
-			    opacity: 0.7;
-			}
-
-			.fa-facebook {
-			  background: #3B5998;
-			  color: white;
-			}
-			.fa-twitter {
-			  background: #55ACEE;
-			  color: white;
-			}
-
-			.fa-youtube {
-			  background: #bb0000;
-			  color: white;
-			}
-
-			.fa-instagram {
-			  background: #125688;
-			  color: white;
-			}
-
-		</style>
+		 <link rel="stylesheet" href="allcss.css" ></link>
 </head>
 <body>
 	<!-- Starts nav bar-->
@@ -110,7 +35,7 @@
 							<a href="index.php" class="nav-link">Home</a>
 							
 						</li>
-						<li><a href="contactus.php" class="nav-link">Contact Us</a></li>
+						<li><a href="contactus.php" class="nav-link">Contact us</a></li>
 						
 					</ul>
 					
@@ -139,30 +64,53 @@
 <!-- Ends carrousel-->
 
 
+
+
 <!--starts text-->
-<div style="background-color: #ffd966;" >
+
+<br>
+<div class="infod1">
+<div class="infoh1">
 	
 	<h1><b>Contact Us</b></h1>
 
 </div>
-<div style="background-color: #ffd966;">
-		<p>
-Have a question? Fill out the Contact Form, and we will respond to your inquiry within 1-3 business days. To place an order over the phone using a credit card payment, please call us at (+34)654389234.</p>
+<br>
+<div class="infop1">
+			<p>
+If you have a question? Fill out the Contact Form, and we will respond to your inquiry within 1-3 business days. To place an order over the phone using a credit card payment, please call us at <b>(+34)654389234.</b></p>
 	
+
+
+
+
+	</div>
+	</div>	
+	<br>
+
+	<div class="infod1">
+
+
+<div class="infoh1">
+	
+	<h1><b>Where are we?</b></h1>
+
+</div>
+<br>
+<div id="infomap">
+		<p align="center"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5823.536138572394!2d-2.5907402754433626!3d43.130398196489956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4fd2dc119be3f7%3A0xd7f06f42b374b0fe!2s48291%20Axpe%20Achondo%2C%20Vizcaya!5e0!3m2!1ses!2ses!4v1621583057157!5m2!1ses!2ses" width="600" height="450" style="border:0;display:block;" allowfullscreen="" loading="lazy"></iframe></p>
+	
+
+
 		
 
 	</div>
-	<div style="background-color: #ffd966;" >
-		<h1>Where we are?</h1>
-	</div>
-	<div style="background-color: #ffd966;">
-	<p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5823.536138572394!2d-2.5907402754433626!3d43.130398196489956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4fd2dc119be3f7%3A0xd7f06f42b374b0fe!2s48291%20Axpe%20Achondo%2C%20Vizcaya!5e0!3m2!1ses!2ses!4v1621583057157!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></p>
+	</div>	
+	
+	
 	
 
-	</div>
-	
-
-
+<br>
 
 
 </div>
@@ -177,13 +125,13 @@ Have a question? Fill out the Contact Form, and we will respond to your inquiry 
 		<div class="col-4" style="float:left;margin:auto;">
 			<p>Achondo, Jauregi Street 28<br>
 			Email:aoazdebelopers@gmail.com<br>
-			Telf:654389234</p>			
+			Telf: <b>654389234</b></p>			
 		</div>
 		<div class="col-4" style="float:center;margin:auto;">
-			<h1 style="font-size: 25px">Hours</h1>
+			<h1 style="font-size: 25px">Public opening hours</h1>
 			<p>Monday-Friday: 9:00AM-8:00PM<br>
-			Saturday:10:00AM-5:00PM<br>
-			Sunday:11:00AM-6:00PM</p>
+			Saturday: 10:00AM-5:00PM<br>
+			Sunday: 11:00AM-6:00PM</p>
 			<p>Holiday hours may vary.</p>
 		</div>
 		<div class="col-4" style="margin:auto;">

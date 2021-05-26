@@ -1,5 +1,5 @@
 <?php
-
+//con esto generamos un json con los datos de las reservas para mostrarlas en el calendario
 include ("conexion.php");
 $conexion=connectDataBase();
 

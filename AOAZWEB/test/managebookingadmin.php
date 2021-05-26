@@ -1,4 +1,6 @@
 <?php 
+//controller para gestionar las reservas si estas conectado como admin
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -15,7 +17,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Manage Books</title>
+	<title>Manage Bookings</title>
 
   		<link rel="shortcut icon" type="image/x-icon" href="img/ico.png" />
 
@@ -30,7 +32,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 		
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="reserva.css" ></link>
+		
 
 
 		<!-- JavaScript -->
@@ -55,7 +57,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css"/>
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
-
+<link rel="stylesheet" href="allcss.css" ></link>
 
 </head>
 <body>
@@ -106,17 +108,34 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'admin'
 
 <!-- Ends nav bar-->
 
+
+<br>
+<div class="infod2">
+<div class="infoh4">
+	
+	<h1><b>Manage Books</b></h1>
+
+</div>
+<br>
+<div class="infop1">
+	<div id="datos"></div>
+	
+
+
+
+
+	</div>
+	</div>	
+
+
+
+
+
+
 <!-- Starts carrousel-->
-<div class="container" id="reservadv">
-		<h1>Manage Books</h1><br>
+
 
 <br><br>
-
-<div id="datos"></div>
-			
-</div>
-
-<br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
 <script>
@@ -126,7 +145,7 @@ $( document ).ready(function() {
    obtenerDatos();
 });
 
-
+//Carga las reservas pendientes de los demas usuarios
 
 function obtenerDatos(){
   $estado = 'PENDIENTE';

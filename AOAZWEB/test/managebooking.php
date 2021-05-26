@@ -1,4 +1,6 @@
 <?php 
+
+//Controller para gestionar las reservas
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -15,13 +17,14 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Manage Books</title>
+	<title>Manage Bookings</title>
 
   		<link rel="shortcut icon" type="image/x-icon" href="img/ico.png" />
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		
@@ -30,7 +33,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 		
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="reserva.css" ></link>
+		
 
 
 		<!-- JavaScript -->
@@ -55,7 +58,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css"/>
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
-
+<link rel="stylesheet" href="allcss.css" ></link>
 
 </head>
 <body>
@@ -102,31 +105,72 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 
 <!-- Ends nav bar-->
 
-<!-- Starts carrousel-->
-<div class="container" id="reservadv">
-		<h1>Manage Books</h1><br>
+<br>
 
-<div>
-	<label><input type="radio" id=pendiente  name="estadoreserva" value="PENDIENTE" checked onclick="obtenerDatos()"> PENDIENTES</label>	
-	<label><input type="radio"  id="finalizadas"  name="estadoreserva" value="FINALIZADA" onclick="obtenerDatos()"> FINALIZADAS</label>
+<div class="infod2">
+<div class="infoh1">
 	
-</div><br>
+	<h1><b>Manage Books</b></h1>
 
-<div id="datos"></div>
-			
 </div>
+<br>
+<div class="infop1">
+	<div style="text-align: center" >
+	<label><input type="radio" id=pendiente  name="estadoreserva" value="PENDIENTE" checked onclick="obtenerDatos()"> PENDING</label>	
+	<label><input type="radio"  id="finalizadas"  name="estadoreserva" value="FINALIZADA" onclick="obtenerDatos()"> FINISHED</label>
+	
+</div>
+<br>
+		<div id="datos" style="text-align: center"></div>
 
-<br><br><br><br>
+	</div>
+	</div>	
+
+
+<!-- Starts carrousel-->
+
+
+<br><br><br><br><br>
+
+
+<footer>
+  <div class="container-fluid">
+    <div class="row">
+
+    <div class="col-4" style="float:left;margin:auto;">
+      <p>Achondo, Jauregi Street 28<br>
+      Email:aoazdebelopers@gmail.com<br>
+      Telf: <b>654389234</b></p>      
+    </div>
+    <div class="col-4" style="float:center;margin:auto;">
+      <h1 style="font-size: 25px">Public opening hours</h1>
+      <p>Monday-Friday: 9:00AM-8:00PM<br>
+      Saturday: 10:00AM-5:00PM<br>
+      Sunday: 11:00AM-6:00PM</p>
+      <p>Holiday hours may vary.</p>
+    </div>
+    <div class="col-4" style="margin:auto;">
+      <h1 style="font-size: 25px">Follow Us</h1>
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-youtube"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      <p>@Desing by:AOAZ</p>
+    </div>
+  </div>
+</div>
+</footer> 
 </body>
 </html>
 <script>
    
-
+//cuando la pagina cargue 
 $( document ).ready(function() {
    obtenerDatos();
 });
 
 
+//imprimimos las tablas de las reservas dependiendo del radiobutton seleccionado
 
 function obtenerDatos(){
   $estado = $('input[name="estadoreserva"]:checked').val();
@@ -216,6 +260,7 @@ $(document).on("click","#eliminar",function(){
 	});
 
 //-------------FINALIZAR RESERVA---------
+//se nos abre un nuevo form para finalizar la reserva
 $(document).on("click","#finalizar",function(){
 
 	var id = $(this).data("id");
@@ -247,7 +292,8 @@ $.ajax({
 });
 
 
-//GENERAR DEUDA FORM
+//GENERAR DEUDA FORM 
+//finalizamos la reserva cambiando su estado a finalizado
 
 $(document).on("click","#terminar",function(){
 

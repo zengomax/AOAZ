@@ -1,5 +1,5 @@
-
 <?php 
+//carga los datos de las reservas y los botones para utilzarlos con los controlers
 
 include ("conexion.php");
 $conexion=connectDataBase();
@@ -14,7 +14,7 @@ if($estado=="PENDIENTE"){  //SI LA RESERVA ESTA PENDIENTE CARGA LA TABLA CON BOT
 ?>
 <div class="container">
 
-  <h5 class="display-6"> My Pending Books</h5>
+  <center><h5 class="display-6"> My Pending Books</h5></center>
  <table class="table table-bordered">
       <tr>
         <th>ID Book</th>

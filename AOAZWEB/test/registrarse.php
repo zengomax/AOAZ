@@ -2,8 +2,9 @@
 <html>
 	<head>
 		<title>Register</title>
+		<link rel="shortcut icon" href="img/ico.png">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-		<link herf="Register.css"/>
+		
 		
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,7 +18,7 @@
 
 		  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-			<link rel="stylesheet" href="Register.css"/>
+			<link rel="stylesheet" href="allcss.css"/>
 		
 
 	</head>
@@ -49,15 +50,15 @@
 
 
 	
- 
+ <!--Formulario de registro- utilizamos varios patterns para la verificacion de los datos-->
 
-	 <form class="box mt-4 mb-4"  id="registro" name="registro" method="POST" enctype="multipart/form-data" action="registrarse.php">
-	 <h1 class="display-4">Register</h1>
+	 <form class="boxr mt-4 mb-4"  id="registro" name="registro" method="POST" enctype="multipart/form-data" action="registrarse.php">
+	 <h1 class="display-4" style="color:#ffd966;">Register</h1>
 
 	  <div>
-	   <input  type="text" id="nombre" name="nombre"  placeholder="Name" required="">
-	   <input  type="text" id="apellido" name="apellido"  placeholder="Surname"  required="">
-	   <input  type="text" id="dni" name="dni"  placeholder="DNI" required pattern="^[0-9]{8,8}[A-Za-z]$">
+	   <input  type="text" id="nombre" name="nombre"  placeholder="Name" required pattern="[A-Za-z]*" title="You must enter only letters.">
+	   <input  type="text" id="apellido" name="apellido"  placeholder="Surname"  required pattern="[A-Za-z]*" title="You must enter only letters.">
+	   <input  type="text" id="dni" name="dni"  placeholder="DNI" required pattern="^[0-9]{8,8}[A-Za-z]$" title="The format must be 8 digits and one letter.">
 	   <input type="email" name="email"  placeholder="Email" required>  
 	   <img src="img/eye.png" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();" style="width:10%;float:right;margin-left: -10%;" />
 	   <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>
@@ -66,7 +67,7 @@
 	   
 	   <input  type="password" id="code" name="code" placeholder="Enter register code" required>
 	  
-	   <input  type="Date" name="fecha" id="fecha" value required >
+	   <input  type="Date" name="fecha" id="fecha"  required  >
 	   <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br>
 	   <center><img id="argazki" name="imagen" width="150"></center> 
 	   </div>
@@ -87,7 +88,7 @@
 				$conexion=connectDataBase();
 				
 				
-				if (isset($_POST['email'])){
+				if (isset($_POST['email'])){  //recogemos los datos del formulario
 					$nombre = $_POST["nombre"];
 					$apellido= $_POST["apellido"];                
 					$dni= $_POST["dni"];                
@@ -105,7 +106,7 @@
 					
 					
 					
-					if($code!="erlete"){
+					if($code!="erlete"){ //Si la contraseña de registro no coincide salta un error
 
 	                echo '<script type="text/javascript">alert("The register code is not valid");</script>';
 
@@ -131,7 +132,7 @@
 	                } else{
 	                    $motivo="REGISTRATION: ".$dni."";
 	                    $eurodeuda= 30;
-	                    $sql2="INSERT INTO deudas VALUES ('','$motivo','$eurodeuda','$dni')";
+	                    $sql2="INSERT INTO deudas VALUES ('','$motivo','$eurodeuda','$dni')"; //genera una deuda de 30 euros con el motivo regsitro+dni
 	                    $ejecutar2=mysqli_query($conexion, $sql2);
 
 	                    if(!$ejecutar2){
@@ -184,7 +185,7 @@
 					
 					
 					
-					// validación de registro
+					// validación de registro, comprueba fechas, campos vacios y contraseñas
 	                $("#registro").submit(function(){
 
 

@@ -1,4 +1,7 @@
 <?php 
+
+//Controller para gestionar las deudas siendo usuario
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -15,11 +18,12 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 <!DOCTYPE html>
 <html>
 <head>
-	<title>INDEX</title>
+	<title>Debts</title>
 	<link rel="shortcut icon" href="img/ico.png">
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		
@@ -29,7 +33,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-		<link rel="stylesheet" href="reserva.css" ></link>
+		
 
 <!-- CSS -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
@@ -51,22 +55,9 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
 
+<link rel="stylesheet" href="allcss.css" ></link>
 
-
-		<style type="text/css" media="screen">
-
-			 body{
-				  margin: auto;
-				  padding: 0;
-				  font-family: sans-serif;
-				  background: #FFB133;
-				}
-				.navbar-customclass .navbar-nav .nav-link{
-					  color:#ff8c00;
-					}
-
-			
-		</style>
+		
 </head>
 <body>
 	<!-- Starts nav bar-->
@@ -113,26 +104,27 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 <!-- Ends nav bar-->
 
 <!-- Starts carrousel-->
-<div class="container" id="reservadv">
-
-
-
-
-
-
-<!-- Ends carrousel-->
-
-
-<!--starts text--><br>
-
+<br>
+<div class="infod2">
+<div class="infoh4">
 	
 	<h1><b>Debts</b></h1>
 
-
-
-<div id="datos"></div>
-			
 </div>
+<br>
+<div class="infop1">
+	<div id="datos"></div>
+	
+
+
+
+
+	</div>
+	</div>	
+
+
+
+
 
 
 
@@ -146,9 +138,39 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
 	
 
-    		
+<br><br><br><br><br>
+
+		
+<footer>
+  <div class="container-fluid">
+    <div class="row">
+
+    <div class="col-4" style="float:left;margin:auto;">
+      <p>Achondo, Jauregi Street 28<br>
+      Email:aoazdebelopers@gmail.com<br>
+      Telf: <b>654389234</b></p>      
+    </div>
+    <div class="col-4" style="float:center;margin:auto;">
+     <h1 style="font-size: 25px">Public opening hours</h1>
+      <p>Monday-Friday: 9:00AM-8:00PM<br>
+      Saturday: 10:00AM-5:00PM<br>
+      Sunday: 11:00AM-6:00PM</p>
+      <p>Holiday hours may vary.</p>
+    </div>
+    <div class="col-4" style="margin:auto;">
+      <h1 style="font-size: 25px">Follow Us</h1>
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-youtube"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      <p>@Desing by:AOAZ</p>
+    </div>
+  </div>
 </div>
-<br><br><br><br>
+</footer> 
+
+
+
 </body>
 </html>
 <script>
@@ -158,7 +180,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null){
 
 });
 
-
+// Imprimir la tabla con las deudas en el div datos
 
 function obtenerDatos(){
  
@@ -213,16 +235,7 @@ $.ajax({
 			}
 				});
 
-
 	}
-
-	
-
-
-//} ));
-
-
-
 });
 	
 
@@ -237,6 +250,10 @@ $.ajax({
 
 <script>
 	
+
+// Cerrar sesion
+
+
 $("#close").click(function() {
 		alert("Session Closed");
 		$(location).attr('href', 'logout.php');

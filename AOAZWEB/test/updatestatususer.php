@@ -1,5 +1,5 @@
 <?php
-
+//Actualizamos el estado (Bloqueado/activo) de un usuario
 
 $idusuario = $_POST['dni'];
 $estado = $_POST['estado'];

@@ -16,7 +16,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 <!DOCTYPE html>
 <html>
 <head>
-	<title>INDEX</title>
+	<title>Index</title>
 		<link rel="shortcut icon" href="img/ico.png">
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
@@ -31,185 +31,9 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-		<style type="text/css" media="screen">
+		 <link rel="stylesheet" href="allcss.css" ></link>
 
-			 body{
-				  margin: auto;
-				  padding: 0;
-				  font-family: sans-serif;
-				  background: #FFB133;
-				}
-				.navbar-customclass .navbar-nav .nav-link{
-					  color:#ff8c00;
-					}
-
-			#close:hover{
-
-				background-color: #DE2424;
-				border-radius:5px;
-			}
-
-			#profile:hover{
-				background-color: #1A9516;
-			}
-
-
-			.slide {
-				position: relative;
-				box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
-				margin-top: 26px;
-			}
-
-			.slide-inner {
-				position: relative;
-				overflow: hidden;
-				width: 100%;
-				height: calc( 450px + 3em);
-			}
-
-			.slide-open:checked + .slide-item {
-				position: static;
-				opacity: 100;
-			}
-
-			.slide-item {
-				position: absolute;
-				opacity: 0;
-				-webkit-transition: opacity 0.6s ease-out;
-				transition: opacity 0.6s ease-out;
-			}
-
-			.slide-item img {
-				display: block;
-				height: auto;
-				max-width: 100%;
-			}
-
-			.slide-control {
-				background: rgba(0, 0, 0, 0.28);
-				border-radius: 50%;
-				color: #fff;
-				cursor: pointer;
-				display: none;
-				font-size: 40px;
-				height: 40px;
-				line-height: 35px;
-				position: absolute;
-				top: 50%;
-				-webkit-transform: translate(0, -50%);
-				cursor: pointer;
-				-ms-transform: translate(0, -50%);
-				transform: translate(0, -50%);
-				text-align: center;
-				width: 40px;
-				z-index: 10;
-			}
-
-			.slide-control.prev {
-				left: 2%;
-			}
-
-			.slide-control.next {
-				right: 2%;
-			}
-
-			.slide-control:hover {
-				background: rgba(0, 0, 0, 0.8);
-				color: #aaaaaa;
-			}
-
-			#slide-1:checked ~ .control-1,
-			#slide-2:checked ~ .control-2,
-			#slide-3:checked ~ .control-3 {
-				display: block;
-			}
-
-			.slide-indicador {
-				list-style: none;
-				margin: 0;
-				padding: 0;
-				position: absolute;
-				bottom: 2%;
-				left: 0;
-				right: 0;
-				text-align: center;
-				z-index: 10;
-			}
-
-			.slide-indicador li {
-				display: inline-block;
-				margin: 0 5px;
-			}
-
-			.slide-circulo {
-				color: #828282;
-				cursor: pointer;
-				display: block;
-				font-size: 35px;
-			}
-
-			.slide-circulo:hover {
-				color: #aaaaaa;
-			}
-
-			#slide-1:checked ~ .control-1 ~ .slide-indicador li:nth-child(1) .slide-circulo,
-			#slide-2:checked ~ .control-2 ~ .slide-indicador li:nth-child(2) .slide-circulo,
-			#slide-3:checked ~ .control-3 ~ .slide-indicador li:nth-child(3) .slide-circulo {
-				color: #428bca;
-			}
-
-			#titulo {
-				width: 100%;
-				position: absolute;
-				padding: 0px;
-				margin: 0px auto;
-				text-align: center;
-				font-size: 27px;
-				color: rgba(255, 255, 255, 1);
-				font-family: 'Open Sans', sans-serif;
-				z-index: 9999;
-				text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
-			}
-
-	footer {
-  				text-align: center;
- 				padding: 3px;
-  				background-color: #828282;
-  				color: white;
-			}
-			.fa {
-			  padding: 10px;
-			  font-size: 30px;
-			  margin: auto;
-			  text-decoration: none;
-			  margin: 5px 2px;
-			  border-radius: 80%;
-			}
-
-			.fa:hover{
-			    opacity: 0.7;
-			}
-
-			.fa-facebook {
-			  background: #3B5998;
-			  color: white;
-			}
-			.fa-twitter {
-			  background: #55ACEE;
-			  color: white;
-			}
-
-			.fa-youtube {
-			  background: #bb0000;
-			  color: white;
-			}
-
-			.fa-instagram {
-			  background: #125688;
-			  color: white;
-			}
-
-		</style>
+			
 </head>
 <body>
 	<!-- Starts nav bar-->
@@ -299,17 +123,17 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 <!-- Ends carrousel-->
 
 
-<!--starts text--><br>
-<div style="background-color: #ffd966;" >
-	
-	<h1><b>The thick gold</b></h1>
-
-<div style="background-color: #ffd966;" >
+<!--starts text-->
+<br>
+<br>
+<div class="infoidx">
+<div class="infoh2">
 	
 	<h1><b>Honey Bee Society Structure and Organization</b></h1>
 
 </div>
-<div style="background-color: #ffd966;">
+<br>
+<div class="infop1">
 		<p>The bee society is consisted of the queen (which is the only sexually developed female), the worker bees and the drones. Each colony has only one queen. The primary purpose of queen is to reproduce. The queen mates only once or twice in her life (but with multiple drones), and the mating takes place during her first days. After mating in the air with the drones, she stores the drones’ sperm in a special area of her body and can lay eggs for the rest of her life (3-5 years). The queen’s second purpose is to organize and motivate (through pheromones) workers to complete the workload of the hive. Workers (sexually underdeveloped females) are responsible for nearly all the required heavy work of the hive. This means guarding the hive, comb building, caring for the queen, cleaning, polishing, feeding the brood, storing, collecting nectar, pollen and water, chewing the nectar and transform it to honey through enzymes, adjusting the temperature inside the hive by fanning with their wings and many more. The sole purpose of drones is to fertilize virgin queens. Drones do not have a sting, thus they cannot even guard the hive against intruders. They do not participate in any other operation of the colony other than mating with virgin queens.</p>
 		<br>
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/xE2V8etxOeg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -318,41 +142,58 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 		<p>The queen is larger in size than the drone and double in size than the workers. A beekeeper can easily spot the queen: Apart from its different size, shape and color, the other worker bees often surround the queen at a small distance, showing respect and allowing her the proper space to walk without problems. They can also feed her in the mouth with royal jelly during brood rearing (mainly in the spring). During the rest of the year, they offer pollen and honey mixture to the queen. The average queen lives 3-5 years, but can lay eggs at good rate (200.000 eggs per year) during the first 2-3 years of its life. It is very important to have a young and thriving queen in our hive (preferably up to 2 years old). A queen can lay fertile or unfertile eggs. Unfertile eggs become drones, while fertile eggs become workers or new queens.</p>
 
 	</div>
-	<div style="background-color: #ffd966;" >
+	</div>	
+	<br>
+
+<div class="infoidx">
+<div class="infoh2">
 	
 	<h1><b>How do bees produce Honey?</b></h1>
 
-	</div>
-	<div style="background-color: #ffd966;" >
-	
-	<p>Worker bees (who account for at least 98% of the beehive population) are the ones that produce honey under a complicated procedure. A great number of worker bees are necessary; no single honeybee can produce honey without the other members of the team. In a few words, “transport bees” suck the nectar out of flowers and they store it in their second special stomach (designed especially for storing honey) while they fly back to the hive. Once they arrive at the hive, they deliver the nectar to the “chewing” bees. The chewing bees collect the nectar and they chew it for about 30 minutes. During the chewing, enzymes are transforming nectar into a substance that contains honey along with water. After chewing, the worker bees diffuse the substance into honeycombs, so that the water can evaporate, making the honey less watery. Water evaporation is accelerated as other bees fan it with their wings. When the honey production has finished, other bees are responsible for sealing the cells of honeycombs with wax, so that the product is protected.</p>
+</div>
+<br>
+<div class="infop1">
+		<p>Worker bees (who account for at least 98% of the beehive population) are the ones that produce honey under a complicated procedure. A great number of worker bees are necessary; no single honeybee can produce honey without the other members of the team. In a few words, “transport bees” suck the nectar out of flowers and they store it in their second special stomach (designed especially for storing honey) while they fly back to the hive. Once they arrive at the hive, they deliver the nectar to the “chewing” bees. The chewing bees collect the nectar and they chew it for about 30 minutes. During the chewing, enzymes are transforming nectar into a substance that contains honey along with water. After chewing, the worker bees diffuse the substance into honeycombs, so that the water can evaporate, making the honey less watery. Water evaporation is accelerated as other bees fan it with their wings. When the honey production has finished, other bees are responsible for sealing the cells of honeycombs with wax, so that the product is protected.</p>
 <p>
 Bees produce and store their products (honey, royal jelly, propolis, etc.) for their own use. They can survive eating honey during winter and other periods when pollen is not available. Beekeepers actually “steal” a portion of this emergency stock, when they harvest honey. But if harvesting is done rationally, bees will counter produce and deputize the honey quantity taken from humans, and they will continue their lifecycle without further problems.</p>
 
 	</div>
-
-
-
-
-</div>
+	</div>	
 
 
 </div>
+<br>
+
+
+
 <!--Footer-->
-<div style="width: 100%">
-	<footer>
-		Email:aoazdevelopers@gmail.com<br>
-		Telf:654389234
-		<br>
-		<a href="#" class="fa fa-facebook"></a>
-		<a href="#" class="fa fa-twitter"></a>
-		<a href="#" class="fa fa-youtube"></a>
-		<a href="#" class="fa fa-instagram"></a>
-		<p>&copy; 2021 Erlete.com</p>
-	</footer>	
+<footer>
+  <div class="container-fluid">
+    <div class="row">
 
+    <div class="col-4" style="float:left;margin:auto;">
+      <p>Achondo, Jauregi Street 28<br>
+      Email:aoazdebelopers@gmail.com<br>
+      Telf: <b>654389234</b></p>      
+    </div>
+    <div class="col-4" style="float:center;margin:auto;">
+      <h1 style="font-size: 25px">Public opening hours</h1>
+      <p>Monday-Friday: 9:00AM-8:00PM<br>
+      Saturday: 10:00AM-5:00PM<br>
+      Sunday: 11:00AM-6:00PM</p>
+      <p>Holiday hours may vary.</p>
+    </div>
+    <div class="col-4" style="margin:auto;">
+      <h1 style="font-size: 25px">Follow Us</h1>
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-youtube"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      <p>@Desing by:AOAZ</p>
+    </div>
+  </div>
 </div>
-
+</footer> 
 
 
 

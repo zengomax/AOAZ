@@ -1,4 +1,6 @@
 <?php 
+
+//pagina para generar el ticket de la deuda
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -13,14 +15,15 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
 
 
 
-
-   
-
-<html xmlns="&lt;a href='https://www.w3.org/1999/xhtml">
-  <head>
-     <!-- Latest compiled and minified CSS -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment</title>
+    <link rel="shortcut icon" href="img/ico.png">
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
@@ -29,18 +32,13 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
     
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="allcss.css" ></link>
+    <style type="text/css" media="screen">
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <style type="text/css">
-      body {
-        margin: 0;
-        font: 12px/16px Arial, sans-serif;
-        background: #FFB133;
-      }
-      .navbar-customclass .navbar-nav .nav-link{
-            color:#ff8c00;
-          }
-      a {
+
+     
+
+        a {
         text-decoration: none;
         color: #006699;
         font: 14px/16px Arial, sans-serif;
@@ -256,7 +254,43 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
       }
       
     
-    
+      footer {
+          text-align: center;
+        padding: 3px;
+          background-color: #828282;
+          color: white;
+      }
+      .fa {
+        padding: 10px;
+        font-size: 30px;
+        margin: auto;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 80%;
+      }
+
+      .fa:hover{
+          opacity: 0.7;
+      }
+
+      .fa-facebook {
+        background: #3B5998;
+        color: white;
+      }
+      .fa-twitter {
+        background: #55ACEE;
+        color: white;
+      }
+
+      .fa-youtube {
+        background: #bb0000;
+        color: white;
+      }
+
+      .fa-instagram {
+        background: #125688;
+        color: white;
+      }
     </style>
     <style type="text/css" media="print" >
     @page 
@@ -268,28 +302,16 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
         display:none;
       }
     </style>
-   
-    <title></title>
-  </head>
-  <body>
-    <?php 
-    include ("conexion.php");
-    $conexion=connectDataBase();
 
+  
 
-
-    $dni=$_SESSION['dni'];  
-   
-   
-
-   
-
-?>
-
-
-<div  id="noprint">
-    <img src="img/banner2.png" width=100% height=35% ></img>
-      <nav class="navbar navbar-expand-md navbar-customclass bg-dark ">
+ 
+</head>
+<body>
+  <!-- Starts nav bar-->
+  <div class="bs-example">
+    <img src="img/banner2.png" id="noprint" width=100% height=20% ></img>
+      <nav class="navbar navbar-expand-md navbar-customclass bg-dark">
         
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
@@ -302,6 +324,7 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
             <li class="nav-item">
               <a href="reserva.php" class="nav-link">Make a booking</a>
             </li>
+            
             
           </ul>
           
@@ -326,8 +349,23 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
       </nav>
   </div>
 
-  <br/>
-  <br/>
+
+<!-- Ends nav bar-->
+
+<!-- Starts carrousel-->
+
+
+
+
+
+
+
+<!-- Ends carrousel-->
+
+
+<!--starts text-->
+
+<br>
 <div class="container" style="background-color: white; width:650px">
   
 
@@ -357,6 +395,8 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
                   <td id="greetingSummary">
                     <p> </p>
                     <div class="greeting">
+
+                      <!--Utiliza los datos de una sesion creada anteriormente al eliminar la deuda-->
                       Hello <?php echo $_SESSION['nombre']." ".$_SESSION['apellido'] ?>,
                     </div><br /> Thank you for staying with us.  <p></p>
                   </td>
@@ -426,7 +466,70 @@ if(!isset($_SESSION["rol"])||$_SESSION["rol"]== null||$_SESSION["rol"]!= 'usuari
       </tbody>
     </table>
   </div>
-  <br>
-  <br>
-    </body>
+
+
+
+<br>
+
+
+
+<!--Footer-->
+<footer id="noprint">
+  <div class="container-fluid">
+    <div class="row">
+
+    <div class="col-4" style="float:left;margin:auto;">
+      <p>Achondo, Jauregi Street 28<br>
+      Email:aoazdebelopers@gmail.com<br>
+      Telf: <b>654389234</b></p>      
+    </div>
+    <div class="col-4" style="float:center;margin:auto;">
+     <h1 style="font-size: 25px">Public opening hours</h1>
+      <p>Monday-Friday: 9:00AM-8:00PM<br>
+      Saturday: 10:00AM-5:00PM<br>
+      Sunday: 11:00AM-6:00PM</p>
+      <p>Holiday hours may vary.</p>
+    </div>
+    <div class="col-4" style="margin:auto;">
+      <h1 style="font-size: 25px">Follow Us</h1>
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-youtube"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      <p>@Desing by:AOAZ</p>
+    </div>
+  </div>
+</div>
+</footer> 
+
+
+
+
+
+
+
+
+
+<!--ends text-->
+
+  
+
+        
+
+
+</body>
 </html>
+
+
+
+
+
+<script>
+  
+$("#close").click(function() {
+    alert("Session Closed");
+    $(location).attr('href', 'logout.php');
+  });
+  
+
+</script>

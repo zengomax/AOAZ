@@ -1,4 +1,5 @@
 <?php 
+//Imprime las tablas de los usuarios con sus datos
 
 include ("conexion.php");
 $conexion=connectDataBase();
@@ -6,14 +7,15 @@ $conexion=connectDataBase();
 session_start();
 
 $estado=$_GET['estado'];
-
+$dni=$_SESSION['dni'];
 
 if($estado=="ACTIVO"){  //SI LA RESERVA ESTA PENDIENTE CARGA LA TABLA CON BOTONES
 
 ?>
 <div class="container">
 
-  <h5 class="display-6"> Active users</h5>
+  <h5 class="display-6" style="text-align: center;"> Active users</h5>
+  <br>
  <table class="table table-bordered">
       <tr>
         <th>DNI</th>
@@ -28,8 +30,10 @@ if($estado=="ACTIVO"){  //SI LA RESERVA ESTA PENDIENTE CARGA LA TABLA CON BOTONE
 
 <?php
 $i=0;
-$resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado= 'ACTIVO'")or die(mysqli_error($conexion));
+$resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado= 'ACTIVO' AND dni != '$dni'")or die(mysqli_error($conexion));
 while($imprimir=mysqli_fetch_array($resultado)){
+
+  //Concatenamos el id de los input  del modal con el indice i para poder obtenerlos con el controler
 
 ?>      <tr>
         <td id="id" data-id_prueba="<?php echo $imprimir['dni'] ?>" ><?php echo $imprimir['dni'] ?></td>
@@ -46,10 +50,10 @@ while($imprimir=mysqli_fetch_array($resultado)){
 
       </tr>
 
-    <div class="modal fade" id="edit<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="color:black"aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="background: orange;" >
-      <div class="modal-header" style="background: orange;" >
+    <div class="modal-content" style="background:#ffd24d;" >
+      <div class="modal-header" style=" background: #ffd24d;" >
         <h5 class="modal-title" id="exampleModalLabel">Edit information</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -59,25 +63,23 @@ while($imprimir=mysqli_fetch_array($resultado)){
        <form id="formu">
             
   
-            <label for="recipient-name"   class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="name<?php echo $i ?>" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php echo $imprimir['nombre']  ?>">
+             <label for="recipient-name"   class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="name<?php echo $i ?>"  required value="<?php   echo $imprimir['nombre']   ?>">
         
             <label for="recipient-name" class="col-form-label">Surname:</label>
-            <input type="text" class="form-control" id="surname<?php echo $i ?>"style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php echo $imprimir['apellido']  ?>">
+            <input type="text" class="form-control" id="surname<?php echo $i ?>" value="<?php   echo $imprimir['apellido']   ?>">
      
       
             <label for="recipient-name" class="col-form-label">Email:</label>
-            <input type="text"   class="form-control" id="email<?php echo $i ?>" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" value="<?php echo $imprimir['email']  ?>">
+            <input type="text"   class="form-control" id="email<?php echo $i ?>" value="<?php   echo $imprimir['email']   ?>">
 
          
-            <label for="recipient-name" class="col-form-label"> New Password:</label>
-            <input type="Password" class="form-control" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;" id="password<?php echo $i ?>">
+            <label for="recipient-name" class="col-form-label">Password:</label>
+            <input type="Password" class="form-control" id="password<?php echo $i ?>" placeholder="Password">
           
             
-            <label for="recipient-name" class="col-form-label">Repeat
-             new Password:</label>
-            <input type="Password"  class="form-control" style=" border:2px solid black; box-shadow:0 0 0px;background: none; color:black; width:50%;margin: auto;text-align: center;"  id="repeatpassword<?php echo $i ?>" >
-  
+            <label for="recipient-name" class="col-form-label">Repeat Password:</label>
+            <input type="Password"  class="form-control"id="repeatpassword<?php echo $i ?>" placeholder="Repeat password">
         </form>
       </div>
       <div class="modal-footer">
@@ -107,12 +109,13 @@ while($imprimir=mysqli_fetch_array($resultado)){
 
 <?php 
 
-if($estado=="BLOQUEADO"){
-//__________________________________________________________________________________________________________________
+if($estado=="BLOQUEADO"){//Si esta bloqueado carga los bloqueados dependiendo de lo que se elija
+//___________________________________________________________________________________________________________________
 
 ?>
 <div class="container">
-    <h5 class="display-6"> My BLOCKED USERS</h5>
+    <h5 class="display-6" style="text-align: center;">Blocked users</h5>
+    <br>
 
  <table class="table table-bordered">
       <tr>
@@ -130,6 +133,8 @@ if($estado=="BLOQUEADO"){
 $resultado= mysqli_query($conexion,"SELECT * FROM usuario WHERE estado ='BLOQUEADO'")or die(mysqli_error($conexion));
 $j=0;
 while($imprimir=mysqli_fetch_array($resultado)){
+    //Concatenamos el id de los input  del modal con el indice j para poder obtenerlos con el controler
+
 ?>
    
        <tr>
@@ -149,10 +154,10 @@ while($imprimir=mysqli_fetch_array($resultado)){
 
 
 
-    <div class="modal fade" id="edit<?php echo $j  ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit<?php echo $j  ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="color:black" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="background: orange;" >
-      <div class="modal-header" style="background: orange;" >
+    <div class="modal-content" style="background: #ffd24d;" >
+      <div class="modal-header" style="background: #ffd24d;" >
         <h5 class="modal-title" id="exampleModalLabel">Edit information</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
