@@ -55,6 +55,16 @@ public class View extends javax.swing.JFrame {
         AddCantidad = new javax.swing.JButton();
         tittle3 = new javax.swing.JLabel();
         precioAnadir = new javax.swing.JTextField();
+        dialogoDinero = new javax.swing.JDialog();
+        jLabel10 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        DepositButton = new javax.swing.JButton();
+        moneyField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        balancelabel = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         GehituButton = new javax.swing.JButton();
         EzabatuButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -73,15 +83,20 @@ public class View extends javax.swing.JFrame {
         precioField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         saldoLabel = new javax.swing.JLabel();
+        erlete = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         menuProduct = new javax.swing.JMenu();
         AddProduct = new javax.swing.JMenuItem();
         cambiarCantidadButton = new javax.swing.JMenuItem();
         menuMovement = new javax.swing.JMenu();
         viewMovements = new javax.swing.JMenuItem();
+        menuDinero = new javax.swing.JMenu();
+        depositMoneyMenu = new javax.swing.JMenuItem();
 
         dialogoAnadir.setTitle("Add Amount");
         dialogoAnadir.setMinimumSize(new java.awt.Dimension(614, 406));
+        dialogoAnadir.setResizable(false);
 
         elegirProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +194,88 @@ public class View extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        dialogoDinero.setTitle("Add Amount");
+        dialogoDinero.setMinimumSize(new java.awt.Dimension(614, 406));
+        dialogoDinero.setResizable(false);
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel10.setText("Deposit Money");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setText("Add money to the account:");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setText("Amount (€)");
+
+        DepositButton.setText("Deposit");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel13.setText("Balance:");
+
+        balancelabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        balancelabel.setText("jLabel9");
+
+        javax.swing.GroupLayout dialogoDineroLayout = new javax.swing.GroupLayout(dialogoDinero.getContentPane());
+        dialogoDinero.getContentPane().setLayout(dialogoDineroLayout);
+        dialogoDineroLayout.setHorizontalGroup(
+            dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogoDineroLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addGroup(dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dialogoDineroLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(36, 36, 36)
+                        .addComponent(moneyField, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel11))
+                .addGap(0, 185, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogoDineroLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel15))
+            .addGroup(dialogoDineroLayout.createSequentialGroup()
+                .addGroup(dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogoDineroLayout.createSequentialGroup()
+                        .addGroup(dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dialogoDineroLayout.createSequentialGroup()
+                                .addGap(223, 223, 223)
+                                .addComponent(DepositButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(dialogoDineroLayout.createSequentialGroup()
+                                .addGap(169, 169, 169)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogoDineroLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel13)
+                        .addGap(18, 18, 18)
+                        .addComponent(balancelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        dialogoDineroLayout.setVerticalGroup(
+            dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogoDineroLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel10)
+                .addGap(7, 7, 7)
+                .addGroup(dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(balancelabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(dialogoDineroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(moneyField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(DepositButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel15)
+                .addGap(24, 24, 24))
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         GehituButton.setText("Add");
         GehituButton.addActionListener(new java.awt.event.ActionListener() {
@@ -225,6 +321,10 @@ public class View extends javax.swing.JFrame {
         saldoLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         saldoLabel.setText("jLabel9");
 
+        erlete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/erlete.png"))); // NOI18N
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/aoaz.png"))); // NOI18N
+
         menuProduct.setText("Product");
 
         AddProduct.setText("Add Product");
@@ -248,25 +348,28 @@ public class View extends javax.swing.JFrame {
 
         MenuBar.add(menuMovement);
 
+        menuDinero.setText("Money");
+
+        depositMoneyMenu.setText("Deposit Money");
+        depositMoneyMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositMoneyMenuActionPerformed(evt);
+            }
+        });
+        menuDinero.add(depositMoneyMenu);
+
+        MenuBar.add(menuDinero);
+
         setJMenuBar(MenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(precioField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,7 +381,7 @@ public class View extends javax.swing.JFrame {
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(cantidadField, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel8)
@@ -289,7 +392,21 @@ public class View extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(EzabatuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(GehituButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(21, 21, 21)))))
+                                    .addGap(21, 21, 21))))
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(precioField, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel14)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(erlete)))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(164, 164, 164)
@@ -339,7 +456,11 @@ public class View extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(erlete)
+                    .addComponent(jLabel14))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -369,43 +490,14 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_elegirProductActionPerformed
 
+    private void depositMoneyMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositMoneyMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_depositMoneyMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new View().setVisible(true);
-            }
-        });
-    }
+    
 
     public static View viewaSortuBistaratu() {
         View v = new View();
@@ -420,15 +512,26 @@ public class View extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton AddCantidad;
     public javax.swing.JMenuItem AddProduct;
+    public javax.swing.JButton DepositButton;
     public javax.swing.JButton EzabatuButton;
     public javax.swing.JButton GehituButton;
     public javax.swing.JMenuBar MenuBar;
+    public javax.swing.JLabel balancelabel;
     public javax.swing.JMenuItem cambiarCantidadButton;
     public javax.swing.JTextField cantidadAnadir;
     public javax.swing.JTextField cantidadField;
+    public javax.swing.JMenuItem depositMoneyMenu;
     public javax.swing.JDialog dialogoAnadir;
+    public javax.swing.JDialog dialogoDinero;
     public javax.swing.JComboBox<String> elegirProduct;
+    private javax.swing.JLabel erlete;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -441,8 +544,11 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    public javax.swing.JMenu menuDinero;
     public javax.swing.JMenu menuMovement;
     public javax.swing.JMenu menuProduct;
+    public javax.swing.JTextField moneyField;
     public javax.swing.JTextField precioAnadir;
     public javax.swing.JTextField precioField;
     public javax.swing.JTextField productoField;
