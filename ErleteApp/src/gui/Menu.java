@@ -57,6 +57,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(anadirCantidadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 140, -1));
 
         manageProductsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/product.png"))); // NOI18N
+        manageProductsButton.setActionCommand("Manage Products");
         manageProductsButton.setOpaque(false);
         manageProductsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +86,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 120, 30));
 
         depositDineroButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/money.png"))); // NOI18N
+        depositDineroButton.setActionCommand("Deposit Money");
         depositDineroButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depositDineroButtonActionPerformed(evt);

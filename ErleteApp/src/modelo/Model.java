@@ -25,7 +25,13 @@ public class Model {
         return conn;
 
     }
-
+      public  Model(){
+      
+      
+      
+      
+      
+      }
     /**
     * This function purpose is to show products from the database
     */
