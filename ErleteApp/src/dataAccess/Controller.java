@@ -62,6 +62,7 @@ public class Controller implements ActionListener {
         menu.anadirCantidadButton.addActionListener(listener);
         menu.movementsButton.addActionListener(listener);
         menu.depositDineroButton.addActionListener(listener);
+        menu.depositDineroButton.addActionListener(listener);
     }
 
     @Override
