@@ -223,7 +223,7 @@ function fecha(){
 //accion de hacer click en el boton eliminar
 //-------CANCELAR RESERVA--------
 $(document).on("click","#eliminar",function(){
-	if(confirm("Do you want to cancel this book?")){
+	if(confirm("Do you want to cancel this booking?")){
 	
 
   var fechainicioField = $(this).data("fecha").split("-");

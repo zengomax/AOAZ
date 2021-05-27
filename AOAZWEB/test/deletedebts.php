@@ -22,7 +22,7 @@ $imprimir= mysqli_fetch_array($resultado);
 $motivo="PAY OF ".$imprimir['motivo'];
 $fecha=date('Y-m-d');
 $euros=$imprimir['eurosdeuda'];
-//eliminamos la reserva
+//eliminamos la deuda
 $sql= "DELETE  FROM deudas WHERE iddeuda ='$id'";
 $ejecutar= mysqli_query($conexion,$sql) or die(mysqli_error($conexion)); //eliminamos la deuda mediante el id que obtiene con post
 
